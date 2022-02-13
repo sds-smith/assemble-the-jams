@@ -80,7 +80,7 @@ class App extends React.Component {
   }
 
   savePlaylist() {
-    let trackURIs = this.state.playlistTracks.map(track => `spotify:track:${track.id}`)
+    let trackURIs = this.state.playlistTracks.map(track => track.uri)
   }
 
   search(term) {

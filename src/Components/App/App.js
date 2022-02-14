@@ -11,47 +11,9 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-        searchResults : [
-          {
-           name : 'track1',
-           artist : 'track1.artist',
-           album : 'track1.album',
-           id : 'track1.id'
-          },            
-          {
-            name : 'track2',
-            artist : 'track2.artist',
-            album : 'track2.album',
-            id : 'track2.id'
-          },          
-          {
-            name : 'track3',
-            artist : 'track3.artist',
-            album : 'track3.album',
-            id : 'track3.id'
-          }            
-        ],
+        searchResults : [],
         playlistName : "Playlist is New",
-        playlistTracks : [
-          {
-            name : 'track1',
-            artist : 'track1.artist',
-            album : 'track1.album',
-            id : 'track1.id'
-          },            
-          {
-            name : 'track2',
-            artist : 'track2.artist',
-            album : 'track2.album',
-            id : 'track2.id'
-          },          
-          {
-            name : 'track3',
-            artist : 'track3.artist',
-            album : 'track3.album',
-            id : 'track3.id'
-          }            
-        ]
+        playlistTracks : []
     }
 
     this.addTrack = this.addTrack.bind(this)
@@ -82,6 +44,11 @@ class App extends React.Component {
 
   savePlaylist() {
     let trackURIs = this.state.playlistTracks.map(track => track.uri)
+    Spotify.savePlaylist(this.state.playlistName, trackURIs
+      ).then(() => this.setState({
+        playlistName : 'New Playlist',
+        playlistTracks : []
+      }))
   }
 
   search(term) {
@@ -95,7 +62,7 @@ class App extends React.Component {
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
-          <SearchBar onSearch={this.search}/>
+          <SearchBar onSearch={this.search()}/>
           <div className="App-playlist">
             <SearchResults 
               searchResults={this.state.searchResults}

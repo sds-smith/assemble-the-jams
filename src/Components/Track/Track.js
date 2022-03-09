@@ -29,7 +29,7 @@ class Track extends React.Component {
     render() {
         return (
             <div className="Track">
-              <div className="Track-information" isRemoval={this.props.isRemoval}>
+              <div className="Track-information" isremoval={this.props.isRemoval}>
                 <h3>{this.props.track.name}</h3>
                 <p>{this.props.track.artist} | {this.props.track.album}</p>
                 {this.renderAction()}

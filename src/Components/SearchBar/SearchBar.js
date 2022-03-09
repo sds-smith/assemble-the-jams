@@ -15,11 +15,12 @@ class SearchBar extends React.Component {
 
     search() {
         this.props.onSearch(this.state.term)
-
+        document.getElementById('search_input').value = ''
     }
 
     handleTermChange(event) {
         this.setState({term : event.target.value})
+        
     }
 
     render() {

@@ -10,7 +10,7 @@ const Spotify = {
         }
         let accessTokenMatch = window.location.href.match(/access_token=([^&]*)/)
         let expiresInMatch = window.location.href.match(/expires_in=([^&]*)/)
-        if (!accessTokenMatch && expiresInMatch) { 
+        if (!accessTokenMatch && !expiresInMatch) { 
             const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`
             window.location = accessUrl
             accessTokenMatch = window.location.href.match(/access_token=([^&]*)/)

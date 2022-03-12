@@ -49,7 +49,8 @@ class App extends React.Component {
         playlistName : 'New Playlist',
         playlistTracks : []
       })
-      document.getElementById('playlist_name_input').value = this.state.playlistName
+      document.getElementById('playlist_name_input').value = ''
+      document.getElementById('playlist_name_input').placeholder = this.state.playlistName
     })
     
   }

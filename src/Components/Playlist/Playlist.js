@@ -17,7 +17,7 @@ class Playlist extends React.Component {
             <div className="Playlist" onKeyPress={(e) => e.key === 'Enter' && this.props.onSave()}>
               <input 
                 id='playlist_name_input'
-                defaultValue={this.props.playlistName}
+                placeholder={this.props.playlistName}
                 onChange={this.handleNameChange}/>
               <TrackList 
                 tracks={this.props.playlistTracks}

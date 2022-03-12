@@ -28,6 +28,11 @@ class SearchBar extends React.Component {
         return (
             <div className="SearchBar" onKeyPress={(e) => e.key === 'Enter' && this.search()}>
               <input placeholder="Enter A Song, Album, or Artist"  id='search_input'onChange={this.handleTermChange}/>
+              <ul>
+                  <li><input type='checkbox' id='track'/></li>
+                  <li><input type='checkbox' id='album'/></li>
+                  <li><input type='checkbox' id='artist'/></li>
+              </ul>
               <button className="SearchButton" onClick={this.search}>SEARCH</button>
             </div>
         )

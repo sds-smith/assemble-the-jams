@@ -11,6 +11,12 @@ class SearchBar extends React.Component {
 
         this.search = this.search.bind(this)
         this.handleTermChange = this.handleTermChange.bind(this)
+
+        this.addEventListener('keyup', function(event) {
+            if (event.key === 13) {
+              this.search()
+            }
+          });
     }
 
     search() {

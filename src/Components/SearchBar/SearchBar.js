@@ -31,5 +31,15 @@ class SearchBar extends React.Component {
             </div>
         )
     }
+
+
 }
+
+const srchInput = document.getElementById('search_input')
+srchInput.addEventListener('keyup', function(event) {
+    if (event.key === 13) {
+      SearchBar.search()
+    }
+  });
+
 export default SearchBar

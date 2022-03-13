@@ -1,8 +1,8 @@
 
 let accessToken
 const clientId = 'd0a8e3c4039b4156a1e017053e679cfc'
-// const redirectURI = 'https://assemblethejams.netlify.app/'
-const redirectURI = 'http://localhost:3000'
+const redirectURI = 'https://assemblethejams.netlify.app/'
+// const redirectURI = 'http://localhost:3000'
 const Spotify = {
     getAccessToken() {
         if (accessToken) {
@@ -22,9 +22,9 @@ const Spotify = {
         } 
     },
 
-    search(term) {
+    search(term, type='track') {
         let accessToken = Spotify.getAccessToken()
-        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+        return fetch(`https://api.spotify.com/v1/search?type=${type}&q=${term}`, {
              headers: {
                  Authorization: `Bearer ${accessToken}`
             }

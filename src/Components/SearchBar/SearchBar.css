@@ -41,26 +41,21 @@
 
   .search_by {
     display: flex;
-    flex-direction: column;
-    align-content: left;
-    align-items: left;    
+    flex-direction: column; 
+    align-items: center;  
+    justify-content: flex-start;
     width: 40%;
     height: 150px;
     background-color: rgba(1, 12, 63, 0.7);
     box-shadow: 0 4px 2px 2px #000000;
     margin-bottom: 2.22rem;
-    font-size: 1rem;
+    font-size: 1em;
     padding: 1rem 0;
   }
 
   .search_by li {
     display: flex;
-    align-items: left;
     width: 100%;
-    margin: 0;
+    height: 33%;
     padding: 0;
-  }
-
-  .search_by_input {
-    margin: 0;
   }

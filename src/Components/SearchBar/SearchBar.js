@@ -30,8 +30,8 @@ class SearchBar extends React.Component {
               <input placeholder="Enter A Song, Album, or Artist"  id='search_input'onChange={this.handleTermChange}/>
               <ul className='search_by'>
                     <li>
-                        <input type='checkbox' id='track' name='track'/>
-                        <label for='track'>SEARCH BY TRACK</label>
+                        <input type='checkbox' id='song' name='song'/>
+                        <label for='song'>SEARCH BY SONG</label>
                     </li>
                     <li>
                         <input type='checkbox' id='album' name='album'/>

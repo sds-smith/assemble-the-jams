@@ -40,6 +40,9 @@
   }
 
   .search_by {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
     width: 50%;
     height: 150px;
     padding: .88rem;

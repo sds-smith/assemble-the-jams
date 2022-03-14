@@ -39,7 +39,7 @@ const Spotify = {
     },
 
     getProfileInfo() {
-        const accessToken = Spotify.getAccessToken()
+        let accessToken = Spotify.getAccessToken()
         if (!accessToken) {
             accessToken = Spotify.getAccessToken()
         }

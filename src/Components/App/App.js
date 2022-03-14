@@ -84,7 +84,7 @@ class App extends React.Component {
 
   render()  {
     const userName = this.state.userName; 
-    const backgroundImage = this.state.profilePic ? this.state.profilePic : './background_photo_desktop.jpg'
+    //const backgroundImage = this.state.profilePic ? this.state.profilePic : './background_photo_desktop.jpg'
     let disabled
     console.log(userName)
     let search 

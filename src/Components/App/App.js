@@ -1,16 +1,18 @@
 import './App.css';
+import Login from '../Login/Login.js'
 import SearchBar from '../SearchBar/SearchBar.js'
 import SearchResults from '../SearchResults/SearchResults.js'
 import Playlist from '../Playlist/Playlist.js'
 import React from 'react';
 import Spotify from '../../util/Spotify.js'
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
+        userName : "",
+        profilePic : null,
         searchResults : [],
         playlistName : "Enter New Playlist Name",
         playlistTracks : []
@@ -21,8 +23,27 @@ class App extends React.Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this)
     this.savePlaylist = this.savePlaylist.bind(this)
     this.search = this.search.bind(this)
+    this.hasAccessToken = this.hasAccessToken.bind(this)
+    this.getProfileInfo = this.getProfileInfo.bind(this)
   }
   
+  hasAccessToken() {
+    return Spotify.isTokenMatch()  
+  }
+
+  getProfileInfo() {
+    Spotify.getAccessToken().then(() => {
+      Spotify.getProfileInfo().then((userName) => {
+
+        console.log('getProfileInfo()', userName)
+        this.setState({ userName : userName,
+                         })
+      })
+    })
+ 
+
+  }
+
   addTrack(track) {
     let tracks = this.state.playlistTracks
     if (tracks.find(savedTrack => savedTrack.id === track.id)) {
@@ -62,11 +83,29 @@ class App extends React.Component {
   }
 
   render()  {
+    const userName = this.state.userName; 
+    const backgroundImage = this.state.profilePic ? this.state.profilePic : './background_photo_desktop.jpg'
+    let disabled
+    console.log(userName)
+    let search 
+    if (!this.hasAccessToken()) {
+      search = (
+        <Login onLogin={this.getProfileInfo}/>
+      )
+      disabled = true
+    } else {
+        search = (
+          <SearchBar onSearch={this.search}/>
+        );
+        disabled = false
+    }
+
     return (
       <div>
         <h1>Assemble<span className="highlight">the</span>Jams</h1>
-        <div className="App">
-          <SearchBar onSearch={this.search}/>
+        <div className="App" >
+          <h2>{userName}</h2>
+          {search}
           <div className="App-playlist">
             <SearchResults 
               searchResults={this.state.searchResults}
@@ -76,11 +115,13 @@ class App extends React.Component {
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}
-              onSave={this.savePlaylist}/>
+              onSave={this.savePlaylist}
+              disabled={disabled}/>
           </div>
         </div>
       </div>
-    );
+    )
+
   }
 }
 

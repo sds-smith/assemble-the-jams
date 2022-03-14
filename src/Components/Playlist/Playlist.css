@@ -39,6 +39,10 @@
   .Playlist-save:hover {
     background-color: rgba(108, 65, 233, .7);
   }
+
+  .Playlist-save:disabled {
+    background-color:rgba(1, 12, 63, 0.7)
+  }
   
   ::-webkit-scrollbar {
       width: 0px;

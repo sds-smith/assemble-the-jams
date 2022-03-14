@@ -2,8 +2,24 @@
 let accessToken
 const clientId = 'd0a8e3c4039b4156a1e017053e679cfc'
 const redirectURI = 'https://assemblethejams.netlify.app/'
-// const redirectURI = 'http://localhost:3000'
+// const redirectURI = 'http://localhost:3000/'
+const scope = 'playlist-modify-public user-read-private'
+
 const Spotify = {
+
+    isTokenMatch() {
+        if (accessToken) {
+            return true
+        }
+        const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/)
+        const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/)        
+        if (accessTokenMatch && expiresInMatch) { 
+            return true 
+        } else { 
+            return false
+        } 
+    },
+
     getAccessToken() {
         if (accessToken) {
             return accessToken
@@ -17,9 +33,23 @@ const Spotify = {
             window.history.pushState("Access Token", null, "/")
             return accessToken                  
         } else {
-            const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`
+            const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`
             window.location = accessUrl            
         } 
+    },
+
+    getProfileInfo() {
+        const accessToken = Spotify.getAccessToken()
+        if (!accessToken) {
+            accessToken = Spotify.getAccessToken()
+        }
+        const headers = { Authorization : `Bearer ${accessToken}` }
+
+        return fetch('https://api.spotify.com/v1/me',{headers : headers}
+        ).then(response => response.json()
+            ).then(jsonResponse => {
+                return jsonResponse.id
+            })
     },
 
     search(term, type='track') {
@@ -55,6 +85,7 @@ const Spotify = {
         ).then(response => response.json()
             ).then(jsonResponse => {
                 userId = jsonResponse.id
+                console.log('userId', userId)
                 return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`,
                 {
                     headers : headers,

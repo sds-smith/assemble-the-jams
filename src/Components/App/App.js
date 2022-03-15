@@ -34,8 +34,6 @@ class App extends React.Component {
   getProfileInfo() {
     Spotify.getAccessToken().then(() => {
       Spotify.getProfileInfo().then((userName) => {
-
-        console.log('getProfileInfo()', userName)
         this.setState({ userName : userName,
                          })
       })
@@ -86,7 +84,6 @@ class App extends React.Component {
     const userName = this.state.userName; 
     //const backgroundImage = this.state.profilePic ? this.state.profilePic : './background_photo_desktop.jpg'
     let disabled
-    console.log(userName)
     let search 
     if (!this.hasAccessToken()) {
       search = (

@@ -18,7 +18,7 @@ The app consists of :
   * Seven React components - two stateful and five stateless
     - App - renders the Login, SearchBar, SearchResults, and Playlist components and manages the entire state of the app (with one exception)
     - Login - conditionally renders when oAuth credentials have not been attained from Spotify or have expired
-    - SearchBar - takes the place of Login.js when current authorization exists.  Displays an input field and search button that initiates a GET request to the appropriate Spotify API endpoint. Aside from App.js, this is the only other component with state.  SearchBar's state consists of a single property, 'term,' the search term that continuously updates as the user types in the search input field.
+    - SearchBar - takes the place of Login.js when current authorization exists.  Displays an input field and search button that initiates a GET request to the appropriate Spotify API endpoint. Aside from App.js, this is the only other component with state.  SearchBar's state consists of a single property, 'term' (the search term), which continuously updates as the user types in the search input field, until a submit event occurs.
     - SearchResults - displays track titles parsed from the Spotify response to the search.  Each track includes a '+' button for adding to the working playlist
     - Playlist - the working playlist.  Displays tracks the user has added from SearchResults.  Each track includes a '-' button for removing from the working playlist
     - Tracklist - displays a list of tracks.  Is rendered by both SearchResults and Playlist.

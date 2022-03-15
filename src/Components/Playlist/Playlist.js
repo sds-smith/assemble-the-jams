@@ -7,6 +7,10 @@ class Playlist extends React.Component {
         super(props)
 
         this.handleNameChange = this.handleNameChange.bind(this)
+        this.clearInput = this.clearInput.bind(this)
+    }
+    clearInput() {
+      document.getElementById('playlist_name_input').value = ''
     }
 
     handleNameChange(event) {
@@ -18,6 +22,8 @@ class Playlist extends React.Component {
               <input 
                 id='playlist_name_input'
                 placeholder={this.props.playlistName}
+                defaultValue={this.props.playlistName}
+                onClick={this.clearInput}
                 onChange={this.handleNameChange}
                 disabled={this.props.disabled}/>
               <TrackList 

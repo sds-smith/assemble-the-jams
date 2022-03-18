@@ -1,4 +1,4 @@
-import ignore from '../config/config.js'
+
 
 let accessToken
 const clientId = process.env.CLIENT_ID

@@ -1,7 +1,7 @@
-
+import handler from '../../netlify/functions/clientId'
 
 let accessToken
-const clientId = '/.netlify/functions/'
+const clientId = handler()
 const redirectURI = 'https://assemblethejams.netlify.app/'
 //const redirectURI = 'http://localhost:3000/'
 const scope = 'playlist-modify-public'

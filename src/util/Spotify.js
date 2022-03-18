@@ -1,7 +1,8 @@
 import ignore from '../config/config.js'
 
 let accessToken
-const { clientId } = ignore
+//const { clientId } = ignore
+let clientId = ''
 const redirectURI = 'http://localhost:3000/'
 const scope = 'playlist-modify-public'
 

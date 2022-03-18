@@ -2,7 +2,8 @@
 
 let accessToken
 const clientId = process.env.CLIENT_ID
-const redirectURI = 'http://localhost:3000/'
+const redirectURI = 'https://assemblethejams.netlify.app/'
+//const redirectURI = 'http://localhost:3000/'
 const scope = 'playlist-modify-public'
 
 const Spotify = {

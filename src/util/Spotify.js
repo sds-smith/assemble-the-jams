@@ -1,7 +1,7 @@
 
 
 let accessToken
-const clientId = process.env.CLIENT_ID
+const clientId = '/.netlify/functions/'
 const redirectURI = 'https://assemblethejams.netlify.app/'
 //const redirectURI = 'http://localhost:3000/'
 const scope = 'playlist-modify-public'

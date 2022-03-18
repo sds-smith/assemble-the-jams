@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-exports.handler = async function (event, context) {
+const handler = async function (event, context) {
   console.log(event);
   console.log(context);
   try {
@@ -16,3 +16,5 @@ exports.handler = async function (event, context) {
     };
   }
 };
+
+export default handler

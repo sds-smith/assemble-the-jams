@@ -1,4 +1,4 @@
-import handler from '../../netlify/functions/clientId'
+import handler from '../netlify/functions/clientId'
 
 let accessToken
 const clientId = handler()

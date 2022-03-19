@@ -1,6 +1,7 @@
+//import axios from 'axios'
 const axios = require("axios");
 
-const handler = async function (event, context) {
+exports.handler = async function (event, context) {
   console.log(event);
   console.log(context);
   try {
@@ -17,4 +18,3 @@ const handler = async function (event, context) {
   }
 };
 
-export default handler

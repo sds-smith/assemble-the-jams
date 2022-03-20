@@ -33,14 +33,8 @@ class App extends React.Component {
   }
 
   getProfileInfo() {
-    Spotify.getAccessToken().then(() => {
-      Spotify.getProfileInfo().then((userName) => {
-        this.setState({ userName : userName,
-                         })
-      })
-    })
- 
-
+    console.log('get profile info')
+  
   }
 
   addTrack(track) {
@@ -50,7 +44,6 @@ class App extends React.Component {
     }
     tracks.push(track)
     this.setState({playlistTracks : tracks})
-
   }
 
   removeTrack(track) {
@@ -88,7 +81,7 @@ class App extends React.Component {
     let search 
     if (!this.hasAccessToken()) {
       search = (
-        <Login onLogin={this.getProfileInfo}/>
+        <Login /*onLogin={this.getProfileInfo}*/ />
       )
       disabled = true
     } else {

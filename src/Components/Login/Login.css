@@ -18,7 +18,7 @@
   .LoginForm {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 90%;
     justify-content: center;
     align-items: center;
   }
@@ -62,5 +62,20 @@
     height: 3rem;
     width: 22rem;
     text-align: center;
+    text-overflow: wrap;
     
+  }
+
+  .email_input::placeholder {
+    text-size-adjust: auto;
+  }
+
+  @media only screen and (max-width: 1020px) {
+    /* .Login { */
+      /* font-size: .6rem; */
+    /* } */
+    .email_input {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
   }

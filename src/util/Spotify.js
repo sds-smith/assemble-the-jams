@@ -36,7 +36,7 @@ const Spotify = {
             return this.parseAccessToken()                  
         } else {
             const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`
-            window.location = accessUrl              
+            window.location = accessUrl         
         }  
     },
 

@@ -6,7 +6,7 @@ class Login extends React.Component {
     render() {
         return (
             <div className='Login'>
-                <h2 className='loginMessage'>Assemble the Jams is registered in Development mode with Spotify.</h2>
+                <h2 className='loginMessage'>Assemble<span className='highlight'>the</span>Jams is registered in Development mode with Spotify.</h2>
                 <h2 className='loginMessage'>In order to use the app, you must be registered as a user.</h2>
                 <h3 className='loginMessage'>For access, please complete the form below. You will be notified by email when your request has been processed.</h3>
                 <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>

@@ -33,7 +33,7 @@ class App extends React.Component {
   }
 
   getProfileInfo() {
-    console.log('get profile info')
+    Spotify.getAccessToken()
   
   }
 
@@ -81,7 +81,7 @@ class App extends React.Component {
     let search 
     if (!this.hasAccessToken()) {
       search = (
-        <Login /*onLogin={this.getProfileInfo}*/ />
+        <Login onLogin={this.getProfileInfo} />
       )
       disabled = true
     } else {

@@ -42,7 +42,8 @@
     width: 8.11rem;
     padding: .77rem 0;
     border-radius: 54px;
-    background-color: #6c41ec;
+    /* background-color: #6c41ec; */
+    background-color: green;
     text-align: center;
     font-size: .833rem;
     transition: background-color .25s;

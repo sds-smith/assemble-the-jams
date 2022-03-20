@@ -3,7 +3,9 @@
     flex-direction: column;
     height: 100%;
     align-items: center;
-    padding-top: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 4rem;
     margin-bottom: 6.33rem;
     background-color: rgba(1, 12, 63, 0.7);
     box-shadow: 0 4px 2px 2px #000000;
@@ -26,4 +28,10 @@
   
   .LoginButton:hover {
     background-color: rgba(108, 65, 233, .7);
+  }
+
+  .email_input {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 6rem;
   }

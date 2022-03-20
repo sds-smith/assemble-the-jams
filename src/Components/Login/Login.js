@@ -25,8 +25,8 @@ class Login extends React.Component {
                 <h3 className='loginMessage'>For access, please complete the form below. You will be notified by email when your request has been processed.</h3>
                 <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>
                 <form className='LoginForm' netlify name='loginForm' onSubmit={this.handleSubmit}>
-                    <input type="hidden" name="form-name" value="register" />
-                    <input className='email_input' id='emailInput' type='email' placeholder='Spotify email'/>
+                    <input type="hidden" name="form-name" value="loginForm" />
+                    <input className='email_input' id='emailInput' type='email' name='email' placeholder='Spotify email'/>
                     <div className='regBtn'>
                         <input type='radio' name='registration' id='not_reg' value='not_reg' />
                         <label for='not_reg' id='notRegLabel'>I am requesting access for the first time</label>

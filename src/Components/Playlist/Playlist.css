@@ -38,7 +38,7 @@
   }
   
   .Playlist-save:hover {
-    background-color: rgba(0, 128, 0, .7);
+    background-color: rgba(0, 128, 0, .6);
   }
 
   .Playlist-save:disabled {

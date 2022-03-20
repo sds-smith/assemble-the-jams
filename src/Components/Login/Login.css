@@ -5,6 +5,8 @@
     align-items: center;
     padding-top: 6.94rem;
     margin-bottom: 6.33rem;
+    background-color: rgba(1, 12, 63, 0.7);
+    box-shadow: 0 4px 2px 2px #000000;
   }
   
   .LoginButton {

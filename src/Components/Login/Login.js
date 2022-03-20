@@ -2,6 +2,20 @@ import React from 'react';
 import './Login.css';
 
 class Login extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleSubmit(e) {
+        e.preventDefault()
+        if (e.target.registration.value === 'reg') {
+            this.props.onLogin()
+        } else {
+
+        }
+    }
 
     render() {
         return (
@@ -10,7 +24,7 @@ class Login extends React.Component {
                 <h2 className='loginMessage'>In order to use the app, you must be registered as a user.</h2>
                 <h3 className='loginMessage'>For access, please complete the form below. You will be notified by email when your request has been processed.</h3>
                 <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>
-                <div className='LoginForm' /*onSubmit={this.props.onLogin}*/>
+                <form className='LoginForm' data-netlift='true' onSubmit={this.handleSubmit}>
                     {/* <label for='emailInput'>Enter email address associated with your Spotify account</label> */}
                     <input className='email_input' id='emailInput' type='email' placeholder='Spotify email'/>
                     <div className='regBtn'>
@@ -22,8 +36,8 @@ class Login extends React.Component {
                         <label for='reg' id='regLabel'>I am a registered user of this app</label>     
                     </div>
            
-                    <button className='LoginButton' onClick={this.props.onLogin}>SUBMIT </button>
-                </div>
+                    <button className='LoginButton' >SUBMIT </button>
+                </form>
 
             </div>
         )

@@ -10,7 +10,7 @@ class Login extends React.Component {
                 <h2 className='loginMessage'>In order to use the app, you must be explicitly added as a user.</h2>
                 <h3 className='loginMessage'>You only need to request access once, but there may be a delay between requesting and gaining access</h3>
                 <h3 className='loginMessage'>For more information on this app, please see the About page</h3>
-                <form className='LoginForm' onSubmit={this.props.onLogin}>
+                <div className='LoginForm' /*onSubmit={this.props.onLogin}*/>
                     <label for='emailInput'>Enter email address associated with your Spotify account</label>
                     <input className='email_input' id='emailInput' type='email' placeholder='Spotify email'/>
                     <div className='regBtn'>
@@ -22,8 +22,8 @@ class Login extends React.Component {
                         <label for='reg' id='regLabel'>I am a registered user of this app</label>     
                     </div>
            
-                    <button className='LoginButton' >SUBMIT </button>
-                </form>
+                    <button className='LoginButton' onClick={this.props.onLogin}>SUBMIT </button>
+                </div>
 
             </div>
         )

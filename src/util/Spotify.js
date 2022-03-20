@@ -1,10 +1,11 @@
 
 
 let accessToken
-const clientId = '/.netlify/functions/ClientId'
+const clientId = process.env.REACT_APP_CLIENT_ID
 // const redirectURI = 'https://assemblethejams.netlify.app/'
 const redirectURI = 'http://localhost:3000/'
 const scope = 'playlist-modify-public'
+
 
 const Spotify = {
 
@@ -12,19 +13,10 @@ const Spotify = {
         if (accessToken) {
             return true
         }
-        const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/)
-        const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/)        
-        if (accessTokenMatch && expiresInMatch) { 
-            return true 
-        } else { 
-            return false
-        } 
+        return this.parseAccessToken()
     },
 
-    getAccessToken() {
-        if (accessToken) {
-            return accessToken
-        }
+    parseAccessToken() {
         const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/)
         const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/)
         if (accessTokenMatch && expiresInMatch) { 
@@ -32,11 +24,21 @@ const Spotify = {
             const expiresIn = Number(expiresInMatch[1])
             window.setTimeout(() => accessToken = '', expiresIn * 1000)
             window.history.pushState("Access Token", null, "/")
-            return accessToken                  
+            return accessToken  
+        }      
+    },
+
+    getAccessToken() {
+        if (accessToken) {
+            return accessToken
+        }
+        if (this.parseAccessToken()) { 
+            return this.parseAccessToken()                  
         } else {
             const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`
-            window.location = accessUrl            
-        } 
+            window.location = accessUrl   
+            
+            }  
     },
 
     getProfileInfo() {

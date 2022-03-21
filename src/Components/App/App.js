@@ -5,6 +5,7 @@ import SearchResults from '../SearchResults/SearchResults.js'
 import Playlist from '../Playlist/Playlist.js'
 import React from 'react';
 import Spotify from '../../util/Spotify.js'
+import PopUp from '../PopUp/PopUp';
 
 
 class App extends React.Component {
@@ -12,6 +13,8 @@ class App extends React.Component {
     super(props)
 
     this.state = {
+        isPopup : false,
+        userEmail : "",
         userName : "",
         profilePic : null,
         searchResults : [],
@@ -26,8 +29,20 @@ class App extends React.Component {
     this.search = this.search.bind(this)
     this.hasAccessToken = this.hasAccessToken.bind(this)
     this.getProfileInfo = this.getProfileInfo.bind(this)
+    this.togglePop = this.togglePop.bind(this)
+    this.setUserEmail = this.setUserEmail.bind(this)
   }
   
+  togglePop() {
+    let notIsPopup = !this.state.isPopup
+    this.setState({ isPopup : notIsPopup })
+    console.log(this.state.isPopup)
+  }
+
+  setUserEmail(userEmail) {
+    this.setState({ userEmail : userEmail })
+  }
+
   hasAccessToken() {
     return Spotify.isTokenMatch()  
   }
@@ -79,9 +94,10 @@ class App extends React.Component {
     //const backgroundImage = this.state.profilePic ? this.state.profilePic : './background_photo_desktop.jpg'
     let disabled
     let search 
+    let pop
     if (!this.hasAccessToken()) {
       search = (
-        <Login onLogin={this.getProfileInfo} />
+        <Login onLogin={this.getProfileInfo} toggle={this.togglePop}/>
       )
       disabled = true
     } else {
@@ -91,11 +107,22 @@ class App extends React.Component {
         disabled = false
     }
 
+    if (this.state.isPopup) {
+      pop = (
+        <PopUp toggle={this.togglePop} setUserEmail={this.setUserEmail} userEmail={this.state.userEmail} />
+      )
+    } else {
+      pop = (
+        <div style={{display: 'none'}} ></div>
+      )
+    }
+
     return (
       <div>
         <h1>Assemble<span className="highlight">the</span>Jams</h1>
         <div className="App" >
           <h2>{userName}</h2>
+          {pop}
           {search}
           <div className="App-playlist">
             <SearchResults 
@@ -109,7 +136,7 @@ class App extends React.Component {
               onSave={this.savePlaylist}
               disabled={disabled}/>
           </div>
-        </div>
+        </div>   
       </div>
     )
 

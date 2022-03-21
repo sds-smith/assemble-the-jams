@@ -1,7 +1,7 @@
 import React from "react";
 import './PopUp.css'
 
-class PopUp extends React.Component {
+class RegistrationForm extends React.Component {
     constructor(props) {
         super(props)
 
@@ -80,4 +80,4 @@ class PopUp extends React.Component {
     }
 }
 
-export default PopUp
+export default RegistrationForm

@@ -5,7 +5,7 @@ import SearchResults from '../SearchResults/SearchResults.js'
 import Playlist from '../Playlist/Playlist.js'
 import React from 'react';
 import Spotify from '../../util/Spotify.js'
-import PopUp from '../PopUp/PopUp';
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
 
 
 class App extends React.Component {
@@ -36,7 +36,6 @@ class App extends React.Component {
   togglePop() {
     let notIsPopup = !this.state.isPopup
     this.setState({ isPopup : notIsPopup })
-    console.log(this.state.isPopup)
   }
 
   setUserEmail(userEmail) {
@@ -108,11 +107,11 @@ class App extends React.Component {
     }
 
     if (this.state.isPopup) {
-      pop = (
-        <PopUp toggle={this.togglePop} setUserEmail={this.setUserEmail} userEmail={this.state.userEmail} />
+      popUp = (
+        <RegistrationForm toggle={this.togglePop} setUserEmail={this.setUserEmail} userEmail={this.state.userEmail} />
       )
     } else {
-      pop = (
+      popUp = (
         <div style={{display: 'none'}} ></div>
       )
     }
@@ -122,7 +121,7 @@ class App extends React.Component {
         <h1>Assemble<span className="highlight">the</span>Jams</h1>
         <div className="App" >
           <h2>{userName}</h2>
-          {pop}
+          {popUp}
           {search}
           <div className="App-playlist">
             <SearchResults 

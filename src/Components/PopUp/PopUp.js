@@ -40,9 +40,9 @@ class PopUp extends React.Component {
             </span>
             <div className='modal_main'>
               <h2 >{registrationMessage}</h2>
-              <form className='registration' name='registration' method='post' value='registration' style={{visibility : formVisibility}} onSubmit={this.handleSubmit}>
+              <form className='registration' name='registration' method='post' style={{visibility : formVisibility}} onSubmit={this.handleSubmit}>
 
-                <input type="hidden" name="form-name" value="loginForm" />
+                <input type="hidden" name="form-name" value="registration" />
                 <input type='text' name='name' id='name' placeholder='Your First and Last Name' />
                 <input type='email' name='email' id='email' placeholder='Your Spotify email' />
                 <button className='RegButton'type='submit' name='submit' id='emailSubmit' >SUBMIT</button>

@@ -1,5 +1,5 @@
 import React from "react";
-import './PopUp.css'
+import './RegistrationForm.css'
 
 class RegistrationForm extends React.Component {
     constructor(props) {

@@ -93,7 +93,7 @@ class App extends React.Component {
     //const backgroundImage = this.state.profilePic ? this.state.profilePic : './background_photo_desktop.jpg'
     let disabled
     let search 
-    let pop
+    let popUp
     if (!this.hasAccessToken()) {
       search = (
         <Login onLogin={this.getProfileInfo} toggle={this.togglePop}/>

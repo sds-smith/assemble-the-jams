@@ -53,3 +53,7 @@ There are two additional enhancements that I would like to make to this app:
 
   * Display Spotify username and profile picture (if any) when user is logged in.  This will involve an additional scope beyond the current "playlist-modify-public".  The username would appear in an h2 element above the SearchBar input, and the profile picture (if any) would replace the swim goggles and earbuds as the background-image.
   * Change the oAuth flow from Implicit Grant to Authorization Code Flow with PKCE.  I believe this would eliminate some of the issues detailed above associated with Implicit Grant, and also provide enhanced security.
+
+### DEMO
+
+You can demo the app at https://assemblethejams.netlify.app

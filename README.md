@@ -35,10 +35,9 @@ However, there were a few limitations to the user experience that I was not sati
 
   * **`Added the Login component`**.  This gatekeeper component was not part of the base build, but it was added to solve two problems:
     - Because the app is in Development mode, Spotify requires the user to be explicitly granted access.  Without access, they cannot successfully authenticate and will not receive search results.
-    - If the user indicates they are a new user, the Login onSubmit renders a pop-up registration form.  Otherwise, an access token GET request is sent to Spotify, then with an access token present, Login is replaced by SearchBar.
-    - Additionally, once the user is registered, because of the type of authentication used (Implicit Grant Flow), when the user executes a search without an access token present, the app does not return any results in the SearchResults.  From the user perspective, it appears that nothing happened.  They will then see results on the second and subsequent attempts, but this is not good user experience.
-    - This happens because of the nature of Implicit Grant Flow and the internal logic of the app's 'getAccessToken' Spotify method.  I first attempted to fix this with a recursive call within Spotify.getAccessToken, but without success.
-    - The Login component prevents this UX glitch by ensuring a fresh access token is present whenever the 'Search' button is clicked
+    - Additionally, once the user is registered, because of the type of authentication used (Implicit Grant Flow), if the user executes a search without an access token present, the app does not return any results in the SearchResults.  From the user perspective, it appears that nothing happened.  They will see results on the second and subsequent attempts, but this is not good user experience.
+    - In Login, if the user indicates they are a new user, the onSubmit renders a pop-up registration form.  Otherwise, an access token GET request is sent to Spotify, then with an access token present, Login is replaced by SearchBar.
+    - The Login component prevents these UX glitches by ensuring the user is registered before authenticating, then ensuring a fresh access token is present whenever the 'Search' button is clicked
   * **`Added the RegistrationForm popup component`**, as described above.
   * **`Added event listeners for an 'enter' keypress`** in both the SearchBar and Playlist components, bound to their respective buttons
   * **`Added input field clean-ups`** to button clicks in both SearchBar and Playlist

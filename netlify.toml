@@ -1,5 +1,5 @@
 
 [[redirects]]
     from = '/authorize'
-    to = '/.netlify/functions/spotify_authorize'
+    to = '`https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&scope=${process.env.REACT_APP_ORIGINAL_SCOPE}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI_NETLIFY}`'
     status = 200

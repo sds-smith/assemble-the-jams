@@ -1,4 +1,4 @@
-
+const axios = require('axios')
 
 exports.handler = function (event, context, callback) {
   const clientId = process.env.REACT_APP_CLIENT_ID
@@ -7,12 +7,15 @@ exports.handler = function (event, context, callback) {
   const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 
 
-  const accessURL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`
-  console.log(accessURL)
-  
-  callback(null, {
+  const response = await axios.get(`https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`)
+  console.log(response)
+  return {
     statusCode: 200,
-    body: JSON.stringify({accessURL : accessURL})
-  })
+    body: JSON.stringify({title : response.data.title})
+  }
+  // callback(null, {
+    // statusCode: 200,
+    // body: JSON.stringify({accessURL : accessURL})
+  // })
 
 };

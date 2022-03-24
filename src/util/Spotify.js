@@ -39,7 +39,7 @@ const Spotify = {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
-                window.location = data.accessURL
+                //window.location = data.accessURL
             })
 
 

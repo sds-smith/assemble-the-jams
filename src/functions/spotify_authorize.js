@@ -6,7 +6,7 @@ exports.handler = async function (event, context, callback) {
   //const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
   const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 
-
+  const location = Window.location
   const accessURL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`
   location.assign(accessURL)
 };

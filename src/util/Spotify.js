@@ -7,6 +7,7 @@ const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 //const scope = process.env.REACT_APP_ORIGINAL_SCOPE
 
 
+
 const Spotify = {
 
     isTokenMatch() {

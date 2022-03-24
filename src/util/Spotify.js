@@ -35,11 +35,15 @@ const Spotify = {
         if (this.parseAccessToken()) { 
             return this.parseAccessToken()                  
         } else {
-            fetch()
+            fetch('/authorize')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+            })
 
 
-            const accessUrl = '/authorize'
-            window.location = accessUrl         
+            // const accessUrl = '/authorize'
+            // window.location = accessUrl         
         }  
     },
 

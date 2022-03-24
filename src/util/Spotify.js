@@ -41,7 +41,7 @@ const Spotify = {
 
             // const accessUrl = '/authorize'
             // window.location = accessUrl         
-        }  
+         
     },
 
     getProfileInfo() {

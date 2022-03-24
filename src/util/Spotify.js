@@ -35,11 +35,7 @@ const Spotify = {
         if (this.parseAccessToken()) { 
             return this.parseAccessToken()                  
         } else {
-            fetch('/authorize')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('getAccessToken data', data)
-                //window.location = data.accessURL
+            window.location = '/authorize'
             })
 
 

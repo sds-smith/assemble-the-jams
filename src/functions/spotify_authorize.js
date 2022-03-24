@@ -8,5 +8,5 @@ exports.handler = async function (event, context, callback) {
 
 
   const accessURL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`
-  window.location = accessURL
+  location.assign(accessURL)
 };

@@ -11,6 +11,6 @@ exports.handler = function (event, context, callback) {
   console.log(accessURL)
   return {
     statusCode: 200,
-    body: JSON.stringify(accessURL)
+    body: JSON.stringify({accessURL : accessURL})
   }
 };

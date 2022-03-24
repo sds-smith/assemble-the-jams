@@ -36,7 +36,7 @@ const Spotify = {
             return this.parseAccessToken()                  
         } else {
             window.location = '/authorize'
-            })
+            }
 
 
             // const accessUrl = '/authorize'

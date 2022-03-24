@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-exports.handler = function (event, context, callback) {
+exports.handler = async function (event, context, callback) {
   const clientId = process.env.REACT_APP_CLIENT_ID
   const scope = process.env.REACT_APP_ORIGINAL_SCOPE
   //const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST

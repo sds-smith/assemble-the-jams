@@ -1,0 +1,5 @@
+
+[[redirects]]
+    from = '/authorize'
+    to = '/.netlify/functions/spotify_authorize'
+    status = 200

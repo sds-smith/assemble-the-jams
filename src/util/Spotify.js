@@ -38,7 +38,7 @@ const Spotify = {
             fetch('/authorize')
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
+                console.log('getAccessToken data', data)
                 //window.location = data.accessURL
             })
 

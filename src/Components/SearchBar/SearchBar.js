@@ -14,8 +14,7 @@ class SearchBar extends React.Component {
 
     }
 
-    search() {
-        
+    search() {        
         this.props.onSearch(this.state.term)
         document.getElementById('search_input').value = ''
     }

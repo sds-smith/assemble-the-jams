@@ -1,6 +1,7 @@
 .SearchBar {
     display: flex;
     flex-direction: column;
+    height: 100%;
     align-items: center;
     padding-top: 4rem;
     margin-bottom: 6.33rem;

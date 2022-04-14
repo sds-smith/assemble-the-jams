@@ -8,6 +8,10 @@ html {
   font-size: 18px;
 }
 
+.App-container {
+  height: 100vh
+}
+
 h1 {
   padding: .77rem 0;
   /* background-color: #010c3f; */

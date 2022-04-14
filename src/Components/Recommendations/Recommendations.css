@@ -1,5 +1,6 @@
 .Recommendations {
     width: 30%;
+    min-height: 350px;
     max-height: 950px;
     overflow-y: scroll;
     padding: .88rem;

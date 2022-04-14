@@ -118,7 +118,7 @@ class App extends React.Component {
     }
 
     return (
-      <div>
+      <div >
         <h1>Assemble<span className="highlight">the</span>Jams</h1>
         <div className="App" >
           <h2>{userName}</h2>

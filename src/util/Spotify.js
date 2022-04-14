@@ -2,8 +2,8 @@
 
 let accessToken
 //const clientId = process.env.REACT_APP_CLIENT_ID
-const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
-// const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
+// const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
+const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
 //const scope = process.env.REACT_APP_ORIGINAL_SCOPE
 
 
@@ -36,13 +36,8 @@ const Spotify = {
         if (this.parseAccessToken()) { 
             return this.parseAccessToken()                  
         } else {
-            window.location = '/authorize'
-            }
-
-
-            // const accessUrl = '/authorize'
-            // window.location = accessUrl         
-         
+            window.location = 'https://accounts.spotify.com/authorize?client_id=21ba29fa4306450ea39e854698160967&response_type=token&scope=playlist-modify-public&redirect_uri=http://localhost:3000/'
+            }             
     },
 
     getProfileInfo() {

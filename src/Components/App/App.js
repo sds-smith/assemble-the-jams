@@ -6,6 +6,7 @@ import Playlist from '../Playlist/Playlist.js'
 import React from 'react';
 import Spotify from '../../util/Spotify.js'
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
+import Recommendations from '../Recommendations/Recommendations';
 
 
 class App extends React.Component {
@@ -125,6 +126,9 @@ class App extends React.Component {
           {search}
           <div className="App-playlist">
             <SearchResults 
+              searchResults={this.state.searchResults}
+              onAdd={this.addTrack}/>
+            <Recommendations 
               searchResults={this.state.searchResults}
               onAdd={this.addTrack}/>
             <Playlist 

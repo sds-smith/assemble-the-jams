@@ -29,10 +29,10 @@ class Recommendations extends React.Component {
                 </label>
 
               </form>
-              {/* <TrackList  */}
-                {/* tracks={this.props.recommendations} */}
-                {/* onAdd={this.props.onAdd} */}
-                {/* isRemoval={false}/> */}
+              <TrackList 
+                 tracks={this.props.searchResults} 
+                 onAdd={this.props.onAdd} 
+                 isRemoval={false}/> 
             </div>
         )
     }

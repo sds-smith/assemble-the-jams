@@ -74,6 +74,29 @@ const Spotify = {
         })
     },
 
+    getRecommendations(seeds) {
+        const accessToken = this.getAccessToken()
+        const headers = { Authorization : `Bearer ${accessToken}` }
+        return fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seeds[0]}`, {headers: headers}
+        ).then(response => {
+            return response.json()
+        }).then(jsonResponse => {
+            if (!jsonResponse.tracks) {
+                return []
+            }
+            return jsonResponse.tracks.items.map(track => ({
+                id : track.id,
+                name : track.name,
+                artist : track.artists[0].name,
+                album : track.album.name,
+                uri : track.uri
+            }))
+        }).catch((error) => {
+            console.error('Error: ', error)
+            window.location = redirectURI
+        })
+    },
+
     savePlaylist(name, trackURIs) {
         if ((!name) || (!trackURIs.length)) {
             return

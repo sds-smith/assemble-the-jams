@@ -87,10 +87,12 @@ class App extends React.Component {
   search(term) {
     Spotify.search(term).then(srchResults => {
       this.setState({ searchResults : srchResults })
+      const seeds = srchResults.map(track => track.id)
+      Spotify.getRecommendations(seeds).then(recommendations => {
+        this.setState({ recommendations : recommendations })
+      })
     })
-    Spotify.getRecommendations(term).then(recommendations => {
-      this.setState({ recommendations : recommendations })
-    })
+
   }
 
   render()  {
@@ -133,7 +135,7 @@ class App extends React.Component {
               searchResults={this.state.searchResults}
               onAdd={this.addTrack}/>
             <Recommendations 
-              searchResults={this.state.searchResults}
+              recommendations={this.state.recommendations}
               onAdd={this.addTrack}/>
             <Playlist 
               playlistName={this.state.playlistName} 

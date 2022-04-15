@@ -19,6 +19,7 @@ class App extends React.Component {
         userName : "",
         profilePic : null,
         searchResults : [],
+        recommendations : [],
         playlistName : "Enter New Playlist Name",
         playlistTracks : []
     }
@@ -86,6 +87,9 @@ class App extends React.Component {
   search(term) {
     Spotify.search(term).then(srchResults => {
       this.setState({ searchResults : srchResults })
+    })
+    Spotify.getRecommendations(term).then(recommendations => {
+      this.setState({ recommendations : recommendations })
     })
   }
 

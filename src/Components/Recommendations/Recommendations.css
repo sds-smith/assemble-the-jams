@@ -16,7 +16,6 @@
     width: 80%;
     margin: 1rem auto;
     padding: 1rem 0;
-    /* padding-right: 20%; */
     background-color: rgba(0, 128, 0, 0.2);
   }
 
@@ -27,11 +26,11 @@
   }
 
   .rec-tuner label {
-    margin: 0 auto;
+    margin-right: 20%;
   }
 
   .rec-tuner input {
-    margin: 0 auto 0 1rem;
+    margin-left: 1rem;
   }
 
   .slider {
@@ -53,8 +52,9 @@
     height: 12px;
     border-radius: 50%; 
     background: rgba(0, 128, 0, 1);
+    border: 2px solid white;
     /* background: white; */
-    /* border: 1px solid rgb(0, 128, 0); */
+    /* border: 2px solid rgb(0, 128, 0); */
     cursor: pointer;
   }
   

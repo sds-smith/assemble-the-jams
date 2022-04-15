@@ -88,8 +88,8 @@ class App extends React.Component {
     Spotify.search(term).then(srchResults => {
       this.setState({ searchResults : srchResults })
       const seeds = srchResults.map(track => track.id)
-      Spotify.getRecommendations(seeds).then(recommendations => {
-        this.setState({ recommendations : recommendations })
+      Spotify.getRecommendations(seeds).then(recs => {
+        this.setState({ recommendations : recs })
       })
     })
 

@@ -77,14 +77,16 @@ const Spotify = {
     getRecommendations(seeds) {
         const accessToken = this.getAccessToken()
         const headers = { Authorization : `Bearer ${accessToken}` }
-        return fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seeds[0]}`, {headers: headers}
+        const [seed1, seed2, seed3, seed4, seed5] = seeds.slice(0, 5)
+        return fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed1},${seed2},${seed3},${seed4},${seed5},&market=US`, {headers: headers}
         ).then(response => {
             return response.json()
         }).then(jsonResponse => {
+            console.log(jsonResponse)
             if (!jsonResponse.tracks) {
                 return []
             }
-            return jsonResponse.tracks.items.map(track => ({
+            return jsonResponse.tracks.map(track => ({
                 id : track.id,
                 name : track.name,
                 artist : track.artists[0].name,
@@ -93,7 +95,6 @@ const Spotify = {
             }))
         }).catch((error) => {
             console.error('Error: ', error)
-            window.location = redirectURI
         })
     },
 

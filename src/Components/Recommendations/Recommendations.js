@@ -16,7 +16,7 @@ class Recommendations extends React.Component {
                     <input type='range'className='slider' name='danceability' id='danceability' min={0} max={1} step={0.01} defaultValue={0.5}></input>
                 </label>
                 <label for='instrumentalness'>instrumentalness
-                    <input type='range'className='slider' name='instrumentalness' id='instrumentalness' min={0} max={1} step={0.01} defaultValue={0.5}></input>
+                    <input type='range'className='slider' name='instrumentalness' id='instrumentalness' min={0} max={1} step={0.5} defaultValue={0.5}></input>
                 </label>
                 <label for='energy'>energy
                     <input type='range'className='slider' name='energy' id='energy' min={0} max={1} step={0.01} defaultValue={0.5}></input>

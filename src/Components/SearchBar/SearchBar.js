@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
     }
 
     search() {        
-        this.props.onSearch(this.state.term)
+        this.props.onSearch(this.state.term, this.state.acousticness)
         document.getElementById('search_input').value = ''
     }
 

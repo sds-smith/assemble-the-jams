@@ -74,11 +74,11 @@ const Spotify = {
         })
     },
 
-    getRecommendations(seeds) {
+    getRecommendations(seeds, acousticness) {
         const accessToken = this.getAccessToken()
         const headers = { Authorization : `Bearer ${accessToken}` }
         const [seed1, seed2, seed3, seed4, seed5] = seeds.slice(0, 5)
-        return fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed1},${seed2},${seed3},${seed4},${seed5},&market=US`, {headers: headers}
+        return fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed1},${seed2},${seed3},${seed4},${seed5}&target_acousticness=${acousticness}&market=US`, {headers: headers}
         ).then(response => {
             return response.json()
         }).then(jsonResponse => {

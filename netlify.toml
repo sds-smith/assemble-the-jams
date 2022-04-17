@@ -4,5 +4,5 @@
 
 [[redirects]]
     from = '/authorize'
-    to = 'https://accounts.spotify.com/authorize?client_id=REACT_APP_CLIENT_ID_PLACEHOLDER&response_type=token&scope=playlist-modify-public&redirect_uri=https://https:/localhost:3000/'
+    to = 'https://accounts.spotify.com/authorize?client_id=REACT_APP_CLIENT_ID_PLACEHOLDER&response_type=token&scope=playlist-modify-public&redirect_uri=https://assemblethejams.netlify.app/'
     status = 200

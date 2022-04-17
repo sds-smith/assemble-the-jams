@@ -74,11 +74,15 @@ const Spotify = {
         })
     },
 
-    getRecommendations(seeds, acousticness) {
+    getRecommendations(seeds, tunerAttributes) {
         const accessToken = this.getAccessToken()
         const headers = { Authorization : `Bearer ${accessToken}` }
-        const [seed1, seed2, seed3, seed4, seed5] = seeds.slice(0, 5)
-        return fetch(`https://api.spotify.com/v1/recommendations?seed_tracks=${seed1},${seed2},${seed3},${seed4},${seed5}&target_acousticness=${acousticness}&market=US`, {headers: headers}
+        const baseUrl = 'https://api.spotify.com/v1/recommendations?'
+        const seedTracks = `seed_tracks=${seeds.slice(0, 5)}`
+        const [acousticness, danceability, instrumentalness, energy, liveness, tempo] = tunerAttributes
+        const recommendationsTuner = `&target_acousticness=${acousticness}&target_danceability=${danceability}&target_instrumentalness=${instrumentalness}&target_energy=${energy}&target_liveness=${liveness}&target_tempo=${tempo}`
+        const endpoint = baseUrl + seedTracks + recommendationsTuner
+        return fetch(endpoint, {headers : headers}
         ).then(response => {
             return response.json()
         }).then(jsonResponse => {

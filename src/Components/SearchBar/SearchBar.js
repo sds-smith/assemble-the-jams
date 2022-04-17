@@ -21,8 +21,9 @@ class SearchBar extends React.Component {
 
     }
 
-    search() {        
-        this.props.onSearch(this.state.term, this.state.acousticness)
+    search() {    
+        const tunerAttributes = [this.state.acousticness, this.state.danceability, this.state.instrumentalness, this.state.energy, this.state.liveness, this.state.tempo]    
+        this.props.onSearch(this.state.term, tunerAttributes)
         document.getElementById('search_input').value = ''
     }
 

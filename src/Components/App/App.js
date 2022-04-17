@@ -84,11 +84,11 @@ class App extends React.Component {
     
   }
 
-  search(term, acousticness) {
+  search(term, tunerAttributes) {
     Spotify.search(term).then(srchResults => {
       this.setState({ searchResults : srchResults })
       const seeds = srchResults.map(track => track.id)
-      Spotify.getRecommendations(seeds, acousticness).then(recs => {
+      Spotify.getRecommendations(seeds, tunerAttributes).then(recs => {
         this.setState({ recommendations : recs })
       })
     })

@@ -35,6 +35,7 @@ class App extends React.Component {
     this.getProfileInfo = this.getProfileInfo.bind(this)
     this.togglePop = this.togglePop.bind(this)
     this.setUserEmail = this.setUserEmail.bind(this)
+    this.setRecommendations = this.setRecommendations.bind(this)
   }
   
   togglePop() {
@@ -94,10 +95,13 @@ class App extends React.Component {
         seedTracks : seeds
       })
       Spotify.getRecommendations(this.state.seedTracks, tunerAttributes).then(recs => {
-        this.setState({ recommendations : recs })
+        this.setRecommendations(recs)
       })
       this.setState({searchPass : this.state.searchPass > 0 ? this.state.searchPass - 1 : this.state.searchPass})
     })
+  }
+  setRecommendations(recs) {
+    this.setState({ recommendations : recs })
   }
 
   render()  {

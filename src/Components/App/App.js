@@ -35,7 +35,7 @@ class App extends React.Component {
     this.getProfileInfo = this.getProfileInfo.bind(this)
     this.togglePop = this.togglePop.bind(this)
     this.setUserEmail = this.setUserEmail.bind(this)
-    this.setRecommendations = this.setRecommendations.bind(this)
+    this.setSeeds = this.setSeeds.bind(this)
   }
   
   togglePop() {
@@ -89,19 +89,18 @@ class App extends React.Component {
 
   search(term, tunerAttributes) {
     Spotify.search(term).then(srchResults => {
-      const seeds = srchResults.map(track => track.id).slice(0, 5)
-      this.setState({ 
-        searchResults : srchResults, 
-        seedTracks : seeds
-      })
+      this.setState({ searchResults : srchResults })
+      this.setSeeds(srchResults)
       Spotify.getRecommendations(this.state.seedTracks, tunerAttributes).then(recs => {
-        this.setRecommendations(recs)
+        this.setState({ recommendations : recs })
       })
       this.setState({searchPass : this.state.searchPass > 0 ? this.state.searchPass - 1 : this.state.searchPass})
     })
   }
-  setRecommendations(recs) {
-    this.setState({ recommendations : recs })
+
+  setSeeds(srchResults) {
+    const seeds = srchResults.map(track => track.id).slice(0, 5)
+    this.setState({ seedTracks : seeds })
   }
 
   render()  {

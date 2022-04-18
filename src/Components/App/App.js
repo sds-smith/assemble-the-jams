@@ -21,6 +21,7 @@ class App extends React.Component {
         searchResults : [],
         seedTracks : [],
         recommendations : [],
+        searchPass : 1,
         playlistName : "Enter New Playlist Name",
         playlistTracks : []
     }
@@ -95,6 +96,7 @@ class App extends React.Component {
       Spotify.getRecommendations(this.state.seedTracks, tunerAttributes).then(recs => {
         this.setState({ recommendations : recs })
       })
+      this.setState({searchPass : this.state.searchPass > 0 ? this.state.searchPass - 1 : this.state.searchPass})
     })
   }
 

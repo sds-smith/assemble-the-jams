@@ -78,7 +78,7 @@ const Spotify = {
         const accessToken = this.getAccessToken()
         const headers = { Authorization : `Bearer ${accessToken}` }
         const baseUrl = 'https://api.spotify.com/v1/recommendations?'
-        const seedTracks = `seed_tracks=${seeds.slice(0, 5)}`
+        const seedTracks = `seed_tracks=${seeds}`
         const [acousticness, danceability, instrumentalness, energy, liveness, tempo] = tunerAttributes
         const recommendationsTuner = `&target_acousticness=${acousticness}&target_danceability=${danceability}&target_instrumentalness=${instrumentalness}&target_energy=${energy}&target_liveness=${liveness}&target_tempo=${tempo}`
         const endpoint = baseUrl + seedTracks + recommendationsTuner

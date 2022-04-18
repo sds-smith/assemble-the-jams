@@ -8,7 +8,7 @@ import Spotify from '../../util/Spotify.js'
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import Recommendations from '../Recommendations/Recommendations';
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { Tailspin } from 'react-loader-spinner'
+// import { Tailspin } from 'react-loader-spinner'
 
 
 class App extends React.Component {
@@ -144,7 +144,7 @@ class App extends React.Component {
           <h2>{userName}</h2>
           {popUp}
           {search}
-          <Tailspin />
+          {/* <Tailspin /> */}
           <div className="App-playlist">
             <SearchResults 
               searchResults={this.state.searchResults}

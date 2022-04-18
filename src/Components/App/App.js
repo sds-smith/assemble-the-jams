@@ -144,6 +144,7 @@ class App extends React.Component {
           <h2>{userName}</h2>
           {popUp}
           {search}
+          <Tailspin />
           <div className="App-playlist">
             <SearchResults 
               searchResults={this.state.searchResults}

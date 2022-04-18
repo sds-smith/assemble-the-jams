@@ -7,7 +7,7 @@ import React from 'react';
 import Spotify from '../../util/Spotify.js'
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import Recommendations from '../Recommendations/Recommendations';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Tailspin } from 'react-loader-spinner'
 
 

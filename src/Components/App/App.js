@@ -21,7 +21,7 @@ class App extends React.Component {
         searchResults : [],
         seedTracks : [],
         recommendations : [],
-        searchPass : 1,
+        searchPass : 0,
         playlistName : "Enter New Playlist Name",
         playlistTracks : []
     }
@@ -94,12 +94,16 @@ class App extends React.Component {
       Spotify.getRecommendations(this.state.seedTracks, tunerAttributes).then(recs => {
         this.setState({ recommendations : recs })
       })
-      this.setState({searchPass : this.state.searchPass > 0 ? this.state.searchPass - 1 : this.state.searchPass})
+      this.setState({searchPass : this.state.searchPass < 5 ? this.state.searchPass + 2 : this.state.searchPass})
     })
   }
 
   setSeeds(srchResults) {
-    const seeds = srchResults.map(track => track.id).slice(0, 5)
+    const seeds = srchResults.slice(0, 5).map(track => track.id)
+    for (let i = this.state.searchPass - 1; i >=0; i --) {
+      seeds.pop()
+      seeds.unshift(this.state.seedTracks[i])
+    }
     this.setState({ seedTracks : seeds })
   }
 

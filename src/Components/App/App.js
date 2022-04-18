@@ -19,6 +19,7 @@ class App extends React.Component {
         userName : "",
         profilePic : null,
         searchResults : [],
+        seedTracks : [],
         recommendations : [],
         playlistName : "Enter New Playlist Name",
         playlistTracks : []
@@ -86,9 +87,12 @@ class App extends React.Component {
 
   search(term, tunerAttributes) {
     Spotify.search(term).then(srchResults => {
-      this.setState({ searchResults : srchResults })
-      const seeds = srchResults.map(track => track.id)
-      Spotify.getRecommendations(seeds, tunerAttributes).then(recs => {
+      const seeds = srchResults.map(track => track.id).slice(0, 5)
+      this.setState({ 
+        searchResults : srchResults, 
+        seedTracks : seeds
+      })
+      Spotify.getRecommendations(this.state.seedTracks, tunerAttributes).then(recs => {
         this.setState({ recommendations : recs })
       })
     })

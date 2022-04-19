@@ -7,7 +7,7 @@ class Recommendations extends React.Component {
         return (
             <div className="Recommendations">
               <h2>Recommendations</h2>
-
+              <h3 id='loading' >Loading . . .</h3>
               <TrackList 
                  tracks={this.props.recommendations} 
                  onAdd={this.props.onAdd} 

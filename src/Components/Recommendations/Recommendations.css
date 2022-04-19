@@ -8,6 +8,10 @@
     box-shadow: 0 4px 2px 2px #000000;
   }
 
+  .Recommendations h3 {
+    display: none;
+  }
+
   ::-webkit-scrollbar {
       width: 0px;
       background: transparent;

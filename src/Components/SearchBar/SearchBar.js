@@ -41,27 +41,27 @@ class SearchBar extends React.Component {
               <input placeholder="Enter A Song, Album, or Artist"  className='searchbar_input' id='search_input'onChange={this.handleTermChange}/>
               <form className='rec-tuner'>
                 <h3>Recommendation Tuner</h3>
-                <label for='acousticness'>acousticness
+                <label >acousticness
                     <input type='range'className='slider' name='acousticness' id='acousticness' min={0} max={1} step={0.01} value={this.state.acousticness} onChange={this.handleSlide}></input>
                     <p>{this.state.acousticness}</p>
                 </label>
-                <label for='danceability'>danceability
+                <label >danceability
                     <input type='range'className='slider' name='danceability' id='danceability' min={0} max={1} step={0.01} value={this.state.danceability} onChange={this.handleSlide}></input>
                     <p>{this.state.danceability}</p>
                 </label>
-                <label for='instrumentalness'>instrumentalness
+                <label >instrumentalness
                     <input type='range'className='slider' name='instrumentalness' id='instrumentalness' min={0} max={1} step={0.5} value={this.state.instrumentalness} onChange={this.handleSlide}></input>
                     <p>{this.state.instrumentalness}</p>
                 </label>
-                <label for='energy'>energy
+                <label >energy
                     <input type='range'className='slider' name='energy' id='energy' min={0} max={1} step={0.01} value={this.state.energy} onChange={this.handleSlide}></input>
                     <p>{this.state.energy}</p>
                 </label>
-                <label for='liveness'>liveness
+                <label >liveness
                     <input type='range'className='slider' name='liveness' id='liveness' min={0} max={1} step={0.5} value={this.state.liveness} onChange={this.handleSlide}></input>
                     <p>{this.state.liveness}</p>
                 </label>
-                <label for='tempo'>tempo
+                <label >tempo
                     <input type='range'className='slider' name='tempo' id='tempo' min={0} max={1} step={0.01} value={this.state.tempo} onChange={this.handleSlide}></input>
                     <p>{this.state.tempo}</p>
                 </label>

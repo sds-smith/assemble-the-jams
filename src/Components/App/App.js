@@ -91,12 +91,12 @@ class App extends React.Component {
 
   search(term, tunerAttributes) {
     Spotify.search(term).then(srchResults => {
-      document.getElementById('loading').style={display : 'block'}
+      document.getElementById('loading').style.display='block'
       this.setState({ searchResults : srchResults })
       this.setSeeds(srchResults)
       Spotify.getRecommendations(this.state.seedTracks, tunerAttributes).then(recs => {
         this.setState({ recommendations : recs })
-        document.getElementById('loading').style={display : 'none'}
+        document.getElementById('loading').style.display='none'
       })
       this.setState({searchPass : this.state.searchPass < 5 ? this.state.searchPass + 2 : this.state.searchPass})
     })

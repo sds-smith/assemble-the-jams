@@ -5,6 +5,7 @@ function WebPlayer() {
     
     const token = Spotify.getAccessToken()
     const [player, setPlayer] = useState(undefined);
+
     useEffect(() => {
 
         const script = document.createElement("script");

@@ -163,7 +163,7 @@ class App extends React.Component {
               onSave={this.savePlaylist}
               disabled={disabled}/>
           </div>
-          {/* <WebPlayer /> */}
+          <WebPlayer />
         </div>   
       </div>
     )

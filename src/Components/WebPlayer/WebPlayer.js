@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Spotify from '../../util/Spotify.js'
 import './WebPlayer.css'
+
 const track = {
     name: "",
     album: {
@@ -15,7 +16,7 @@ const track = {
 
 function WebPlayer() {
     
-    //const [player, setPlayer] = useState(undefined);
+    // const [player, setPlayer] = useState(undefined);
     const [is_paused, setPaused] = useState(false);
     const [is_active, setActive] = useState(false);
     const [current_track, setTrack] = useState(track);
@@ -36,7 +37,7 @@ function WebPlayer() {
                 volume: 0.5
             });
     
-           //setPlayer(newPlayer);
+        //    setPlayer(player);
 
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);

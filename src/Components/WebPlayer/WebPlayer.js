@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function WebPlayback(props) {
+function WebPlayer(props) {
 
    return (
       <>
@@ -13,4 +13,4 @@ function WebPlayback(props) {
     );
 }
 
-export default WebPlayback
+export default WebPlayer

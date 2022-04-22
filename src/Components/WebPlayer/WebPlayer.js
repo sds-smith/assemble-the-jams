@@ -37,7 +37,6 @@ function WebPlayer() {
             });
     
            //setPlayer(newPlayer);
-           console.log(player.name, player.volume)
 
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
@@ -69,7 +68,7 @@ function WebPlayer() {
     }, []);
     
    return (
-     <>
+     
         <div className="container">
 
             <div className="WebPlayer main-wrapper">
@@ -88,7 +87,7 @@ function WebPlayer() {
                 </div>
             </div>
         </div>
-     </>
+    
     );
 }
 

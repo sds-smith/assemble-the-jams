@@ -14,13 +14,13 @@ function WebPlayer(props) {
     
         window.onSpotifyWebPlaybackSDKReady = () => {
     
-            const newPlayer = new window.Spotify.Player({
+            const player = new window.Spotify.Player({
                 name: 'Web Playback SDK',
                 getOAuthToken: cb => { cb(props.token); },
                 volume: 0.5
             });
     
-            setPlayer(newPlayer);
+            setPlayer(player);
     
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);

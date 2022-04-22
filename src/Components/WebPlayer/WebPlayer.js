@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function WebPlayer(props) {
-    
+
     const [player, setPlayer] = useState(undefined);
 
     useEffect(() => {
@@ -14,13 +14,13 @@ function WebPlayer(props) {
     
         window.onSpotifyWebPlaybackSDKReady = () => {
     
-            const player = new window.Spotify.Player({
+            const newPlayer = new window.Spotify.Player({
                 name: 'Web Playback SDK',
                 getOAuthToken: cb => { cb(props.token); },
                 volume: 0.5
             });
     
-            setPlayer(player);
+            setPlayer(newPlayer);
     
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);

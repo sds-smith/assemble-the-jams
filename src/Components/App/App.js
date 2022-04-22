@@ -14,6 +14,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
+        accessToken : '',
         isPopup : false,
         userEmail : "",
         userName : "",
@@ -108,6 +109,10 @@ class App extends React.Component {
     this.setState({ seedTracks : seeds })
   }
 
+  componentDidMount() {
+    this.setState({ accessToken : Spotify.getAccessToken()})
+  }
+
   render()  {
     const userName = this.state.userName; 
     //const backgroundImage = this.state.profilePic ? this.state.profilePic : './background_photo_desktop.jpg'
@@ -158,7 +163,7 @@ class App extends React.Component {
               onSave={this.savePlaylist}
               disabled={disabled}/>
           </div>
-          <WebPlayer />
+          {/* <WebPlayer /> */}
         </div>   
       </div>
     )

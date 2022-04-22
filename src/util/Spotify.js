@@ -39,7 +39,7 @@ const Spotify = {
             return this.parseAccessToken()                  
         } else {
             //window.location = '/authorize'
-            window.location = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`
+            window.location = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public%20streaming%20user-read-email%20%20user-read-private&redirect_uri=${redirectURI}`
             }             
     },
 

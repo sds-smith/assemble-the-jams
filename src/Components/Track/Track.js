@@ -13,7 +13,10 @@ class Track extends React.Component {
         if (this.props.isRemoval) {
             return <button className ="Track-action" onClick={this.removeTrack}>-</button>
         } else {
-            return <button className ="Track-action" onClick={this.addTrack}>+</button>
+            return  <div className='Track-action-container'>
+                        <button className ="Track-action play-btn" onClick={this.addTrack}>&#9654;</button>
+                        <button className ="Track-action" onClick={this.addTrack}>+</button>
+                    </div>
         }
                                 
     }
@@ -32,7 +35,6 @@ class Track extends React.Component {
               <div className="Track-information" isremoval={this.props.isRemoval}>
                 <h3>{this.props.track.name}</h3>
                 <p>{this.props.track.artist} | {this.props.track.album}</p>
-               
               </div>
               {this.renderAction()}
             </div>            

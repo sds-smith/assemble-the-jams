@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 function WebPlayer(props) {
     
+    const [player, setPlayer] = useState(undefined);
+
     useEffect(() => {
 
         const script = document.createElement("script");

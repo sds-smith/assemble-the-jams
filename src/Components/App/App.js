@@ -7,7 +7,7 @@ import React from 'react';
 import Spotify from '../../util/Spotify.js'
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import Recommendations from '../Recommendations/Recommendations';
-
+import WebPlayer from '../WebPlayer/WebPlayer';
 
 class App extends React.Component {
   constructor(props) {
@@ -144,7 +144,6 @@ class App extends React.Component {
           <h2>{userName}</h2>
           {popUp}
           {search}
-          {/* <Tailspin /> */}
           <div className="App-playlist">
             <SearchResults 
               searchResults={this.state.searchResults}
@@ -160,6 +159,7 @@ class App extends React.Component {
               onSave={this.savePlaylist}
               disabled={disabled}/>
           </div>
+          <WebPlayer token={this.getProfileInfo}/>
         </div>   
       </div>
     )

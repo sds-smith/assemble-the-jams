@@ -53,7 +53,6 @@ class App extends React.Component {
 
   getProfileInfo() {
     Spotify.getAccessToken()
-  
   }
 
   addTrack(track) {
@@ -159,7 +158,7 @@ class App extends React.Component {
               onSave={this.savePlaylist}
               disabled={disabled}/>
           </div>
-          <WebPlayer token={this.getProfileInfo}/>
+          <WebPlayer getAccessToken={this.getProfileInfo}/>
         </div>   
       </div>
     )

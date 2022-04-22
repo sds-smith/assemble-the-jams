@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Spotify from '../../util/Spotify.js'
 
-function WebPlayer(props) {
-
+function WebPlayer() {
+    
+    const token = Spotify.getAccessToken()
     const [player, setPlayer] = useState(undefined);
-
     useEffect(() => {
 
         const script = document.createElement("script");
@@ -14,14 +15,15 @@ function WebPlayer(props) {
     
         window.onSpotifyWebPlaybackSDKReady = () => {
     
-            const player = new window.Spotify.Player({
+            const newPlayer = new window.Spotify.Player({
                 name: 'Web Playback SDK',
-                getOAuthToken: cb => { cb(props.token); },
+                getOAuthToken: cb => { cb(token); },
                 volume: 0.5
             });
     
-            setPlayer(player);
-    
+           setPlayer(newPlayer);
+           console.log(player.name, player.volume)
+
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
             });

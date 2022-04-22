@@ -125,6 +125,10 @@
     padding: 0;
   }
 
+@media screen and (max-width: 1020px) {
   .rec-tuner {
     width: 90%;
   }
+}
+
+

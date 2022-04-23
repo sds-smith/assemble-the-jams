@@ -147,7 +147,7 @@ class App extends React.Component {
   }
 
   render()  {
-    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : "url('./background_photo_desktop.jpg')"
+    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : "url('src/Components/App/background_photo_desktop.jpg')"
     let disabled
     let app 
     let popUp

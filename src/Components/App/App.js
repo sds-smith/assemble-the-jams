@@ -69,10 +69,10 @@ class App extends React.Component {
 
   getProfileInfo() {
     Spotify.getProfileInfo().then(user => {
-      this.setState({ 
-        userName : user.id,
-        profilePic : user.images[0].url
-      })
+      if (user.images.length) {
+        this.setState({ profilePic : user.images[0].url })
+      } 
+      this.setState({ userName : user.id })
     })
   }
 
@@ -146,7 +146,7 @@ class App extends React.Component {
   }
 
   render()  {
-    const backgroundImage = this.state.profilePic && this.state.profilePic.length ? `url(${this.state.profilePic})` : 'url(./background_photo_desktop.jpg)'
+    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : 'url(./background_photo_desktop.jpg)'
     let disabled
     let app 
     let popUp

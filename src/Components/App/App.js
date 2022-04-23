@@ -162,8 +162,8 @@ class App extends React.Component {
       app = (
         <Login 
           onLogin={()=>{
-            this.getAccessToken
-            this.getProfileInfo
+            this.getAccessToken()
+            this.getProfileInfo()
           }} 
           toggle={this.togglePop}
         />

@@ -2,7 +2,7 @@
 
 let accessToken
 // const redirectURI = 'http://localhost:3000/'
-const clientId = process.env.REACT_APP_CLIENT_ID
+//const clientId = process.env.REACT_APP_CLIENT_ID
 const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 // const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
 //const scope = process.env.REACT_APP_ORIGINAL_SCOPE

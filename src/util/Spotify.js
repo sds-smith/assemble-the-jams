@@ -1,9 +1,9 @@
 
 
 let accessToken
-const redirectURI = 'http://localhost:3000/'
+// const redirectURI = 'http://localhost:3000/'
 //const clientId = process.env.REACT_APP_CLIENT_ID
-// const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
+const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 // const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
 //const scope = process.env.REACT_APP_ORIGINAL_SCOPE
 
@@ -37,8 +37,8 @@ const Spotify = {
         if (this.parseAccessToken()) { 
             return this.parseAccessToken()                  
         } else {
-            // window.location = '/authorize'
-            window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&scope=playlist-modify-public%20streaming%20user-read-email%20%20user-read-private&redirect_uri=${redirectURI}`
+            window.location = '/authorize'
+            // window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&scope=playlist-modify-public%20streaming%20user-read-email%20%20user-read-private&redirect_uri=${redirectURI}`
             }             
     },
 

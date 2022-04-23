@@ -63,6 +63,7 @@ class App extends React.Component {
   getAccessToken() {
     const token = Spotify.getAccessToken()
     console.log('token',token)
+    this.setState({ isLoggedIn : true })
     return token
   }
 

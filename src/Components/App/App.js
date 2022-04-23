@@ -15,6 +15,7 @@ class App extends React.Component {
 
     this.state = {
         accessToken : '',
+        playerInstance : undefined,
         isPopup : false,
         userEmail : "",
         userName : "",
@@ -37,6 +38,7 @@ class App extends React.Component {
     this.togglePop = this.togglePop.bind(this)
     this.setUserEmail = this.setUserEmail.bind(this)
     this.setSeeds = this.setSeeds.bind(this)
+    this.setPlayerInstance = this.setPlayerInstance.bind(this)
   }
   
   togglePop() {
@@ -109,6 +111,10 @@ class App extends React.Component {
     this.setState({ seedTracks : seeds })
   }
 
+  setPlayerInstance(player) {
+    this.setState({ playerInstance : player })
+  }
+
   componentDidMount() {
     this.setState({ accessToken : Spotify.getAccessToken()})
   }
@@ -154,16 +160,18 @@ class App extends React.Component {
               onAdd={this.addTrack}/>
             <Recommendations 
               recommendations={this.state.recommendations}
+              player={this.state.player}
               onAdd={this.addTrack}/>
             <Playlist 
               playlistName={this.state.playlistName} 
+              player={this.state.player}
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
               disabled={disabled}/>
           </div>
-          <WebPlayer />
+          <WebPlayer setPlayerInstance={this.setPlayerInstance}/>
         </div>   
       </div>
     )

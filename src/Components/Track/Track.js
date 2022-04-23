@@ -14,9 +14,10 @@ class Track extends React.Component {
     playTrack(track) {
         console.log('yo', this.props.track.id)
         const uri = `spotify:track:${this.props.track.id}`
-        Spotify.play({
-            playerInstance: player,
-            spotify_uri: uri
+        console.log(uri)
+        Spotify.play(this.props.id, {
+            spotify_uri: uri,
+            playerInstance: this.props.player    
         })
     }
 

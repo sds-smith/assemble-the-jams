@@ -140,15 +140,13 @@ const Spotify = {
     },
     
     play(id, {
-        spotify_uri,
-        playerInstance: {
-          _options: {
-            getOAuthToken
-          }
-        }
+            spotify_uri: uri,
+            playerInstance: player
+        
       }) {
         const access_token = Spotify.getAccessToken()
-        getOAuthToken(access_token => {
+        console.log('hello', {spotify_uri})
+        playerInstance.getOAuthToken(access_token => {
           fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {
             method: 'PUT',
             body: JSON.stringify({ uris: [spotify_uri] }),

@@ -18,11 +18,15 @@ class WebPlayer extends React.Component {
         super(props)
     
         this.state = {
-            player : undefined,
             current_track : track,
             active : false
         }
-    
+        
+        this.setPlayerInstance = this.setPlayerInstance.bind(this)
+    }
+
+    setPlayerInstance() {
+        this.props.setPlayerInstance(player)
     }
     
     componentDidMount() {
@@ -42,7 +46,7 @@ class WebPlayer extends React.Component {
                 volume: 0.5
             });
     
-           this.setState({ player : player });
+            this.setPlayerInstance(player);
 
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
@@ -63,11 +67,8 @@ class WebPlayer extends React.Component {
                 player.getCurrentState().then( state => { 
                     (!state)? this.setState({ active : false }) : this.setState({ active : true})
                 });
-            
             }));
-
             player.connect();
-    
         };
     }
     

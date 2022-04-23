@@ -9,6 +9,7 @@ class Recommendations extends React.Component {
               <h2>Recommendations</h2>
               <h3 id='loading' >Loading . . .</h3>
               <TrackList 
+                 player={this.props.player}
                  tracks={this.props.recommendations} 
                  onAdd={this.props.onAdd} 
                  isRemoval={false}/> 

@@ -1,4 +1,5 @@
 import React from 'react'
+import Spotify from '../../util/Spotify'
 import './Track.css'
 
 class Track extends React.Component {
@@ -7,18 +8,16 @@ class Track extends React.Component {
 
         this.addTrack = this.addTrack.bind(this)
         this.removeTrack = this.removeTrack.bind(this)
+        this.playTrack = this.playTrack.bind(this)
     }
 
-    renderAction() {
-        if (this.props.isRemoval) {
-            return <button className ="Track-action" onClick={this.removeTrack}>-</button>
-        } else {
-            return  <div className='Track-action-container'>
-                        <button className ="Track-action play-btn" onClick={this.addTrack}>&#9654;</button>
-                        <button className ="Track-action" onClick={this.addTrack}>+</button>
-                    </div>
-        }
-                                
+    playTrack(track) {
+        console.log('yo', this.props.track.id)
+        const uri = `spotify:track:${this.props.track.id}`
+        Spotify.play({
+            playerInstance: player,
+            spotify_uri: uri
+        })
     }
 
     addTrack(track) {
@@ -27,6 +26,17 @@ class Track extends React.Component {
 
     removeTrack(track) {
         this.props.onRemove(this.props.track)
+    }
+
+    renderAction() {
+        if (this.props.isRemoval) {
+            return <button className ="Track-action" onClick={this.removeTrack}>-</button>
+        } else {
+            return  <div className='Track-action-container'>
+                        <button className ="Track-action play-btn" onClick={this.playTrack}>&#9654;</button>
+                        <button className ="Track-action" onClick={this.addTrack}>+</button>
+                    </div>
+        }                            
     }
 
     render() {

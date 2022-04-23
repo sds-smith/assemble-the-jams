@@ -152,21 +152,50 @@ class App extends React.Component {
   render()  {
     const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : 'url(./background_photo_desktop.jpg)'
     let disabled
-    let hero 
+    let app 
     let popUp
     if (!this.hasAccessToken()) {
-      hero = (
+      app = (
         <Login onLogin={this.getProfileInfo} toggle={this.togglePop}/>
       )
       disabled = true
     } else {
-        hero = (
+      app = (
+        <div className="App" id='App' style={{backgroundImage : backgroundImage}} >
+        <h2>{this.state.userName}</h2>
+        {popUp}
+        <SearchBar onSearch={this.search}/>
+        <WebPlayer 
+          setDeviceId={this.setDeviceId}
+          setPlayerInstance={this.setPlayerInstance}
+        />
+        <div className="App-playlist">
+          <SearchResults 
+            searchResults={this.state.searchResults}
+            deviceId={this.state.deviceId}
+            onPlay={this.playTrack}
+            onAdd={this.addTrack}/>
+          <Recommendations 
+            recommendations={this.state.recommendations}
+            deviceId={this.state.deviceId}
+            onPlay={this.playTrack}
+            onAdd={this.addTrack}/>
+          <Playlist 
+            playlistName={this.state.playlistName} 
+            playlistTracks={this.state.playlistTracks}
+            onRemove={this.removeTrack}
+            onNameChange={this.updatePlaylistName}
+            onSave={this.savePlaylist}
+            disabled={disabled}/>
+        </div>
+  
+      </div>   
+      )
+
+
+      const hero = (
           <div>
-            <SearchBar onSearch={this.search}/>
-            <WebPlayer 
-              setDeviceId={this.setDeviceId}
-              setPlayerInstance={this.setPlayerInstance}
-            />
+
           </div>
         );
         disabled = false
@@ -185,32 +214,7 @@ class App extends React.Component {
     return (
       <div >
         <h1>Assemble<span className="highlight">the</span>Jams</h1>
-        <div className="App" id='App' style={{backgroundImage : backgroundImage}} >
-          <h2>{this.state.userName}</h2>
-          {popUp}
-          {hero}
-
-          <div className="App-playlist">
-            <SearchResults 
-              searchResults={this.state.searchResults}
-              deviceId={this.state.deviceId}
-              onPlay={this.playTrack}
-              onAdd={this.addTrack}/>
-            <Recommendations 
-              recommendations={this.state.recommendations}
-              deviceId={this.state.deviceId}
-              onPlay={this.playTrack}
-              onAdd={this.addTrack}/>
-            <Playlist 
-              playlistName={this.state.playlistName} 
-              playlistTracks={this.state.playlistTracks}
-              onRemove={this.removeTrack}
-              onNameChange={this.updatePlaylistName}
-              onSave={this.savePlaylist}
-              disabled={disabled}/>
-          </div>
-
-        </div>   
+        {app}
       </div>
     )
 

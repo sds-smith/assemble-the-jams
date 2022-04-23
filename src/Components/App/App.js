@@ -143,7 +143,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getAccessToken()
-    if (this.hasAccessToken) {
+    if (this.hasAccessToken()) {
       this.getProfileInfo()
     }
   }

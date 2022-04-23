@@ -158,7 +158,7 @@ class App extends React.Component {
     let disabled
     let app 
     let popUp
-    if (!this.isLoggedIn()) {
+    if (!this.state.isLoggedIn) {
       app = (
         <Login 
           onLogin={()=>{

@@ -22,13 +22,18 @@ class WebPlayer extends React.Component {
             active : false
         }
         
+        this.setDeviceId = this.setDeviceId.bind(this)
         this.setPlayerInstance = this.setPlayerInstance.bind(this)
     }
 
-    setPlayerInstance() {
-        this.props.setPlayerInstance(player)
+    setDeviceId(id) {
+        this.props.setDeviceId(id)
     }
     
+    setPlayerInstance(player) {
+        this.props.setPlayerInstance(player)
+    }
+
     componentDidMount() {
 
         const token = Spotify.getAccessToken()
@@ -46,10 +51,11 @@ class WebPlayer extends React.Component {
                 volume: 0.5
             });
     
-            this.setPlayerInstance(player);
 
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
+                this.setDeviceId(device_id);
+                this.setPlayerInstance(player)
             });
     
             player.addListener('not_ready', ({ device_id }) => {

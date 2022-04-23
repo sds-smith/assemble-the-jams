@@ -15,6 +15,7 @@ class App extends React.Component {
 
     this.state = {
         accessToken : '',
+        deviceId : '',
         playerInstance : undefined,
         isPopup : false,
         userEmail : "",
@@ -38,7 +39,7 @@ class App extends React.Component {
     this.togglePop = this.togglePop.bind(this)
     this.setUserEmail = this.setUserEmail.bind(this)
     this.setSeeds = this.setSeeds.bind(this)
-    this.setPlayerInstance = this.setPlayerInstance.bind(this)
+    this.setDeviceId = this.setDeviceId.bind(this)
   }
   
   togglePop() {
@@ -56,6 +57,13 @@ class App extends React.Component {
 
   getProfileInfo() {
     Spotify.getAccessToken()
+  }
+
+  playTrack(uri) {
+    Spotify.play(this.state.deviceId, {
+      playerInstance : this.state.playerInstance,
+      spotify_uri : uri,
+    })
   }
 
   addTrack(track) {
@@ -111,6 +119,11 @@ class App extends React.Component {
     this.setState({ seedTracks : seeds })
   }
 
+  setDeviceId(id) {
+    this.setState({ deviceId : id })
+    console.log("set device id", this.state.deviceId)
+  }
+
   setPlayerInstance(player) {
     this.setState({ playerInstance : player })
   }
@@ -157,21 +170,26 @@ class App extends React.Component {
           <div className="App-playlist">
             <SearchResults 
               searchResults={this.state.searchResults}
+              deviceId={this.state.deviceId}
+              onPlay={this.playTrack}
               onAdd={this.addTrack}/>
             <Recommendations 
               recommendations={this.state.recommendations}
-              player={this.state.player}
+              deviceId={this.state.deviceId}
+              onPlay={this.playTrack}
               onAdd={this.addTrack}/>
             <Playlist 
               playlistName={this.state.playlistName} 
-              player={this.state.player}
               playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
               disabled={disabled}/>
           </div>
-          <WebPlayer setPlayerInstance={this.setPlayerInstance}/>
+          <WebPlayer 
+            setDeviceId={this.setDeviceId}
+            setPlayerInstance={this.setPlayerInstance}
+          />
         </div>   
       </div>
     )

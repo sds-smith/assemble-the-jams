@@ -8,8 +8,9 @@ class SearchResults extends React.Component {
             <div className="SearchResults">
               <h2>Search Results</h2>
               <TrackList 
-                player={this.props.player}
+                deviceId={this.props.deviceId}
                 tracks={this.props.searchResults}
+                onPlay={this.props.onPlay}
                 onAdd={this.props.onAdd}
                 isRemoval={false}/>
             </div>

@@ -40,7 +40,8 @@ const Spotify = {
         } else {
             window.location = '/authorize'
             // window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&scope=playlist-modify-public%20streaming%20user-read-email%20%20user-read-private&redirect_uri=${redirectURI}`
-            }             
+            return this.parseAccessToken()    
+        }             
     },
 
     getProfileInfo() {

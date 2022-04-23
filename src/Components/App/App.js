@@ -157,6 +157,17 @@ class App extends React.Component {
     let disabled
     let app 
     let popUp
+
+    if (this.state.isPopup) {
+      popUp = (
+        <RegistrationForm toggle={this.togglePop} setUserEmail={this.setUserEmail} userEmail={this.state.userEmail} />
+      )
+    } else {
+      popUp = (
+        <div style={{display: 'none'}} ></div>
+      )
+    }
+    
     if (!this.state.isLoggedIn) {
       app = (
         <div>
@@ -204,16 +215,6 @@ class App extends React.Component {
       </div>   
       )
         disabled = false
-    }
-
-    if (this.state.isPopup) {
-      popUp = (
-        <RegistrationForm toggle={this.togglePop} setUserEmail={this.setUserEmail} userEmail={this.state.userEmail} />
-      )
-    } else {
-      popUp = (
-        <div style={{display: 'none'}} ></div>
-      )
     }
 
     return (

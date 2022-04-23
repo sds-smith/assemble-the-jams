@@ -73,6 +73,7 @@ const Spotify = {
             }))
         }).catch((error) => {
             console.error('Error: ', error)
+            
             window.location = redirectURI
         })
     },

@@ -63,7 +63,6 @@ class App extends React.Component {
     const token = Spotify.getAccessToken()
     console.log('token',token)
     this.setState({ 
-      isLoggedIn : true,
       accessToken : token
     })
   }
@@ -160,20 +159,23 @@ class App extends React.Component {
     let popUp
     if (!this.state.isLoggedIn) {
       app = (
-        <Login 
-          onLogin={()=>{
-            this.getAccessToken()
-            this.hasAccessToken() && this.getProfileInfo()
-          }} 
-          toggle={this.togglePop}
-        />
+        <div>
+          <Login 
+            onLogin={()=>{
+              this.setState({ isLoggedIn : true })
+              this.getAccessToken()
+              this.hasAccessToken() && this.getProfileInfo()
+            }} 
+            toggle={this.togglePop}
+          />
+          {popUp}
+        </div>
       )
       disabled = true
     } else {
       app = (
         <div className="App" id='App' style={{backgroundImage : backgroundImage}} >
         <h2>{this.state.userName}</h2>
-        {popUp}
         <SearchBar onSearch={this.search}/>
         <WebPlayer 
           setDeviceId={this.setDeviceId}

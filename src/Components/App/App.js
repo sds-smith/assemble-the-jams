@@ -191,13 +191,6 @@ class App extends React.Component {
   
       </div>   
       )
-
-
-      const hero = (
-          <div>
-
-          </div>
-        );
         disabled = false
     }
 

@@ -147,7 +147,7 @@ const Spotify = {
                 }
             }
       }) {
-        const access_token = Spotify.getAccessToken()
+        // const access_token = Spotify.getAccessToken()
         console.log('hello', {spotify_uri})
         getOAuthToken(access_token => {
           fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {

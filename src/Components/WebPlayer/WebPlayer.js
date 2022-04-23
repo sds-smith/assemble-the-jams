@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Spotify from '../../util/Spotify.js'
 import './WebPlayer.css'
 
@@ -13,15 +13,20 @@ const track = {
         { name: "" }
     ]
 }
-
-function WebPlayer() {
+class WebPlayer extends React.Component {
+    constructor(props) {
+        super(props)
     
-    // const [player, setPlayer] = useState(undefined);
-    const [is_paused, setPaused] = useState(false);
-    const [is_active, setActive] = useState(false);
-    const [current_track, setTrack] = useState(track);
+        this.state = {
+            player : undefined,
+            current_track : track,
+            active : false
+        }
+    
+    }
+    
+    componentDidMount() {
 
-    useEffect(() => {
         const token = Spotify.getAccessToken()
         const script = document.createElement("script");
         script.src = "https://sdk.scdn.co/spotify-player.js";
@@ -37,7 +42,7 @@ function WebPlayer() {
                 volume: 0.5
             });
     
-        //    setPlayer(player);
+           this.setState({ player : player });
 
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
@@ -53,12 +58,10 @@ function WebPlayer() {
                     return;
                 }
             
-                setTrack(state.track_window.current_track);
-                setPaused(state.paused);
-            
+                this.setState({current_track : state.track_window.current_track});
             
                 player.getCurrentState().then( state => { 
-                    (!state)? setActive(false) : setActive(true) 
+                    (!state)? this.setState({ active : false }) : this.setState({ active : true})
                 });
             
             }));
@@ -66,30 +69,33 @@ function WebPlayer() {
             player.connect();
     
         };
-    }, []);
+    }
     
-   return (
+   render() {
+       
+    return (
      
         <div className="container">
 
             <div className="WebPlayer main-wrapper">
                 <h2>NOW PLAYING</h2>
-                <img src={current_track.album.images[0].url} 
+                <img src={this.state.current_track.album.images[0].url} 
                      className="now-playing__cover" alt="" />
 
                 <div className="now-playing__side">
                     <div className="now-playing__name">{
-                                  current_track.name
+                                  this.state.current_track.name
                                   }</div>
 
                     <div className="now-playing__artist">{
-                                  current_track.artists[0].name
+                                  this.state.current_track.artists[0].name
                                   }</div>
                 </div>
             </div>
         </div>
     
     );
+  }
 }
 
 export default WebPlayer

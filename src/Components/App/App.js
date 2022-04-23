@@ -170,6 +170,10 @@ class App extends React.Component {
           <h2>{userName}</h2>
           {popUp}
           {search}
+          <WebPlayer 
+            setDeviceId={this.setDeviceId}
+            setPlayerInstance={this.setPlayerInstance}
+          />
           <div className="App-playlist">
             <SearchResults 
               searchResults={this.state.searchResults}
@@ -189,10 +193,7 @@ class App extends React.Component {
               onSave={this.savePlaylist}
               disabled={disabled}/>
           </div>
-          <WebPlayer 
-            setDeviceId={this.setDeviceId}
-            setPlayerInstance={this.setPlayerInstance}
-          />
+
         </div>   
       </div>
     )

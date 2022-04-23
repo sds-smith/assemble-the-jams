@@ -3,8 +3,8 @@
     flex-direction: column;
     height: 100%;
     align-items: center;
-    padding-top: 4rem;
-    margin-bottom: 6.33rem;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
   }
   
   .searchbar_input {
@@ -40,7 +40,7 @@
   }
 
   .rec-tuner label {
-    margin-right: 20%;
+    margin-right: 10%;
   }
 
   .rec-tuner input {
@@ -129,6 +129,15 @@
   .rec-tuner {
     width: 90%;
   }
+
+  .rec-tuner label {
+    font-size: smaller;
+  }
+  /* .slider { */
+    /* width: 25vw; */
+  /* } */
+
+
 }
 
 

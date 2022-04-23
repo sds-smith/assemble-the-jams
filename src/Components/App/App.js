@@ -150,18 +150,18 @@ class App extends React.Component {
     let disabled
     let app 
     let popUp
-    let WebPlayer
+    let webPlayer
 
     if (this.hasAccessToken()) {
-      WebPlayer = (
+      webPlayer = (
         <WebPlayer 
           setDeviceId={this.setDeviceId}
           setPlayerInstance={this.setPlayerInstance}
         />
       )
     } else {
-      WebPlayer = (
-        <div style={'height:200px'}></div>
+      webPlayer = (
+        <div style={{height: '200px'}}></div>
       )
     }
 
@@ -195,7 +195,7 @@ class App extends React.Component {
         <div className="App" id='App' style={{backgroundImage : backgroundImage}} >
         <h2>{this.state.userName}</h2>
         <SearchBar onSearch={this.search}/>
-        {WebPlayer}
+        {webPlayer}
         <div className="App-playlist">
           <SearchResults 
             searchResults={this.state.searchResults}

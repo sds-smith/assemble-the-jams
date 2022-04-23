@@ -70,6 +70,7 @@ class App extends React.Component {
   getProfileInfo() {
     Spotify.getProfileInfo().then(user => {
       if (user.images.length) {
+        console.log('setting profilePic to ', user.images[0].url)
         this.setState({ profilePic : user.images[0].url })
       } 
       this.setState({ userName : user.id })

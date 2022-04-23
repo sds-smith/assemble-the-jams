@@ -29,6 +29,7 @@ class App extends React.Component {
         playlistTracks : []
     }
 
+    this.playTrack = this.playTrack.bind(this)
     this.addTrack = this.addTrack.bind(this)
     this.removeTrack = this.removeTrack.bind(this)
     this.updatePlaylistName = this.updatePlaylistName.bind(this)
@@ -40,6 +41,7 @@ class App extends React.Component {
     this.setUserEmail = this.setUserEmail.bind(this)
     this.setSeeds = this.setSeeds.bind(this)
     this.setDeviceId = this.setDeviceId.bind(this)
+    this.setPlayerInstance = this.setPlayerInstance.bind(this)
   }
   
   togglePop() {
@@ -60,6 +62,7 @@ class App extends React.Component {
   }
 
   playTrack(uri) {
+    console.log('you wanted the best', this.state.deviceId)
     Spotify.play(this.state.deviceId, {
       playerInstance : this.state.playerInstance,
       spotify_uri : uri,

@@ -35,6 +35,7 @@
   flex-direction: column;
   justify-content: center;
   height: 72px;
+  border: 5px solid salmon;
 }
 
 .Track-information h3 {
@@ -45,4 +46,9 @@
   font-size: .83rem;
   font-weight: 300;
   color: rgba(256, 256, 256, 0.8);
+}
+
+.now-playing__cover {
+  height: 50px;
+  width: auto
 }

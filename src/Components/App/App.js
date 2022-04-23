@@ -14,6 +14,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
+        isLoggedIn : false,
         accessToken : '',
         deviceId : '',
         playerInstance : undefined,
@@ -61,7 +62,10 @@ class App extends React.Component {
   getAccessToken() {
     const token = Spotify.getAccessToken()
     console.log('token',token)
-    this.setState({ accessToken : token})
+    this.setState({ 
+      isLoggedIn : true,
+      accessToken : token
+    })
   }
 
   getProfileInfo() {
@@ -142,21 +146,27 @@ class App extends React.Component {
     this.setState({ playerInstance : player })
   }
 
-  componentDidMount() {
-    this.getAccessToken()
-    if (this.hasAccessToken()) {
-      this.getProfileInfo()
-    }
-  }
+  // componentDidMount() {
+    // this.getAccessToken()
+    // if (this.hasAccessToken()) {
+      // this.getProfileInfo()
+    // }
+  // }
 
   render()  {
     const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : 'url(./background_photo_desktop.jpg)'
     let disabled
     let app 
     let popUp
-    if (!this.hasAccessToken()) {
+    if (!this.isLoggedIn()) {
       app = (
-        <Login onLogin={this.getProfileInfo} toggle={this.togglePop}/>
+        <Login 
+          onLogin={()=>{
+            this.getAccessToken
+            this.getProfileInfo
+          }} 
+          toggle={this.togglePop}
+        />
       )
       disabled = true
     } else {

@@ -8,6 +8,7 @@ import Spotify from '../../util/Spotify.js'
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import Recommendations from '../Recommendations/Recommendations';
 import WebPlayer from '../WebPlayer/WebPlayer';
+import defaultBackground from './background_photo_desktop.jpg'
 
 class App extends React.Component {
   constructor(props) {
@@ -145,7 +146,7 @@ class App extends React.Component {
   }
 
   render()  {
-    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : "url('/src/Components/App/background_photo_desktop.jpg')"
+    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : {defaultBackground}
     let disabled
     let app 
     let popUp

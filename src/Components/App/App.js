@@ -36,6 +36,7 @@ class App extends React.Component {
     this.savePlaylist = this.savePlaylist.bind(this)
     this.search = this.search.bind(this)
     this.hasAccessToken = this.hasAccessToken.bind(this)
+    this.getAccessToken = this.getAccessToken.bind(this)
     this.getProfileInfo = this.getProfileInfo.bind(this)
     this.togglePop = this.togglePop.bind(this)
     this.setUserEmail = this.setUserEmail.bind(this)
@@ -57,12 +58,21 @@ class App extends React.Component {
     return Spotify.isTokenMatch()  
   }
 
+  getAccessToken() {
+    const token = Spotify.getAccessToken()
+    this.setState({ accessToken : token})
+  }
+
   getProfileInfo() {
-    Spotify.getAccessToken()
+    Spotify.getProfileInfo().then(user => {
+      this.setState({ 
+        userName : user.id ,
+        profilePic : user.images[0].url
+      })
+    })
   }
 
   playTrack(uri) {
-    console.log('you wanted the best', this.state.deviceId)
     Spotify.play(this.state.deviceId, {
       playerInstance : this.state.playerInstance,
       spotify_uri : uri,
@@ -132,12 +142,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ accessToken : Spotify.getAccessToken()})
+    this.getAccessToken()
+    this.getProfileInfo()
+
   }
 
   render()  {
-    const userName = this.state.userName; 
-    //const backgroundImage = this.state.profilePic ? this.state.profilePic : './background_photo_desktop.jpg'
+    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : 'url(./background_photo_desktop.jpg)'
     let disabled
     let search 
     let popUp
@@ -166,8 +177,8 @@ class App extends React.Component {
     return (
       <div >
         <h1>Assemble<span className="highlight">the</span>Jams</h1>
-        <div className="App" >
-          <h2>{userName}</h2>
+        <div className="App" id='App' style={{backgroundImage : backgroundImage}} >
+          <h2>{this.state.userName}</h2>
           {popUp}
           {search}
           <WebPlayer 

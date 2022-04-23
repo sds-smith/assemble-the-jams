@@ -62,9 +62,7 @@ class App extends React.Component {
   getAccessToken() {
     const token = Spotify.getAccessToken()
     console.log('token',token)
-    this.setState({ 
-      accessToken : token
-    })
+    return token
   }
 
   getProfileInfo() {
@@ -147,7 +145,7 @@ class App extends React.Component {
   }
 
   render()  {
-    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : "url('src/Components/App/background_photo_desktop.jpg')"
+    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : "url('/src/Components/App/background_photo_desktop.jpg')"
     let disabled
     let app 
     let popUp
@@ -193,7 +191,7 @@ class App extends React.Component {
       disabled = true
     } else {
       app = (
-        <div className="App" id='App' style={{backgroundImage : backgroundImage}} >
+        <div className="App" style={{backgroundImage: backgroundImage}}>
         <h2>{this.state.userName}</h2>
         <SearchBar onSearch={this.search}/>
         {webPlayer}

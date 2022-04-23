@@ -151,16 +151,22 @@ class App extends React.Component {
   render()  {
     const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : 'url(./background_photo_desktop.jpg)'
     let disabled
-    let search 
+    let hero 
     let popUp
     if (!this.hasAccessToken()) {
-      search = (
+      hero = (
         <Login onLogin={this.getProfileInfo} toggle={this.togglePop}/>
       )
       disabled = true
     } else {
-        search = (
-          <SearchBar onSearch={this.search}/>
+        hero = (
+          <div>
+            <SearchBar onSearch={this.search}/>
+            <WebPlayer 
+              setDeviceId={this.setDeviceId}
+              setPlayerInstance={this.setPlayerInstance}
+            />
+          </div>
         );
         disabled = false
     }
@@ -181,11 +187,8 @@ class App extends React.Component {
         <div className="App" id='App' style={{backgroundImage : backgroundImage}} >
           <h2>{this.state.userName}</h2>
           {popUp}
-          {search}
-          <WebPlayer 
-            setDeviceId={this.setDeviceId}
-            setPlayerInstance={this.setPlayerInstance}
-          />
+          {hero}
+
           <div className="App-playlist">
             <SearchResults 
               searchResults={this.state.searchResults}

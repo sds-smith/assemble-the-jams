@@ -70,7 +70,7 @@ class App extends React.Component {
   getProfileInfo() {
     Spotify.getProfileInfo().then(user => {
       this.setState({ 
-        userName : user.id ,
+        userName : user.id,
         profilePic : user.images[0].url
       })
     })
@@ -145,18 +145,25 @@ class App extends React.Component {
     this.setState({ playerInstance : player })
   }
 
-  // componentDidMount() {
-    // this.getAccessToken()
-    // if (this.hasAccessToken()) {
-      // this.getProfileInfo()
-    // }
-  // }
-
   render()  {
-    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : 'url(./background_photo_desktop.jpg)'
+    const backgroundImage = this.state.profilePic.length ? `url(${this.state.profilePic})` : 'url(./background_photo_desktop.jpg)'
     let disabled
     let app 
     let popUp
+    let WebPlayer
+
+    if (this.hasAccessToken()) {
+      webPlayer = (
+        <WebPlayer 
+          setDeviceId={this.setDeviceId}
+          setPlayerInstance={this.setPlayerInstance}
+        />
+      )
+    } else {
+      webPlayer = (
+        <div style={'height:200px'}></div>
+      )
+    }
 
     if (this.state.isPopup) {
       popUp = (
@@ -167,7 +174,7 @@ class App extends React.Component {
         <div style={{display: 'none'}} ></div>
       )
     }
-    
+
     if (!this.state.isLoggedIn) {
       app = (
         <div>
@@ -175,7 +182,7 @@ class App extends React.Component {
             onLogin={()=>{
               this.setState({ isLoggedIn : true })
               this.getAccessToken()
-              this.hasAccessToken() && this.getProfileInfo()
+              this.getProfileInfo()
             }} 
             toggle={this.togglePop}
           />
@@ -188,10 +195,7 @@ class App extends React.Component {
         <div className="App" id='App' style={{backgroundImage : backgroundImage}} >
         <h2>{this.state.userName}</h2>
         <SearchBar onSearch={this.search}/>
-        <WebPlayer 
-          setDeviceId={this.setDeviceId}
-          setPlayerInstance={this.setPlayerInstance}
-        />
+        {webPlayer}
         <div className="App-playlist">
           <SearchResults 
             searchResults={this.state.searchResults}

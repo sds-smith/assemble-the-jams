@@ -86,7 +86,7 @@ class WebPlayer extends React.Component {
                 <img src={this.state.current_track.album.images[0].url} 
                      className="now-playing__cover" alt="" 
                 />
-                <div className="now-playing__side">
+                <div className="now-playing_label">
                     <div className="now-playing__name">{
                                   this.state.current_track.name
                     }</div>

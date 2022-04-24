@@ -18,7 +18,6 @@ class SearchBar extends React.Component {
         this.search = this.search.bind(this)
         this.handleTermChange = this.handleTermChange.bind(this)
         this.handleSlide = this.handleSlide.bind(this)
-
     }
 
     search() {    
@@ -70,8 +69,6 @@ class SearchBar extends React.Component {
             </div>
         )
     }
-
-
 }
 
 export default SearchBar

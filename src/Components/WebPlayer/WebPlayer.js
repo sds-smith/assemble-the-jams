@@ -1,5 +1,4 @@
 import React from 'react';
-import Spotify from '../../util/Spotify.js'
 import './WebPlayer.css'
 
 const track = {
@@ -13,6 +12,7 @@ const track = {
         { name: "" }
     ]
 }
+
 class WebPlayer extends React.Component {
     constructor(props) {
         super(props)
@@ -36,7 +36,7 @@ class WebPlayer extends React.Component {
 
     componentDidMount() {
 
-        const token = Spotify.getAccessToken()
+        const token = this.props.getAccessToken()
         const script = document.createElement("script");
         script.src = "https://sdk.scdn.co/spotify-player.js";
         script.async = true;
@@ -80,26 +80,22 @@ class WebPlayer extends React.Component {
     
    render() {
        
-    return (
-     
+    return (     
         <div className="container">
-
             <div className="WebPlayer main-wrapper">
                 <img src={this.state.current_track.album.images[0].url} 
-                     className="now-playing__cover" alt="" />
-
+                     className="now-playing__cover" alt="" 
+                />
                 <div className="now-playing__side">
                     <div className="now-playing__name">{
                                   this.state.current_track.name
-                                  }</div>
-
+                    }</div>
                     <div className="now-playing__artist">{
                                   this.state.current_track.artists[0].name
-                                  }</div>
+                    }</div>
                 </div>
             </div>
-        </div>
-    
+        </div>    
     );
   }
 }

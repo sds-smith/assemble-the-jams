@@ -14,7 +14,6 @@ html {
 
 h1 {
   padding: .77rem 0;
-  /* background-color: #010c3f; */
   background-color: black;
   text-align: center;
   font-family: 'Poppins', sans-serif;
@@ -23,7 +22,6 @@ h1 {
 }
 
 h1 .highlight {
-  /* color: #6c41ec; */
   color: green;
 }
 

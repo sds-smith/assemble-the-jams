@@ -186,6 +186,7 @@ class App extends React.Component {
         <h2>{this.state.userName}</h2>
         <SearchBar onSearch={this.search}/>
         <WebPlayer 
+          getAccessToken={this.getAccessToken}
           setDeviceId={this.setDeviceId}
           setPlayerInstance={this.setPlayerInstance}
         />

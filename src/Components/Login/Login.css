@@ -17,12 +17,21 @@
   }
 
   #readme {
-    color: white;
+    color: rgb(0, 128, 0);
     font-weight: bold;
   }
 
   #readme:hover {
-    color:rgba(255, 255, 255, 0.7)
+    color:rgba(0, 128, 0, 0.7)
+  }
+
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    color:#fff;
+    background-color: hsla(0, 0%, 0%, 40%);
   }
 
   .LoginForm {

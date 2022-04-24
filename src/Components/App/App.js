@@ -62,7 +62,6 @@ class App extends React.Component {
 
   getAccessToken() {
     const token = Spotify.getAccessToken()
-    console.log('token',token)
     this.setState({ isLoggedIn : true })
     return token
   }
@@ -146,8 +145,8 @@ class App extends React.Component {
   }
 
   // componentDidUpdate(prevState) {
-    // console.log(prevState.isLoggedIn. this.state.isLoggedIn)
     // if (this.state.isLoggedIn !== prevState.isLoggedIn) {
+      // console.log(prevState.isLoggedIn. this.state.isLoggedIn)
       // this.getProfileInfo()
     // }
   // }
@@ -208,8 +207,7 @@ class App extends React.Component {
             onNameChange={this.updatePlaylistName}
             onSave={this.savePlaylist}
             disabled={disabled}/>
-        </div>
-  
+        </div>  
       </div>   
       )
         disabled = false

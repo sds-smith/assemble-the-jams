@@ -3,7 +3,7 @@
 let accessToken
 const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 // const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
-//const scope = process.env.REACT_APP_EXPANDED_SCOPE
+// const scope = process.env.REACT_APP_EXPANDED_SCOPE
 
 
 
@@ -148,7 +148,6 @@ const Spotify = {
                 }
             }
       }) {
-        // const access_token = Spotify.getAccessToken()
         console.log('hello', {spotify_uri})
         getOAuthToken(access_token => {
           fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {

@@ -145,31 +145,18 @@ class App extends React.Component {
     this.setState({ playerInstance : player })
   }
 
-  componentDidUpdate(prevState) {
-    if (this.state.isLoggedIn !== prevState.isLoggedIn) {
-      this.getProfileInfo()
-    }
-  }
+  // componentDidUpdate(prevState) {
+    // console.log(prevState.isLoggedIn. this.state.isLoggedIn)
+    // if (this.state.isLoggedIn !== prevState.isLoggedIn) {
+      // this.getProfileInfo()
+    // }
+  // }
 
   render()  {
     const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : {defaultBackground}
     let disabled
     let app 
     let popUp
-    let webPlayer
-
-    if (true) {
-      webPlayer = (
-        <WebPlayer 
-          setDeviceId={this.setDeviceId}
-          setPlayerInstance={this.setPlayerInstance}
-        />
-      )
-    } else {
-      webPlayer = (
-        <div style={{height: '200px'}}></div>
-      )
-    }
 
     if (this.state.isPopup) {
       popUp = (
@@ -199,7 +186,10 @@ class App extends React.Component {
         <div className="App" style={{backgroundImage: backgroundImage}}>
         <h2>{this.state.userName}</h2>
         <SearchBar onSearch={this.search}/>
-        {webPlayer}
+        <WebPlayer 
+          setDeviceId={this.setDeviceId}
+          setPlayerInstance={this.setPlayerInstance}
+        />
         <div className="App-playlist">
           <SearchResults 
             searchResults={this.state.searchResults}

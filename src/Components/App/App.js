@@ -188,6 +188,7 @@ class App extends React.Component {
         <WebPlayer 
           getAccessToken={this.getAccessToken}
           setDeviceId={this.setDeviceId}
+          playerInstance={this.state.playerInstance}
           setPlayerInstance={this.setPlayerInstance}
         />
         <div className="App-playlist">

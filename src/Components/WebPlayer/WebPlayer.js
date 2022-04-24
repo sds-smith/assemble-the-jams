@@ -24,6 +24,7 @@ class WebPlayer extends React.Component {
         
         this.setDeviceId = this.setDeviceId.bind(this)
         this.setPlayerInstance = this.setPlayerInstance.bind(this)
+        this.togglePlay = this.togglePlay.bind(this)
     }
 
     setDeviceId(id) {
@@ -32,6 +33,11 @@ class WebPlayer extends React.Component {
     
     setPlayerInstance(player) {
         this.props.setPlayerInstance(player)
+    }
+
+    togglePlay() {
+        console.log('Toggling the toogle')
+        this.props.playerInstance.togglePlay()
     }
 
     componentDidMount() {
@@ -93,6 +99,9 @@ class WebPlayer extends React.Component {
                     <div className="now-playing__artist">{
                                   this.state.current_track.artists[0].name
                     }</div>
+                </div>
+                <div className='btn-container'>
+                    <button className ="play-pause" onClick={this.togglePlay}><span>||</span>&#9654;</button>
                 </div>
             </div>
         </div>    

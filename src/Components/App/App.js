@@ -145,6 +145,12 @@ class App extends React.Component {
     this.setState({ playerInstance : player })
   }
 
+  componentDidUpdate(prevState) {
+    if (this.state.isLoggedIn !== prevState.isLoggedIn) {
+      this.getProfileInfo()
+    }
+  }
+
   render()  {
     const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : {defaultBackground}
     let disabled
@@ -152,7 +158,7 @@ class App extends React.Component {
     let popUp
     let webPlayer
 
-    if (this.hasAccessToken()) {
+    if (true) {
       webPlayer = (
         <WebPlayer 
           setDeviceId={this.setDeviceId}
@@ -175,14 +181,12 @@ class App extends React.Component {
       )
     }
 
-    if (!this.state.isLoggedIn) {
+    if (!this.hasAccessToken()) {
       app = (
         <div>
           <Login 
             onLogin={()=>{
-              this.setState({ isLoggedIn : true })
               this.getAccessToken()
-              this.getProfileInfo()
             }} 
             toggle={this.togglePop}
           />

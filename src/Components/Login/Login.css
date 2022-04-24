@@ -5,9 +5,7 @@
     align-items: center;
     padding-top: 6rem;
     padding-bottom: 100%;
-    margin-bottom: 6.33rem;
-    background-color: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 4px 2px 2px #000000;
+    background-image: url('../App/background_photo_desktop.jpg')
   }
   
   .loginMessage {
@@ -46,7 +44,7 @@
 
   #regLabel {
     margin-left: .5rem;
-    margin-right: 3.45rem;
+    /* margin-right: 3.45rem; */
   }
 
   .LoginButton {

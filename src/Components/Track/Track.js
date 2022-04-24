@@ -1,5 +1,4 @@
 import React from 'react'
-import Spotify from '../../util/Spotify'
 import './Track.css'
 
 class Track extends React.Component {
@@ -41,10 +40,6 @@ class Track extends React.Component {
               <div className="Track-information" isremoval={this.props.isRemoval}>
                 <h3>{this.props.track.name}</h3>
                 <p>{this.props.track.artist} | {this.props.track.album}</p>
-              </div>
-              <div className='Track-image'>
-                {/* <img src={this.props.track.album.images[0].url}  */}
-                     {/* //  className="now-playing__cover" alt="" /> */}
               </div>
               {this.renderAction()}
             </div>            

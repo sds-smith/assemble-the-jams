@@ -25,8 +25,7 @@ const Spotify = {
             window.setTimeout(() => accessToken = '', expiresIn * 1000)
             window.history.pushState("Access Token", null, "/")
             return accessToken  
-        }   
-        return false   
+        }     
     },
 
     getAccessToken() {
@@ -73,7 +72,6 @@ const Spotify = {
             }))
         }).catch((error) => {
             console.error('Error: ', error)
-
             window.location = redirectURI
         })
     },
@@ -137,7 +135,6 @@ const Spotify = {
                     })
                 })
             })
-
     },
     
     play(id, {

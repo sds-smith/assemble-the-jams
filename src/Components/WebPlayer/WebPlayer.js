@@ -36,7 +36,6 @@ class WebPlayer extends React.Component {
     }
 
     togglePlay() {
-        console.log('Toggling the toogle')
         this.props.playerInstance.togglePlay()
     }
 
@@ -85,10 +84,11 @@ class WebPlayer extends React.Component {
     }
     
    render() {
-       
+    const webPlayerDisplay = this.state.active ? 'flex' : 'none'
     return (     
         <div className="container">
-            <div className="WebPlayer main-wrapper">
+            <div className="WebPlayer main-wrapper"
+                style={{display : webPlayerDisplay}} >
                 <img src={this.state.current_track.album.images[0].url} 
                      className="now-playing__cover" alt="" 
                 />

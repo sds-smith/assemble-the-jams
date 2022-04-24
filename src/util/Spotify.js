@@ -3,7 +3,7 @@
 let accessToken
 const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 // const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
-const scope = process.env.REACT_APP_EXPANDED_SCOPE
+//const scope = process.env.REACT_APP_EXPANDED_SCOPE
 
 
 

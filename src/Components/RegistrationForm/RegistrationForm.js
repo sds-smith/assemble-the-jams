@@ -60,12 +60,11 @@ class RegistrationForm extends React.Component {
       }
 
       return (
-        <div className="modal">
-          <div className="modal_content">
+          <div className="Registration">
             <span className="close" onClick={this.handleClick}>
               &times;
             </span>
-            <div className='modal_main'>
+            <div className=''>
               <h2 >{registrationMessage}</h2>
               <form className='registration' style={{visibility : formVisibility}} onSubmit={this.handleSubmit}>
                 <input type="hidden" name="form-name" value="registration" />
@@ -75,7 +74,6 @@ class RegistrationForm extends React.Component {
               </form>
             </div>
           </div>
-        </div>
       );
     }
 }

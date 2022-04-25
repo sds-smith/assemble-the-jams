@@ -1,4 +1,5 @@
 import React from 'react';
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import './Login.css';
 
 class Login extends React.Component {
@@ -13,7 +14,8 @@ class Login extends React.Component {
         if (e.target.registrationStatus.value === 'reg') {
             this.props.onLogin()
         } else {
-            this.props.toggle()
+            // this.props.toggle()
+            
         }
     }
 
@@ -36,7 +38,9 @@ class Login extends React.Component {
                         <button className='LoginButton' >SUBMIT </button>
                     </form>
                 </div>
-
+                <div className='formContainer regForm'>
+                    <RegistrationForm />
+                </div>
             </div>
         )
     }

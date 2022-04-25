@@ -21,6 +21,8 @@ class Login extends React.Component {
         let btnDisplay = 'flex'
         if (this.props.isPopup) {
             btnDisplay = 'none'
+        } else {
+            btnDisplay = 'flex'
         }
 
         return (

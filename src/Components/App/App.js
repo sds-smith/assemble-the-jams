@@ -159,7 +159,12 @@ class App extends React.Component {
             toggle={this.togglePop}
             isPopup={this.state.isPopup}
           />
-          <RegistrationForm isPopup={this.state.isPopup}/>
+          <RegistrationForm 
+            toggle={this.togglePop}
+            isPopup={this.state.isPopup}
+            setUserEmail = {this.setUserEmail}
+            userEmail={this.state.userEmail}
+          />
         </div>
       )
     } else {

@@ -49,14 +49,18 @@ class RegistrationForm extends React.Component {
       let transform='scaleY(0)'
       let formVisibility
       let registrationMessage
+      let registrationMessageWidth = 'unset'
       const { name, email } = this.state
 
       if(this.props.isPopup) {
         transform='scaleY(1)'
+      } else {
+        transform = 'scaleY(0)'
       }
       
       if (this.props.userEmail) {
         formVisibility = 'hidden'
+        registrationMessageWidth = '65%'
         registrationMessage = `Thank you. Your request has been submitted. You will be notified at ${this.props.userEmail} when your request has been processed.`
 
       } else {
@@ -70,7 +74,7 @@ class RegistrationForm extends React.Component {
               <span className="close" onClick={this.handleClick}>
                 &times;
               </span>
-              <h2 >{registrationMessage}</h2>
+              <h2 style={{width : registrationMessageWidth}}>{registrationMessage}</h2>
               <form className='registration' style={{visibility : formVisibility}} onSubmit={this.handleSubmit}>
                 <input type="hidden" name="form-name" value="registration" />
                 <input type='text' name='name' id='name' value={name} placeholder='Your First and Last Name' onChange={this.handleChange}/>

@@ -1,5 +1,4 @@
 import React from 'react';
-import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import './Login.css';
 
 class Login extends React.Component {
@@ -14,19 +13,27 @@ class Login extends React.Component {
         if (e.target.registrationStatus.value === 'reg') {
             this.props.onLogin()
         } else {
-            // this.props.toggle()
-            
+            this.props.toggle()        
         }
     }
 
     render() {
+        let btnDisplay = 'flex'
+        if (this.props.isPopup) {
+            btnDisplay = 'none'
+        }
+
         return (
             <div className='Login'>
                 <div className='formContainer'>
                     <h2 className='loginMessage'>Assemble<span className='highlight'>the</span>Jams is registered in Development mode with Spotify.</h2>
                     <h2 className='loginMessage'>In order to demo the app, you must be registered as a user.</h2>
                     <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>
-                    <form className='LoginForm' /*method='post'*/ name='loginForm' onSubmit={this.handleSubmit}>
+                    <form 
+                        className='LoginForm' /*method='post'*/ 
+                        name='loginForm' 
+                        onSubmit={this.handleSubmit}
+                    >
                         <div className='regBtn'>
                             <input type='radio' name='registrationStatus' id='not_reg' value='not_reg' />
                             <label for='not_reg' id='notRegLabel'>I am requesting access for the first time</label>
@@ -35,11 +42,12 @@ class Login extends React.Component {
                             <input type='radio' name='registrationStatus' id='reg' value='reg' />
                             <label for='reg' id='regLabel'>I am a registered user of this app</label>     
                         </div>
-                        <button className='LoginButton' >SUBMIT </button>
+                        <button 
+                            className='LoginButton' 
+                            style={{display : btnDisplay}} 
+                            >SUBMIT 
+                        </button>
                     </form>
-                </div>
-                <div className='formContainer regForm'>
-                    <RegistrationForm />
                 </div>
             </div>
         )

@@ -16,7 +16,6 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-        isLoggedIn : false,
         accessToken : '',
         deviceId : '',
         playerInstance : undefined,
@@ -67,9 +66,7 @@ class App extends React.Component {
   }
 
   getAccessToken() {
-    const token = Spotify.getAccessToken()
-    this.setState({ isLoggedIn : true })
-    return token
+    return Spotify.getAccessToken()
   }
 
   getProfileInfo() {
@@ -152,31 +149,19 @@ class App extends React.Component {
 
   render()  {
     const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : {defaultBackground}
-    let disabled
     let app 
-    let popUp
-
-    if (this.state.isPopup) {
-      popUp = (
-        <RegistrationForm toggle={this.togglePop} setUserEmail={this.setUserEmail} userEmail={this.state.userEmail} />
-      )
-    } else {
-      popUp = (
-        <div style={{display: 'none'}} ></div>
-      )
-    }
 
     if (!this.hasAccessToken()) {
       app = (
-        <div>
+        <div className='App'>
           <Login 
             onLogin={this.login} 
             toggle={this.togglePop}
+            isPopup={this.state.isPopup}
           />
-          {popUp}
+          <RegistrationForm isPopup={this.state.isPopup}/>
         </div>
       )
-      disabled = true
     } else {
       app = (
         <div className="App" style={{backgroundImage: backgroundImage}}>
@@ -205,12 +190,11 @@ class App extends React.Component {
             onRemove={this.removeTrack}
             onNameChange={this.updatePlaylistName}
             onSave={this.savePlaylist}
-            disabled={disabled}/>
+          />
         </div>  
         <UserProfile getProfileInfo={this.getProfileInfo}/>
       </div>   
       )
-        disabled = false
     }
 
     return (
@@ -219,7 +203,6 @@ class App extends React.Component {
         {app}
       </div>
     )
-
   }
 }
 

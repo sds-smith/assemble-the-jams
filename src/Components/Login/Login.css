@@ -1,11 +1,8 @@
 .Login {
     display: flex;
     flex-direction: column;
-    height: 100%;
     align-items: center;
     padding-top: 6rem;
-    padding-bottom: 100%;
-    background-image: url('../App/background_photo_desktop.jpg')
   }
   
   .loginMessage {
@@ -33,10 +30,6 @@
     padding: 40px;
     color:#fff;
     background-color: hsla(0, 0%, 0%, 40%);
-  }
-
-  .regForm {
-    display: none;
   }
 
   .LoginForm {
@@ -67,6 +60,8 @@
     padding: .77rem 0;
     border-radius: 54px;
     background-color: green;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-size: .833rem;
     transition: background-color .25s;

@@ -46,9 +46,14 @@ class RegistrationForm extends React.Component {
     } 
 
     render() {
+      let transform='scaleY(0)'
       let formVisibility
       let registrationMessage
       const { name, email } = this.state
+
+      if(this.props.isPopup) {
+        transform='scaleY(1)'
+      }
       
       if (this.props.userEmail) {
         formVisibility = 'hidden'
@@ -60,11 +65,11 @@ class RegistrationForm extends React.Component {
       }
 
       return (
-          <div className="Registration">
-            <span className="close" onClick={this.handleClick}>
-              &times;
-            </span>
-            <div className=''>
+          <div className="Registration" style={{ transform : transform}}>
+            <div className='formContainer'>
+              <span className="close" onClick={this.handleClick}>
+                &times;
+              </span>
               <h2 >{registrationMessage}</h2>
               <form className='registration' style={{visibility : formVisibility}} onSubmit={this.handleSubmit}>
                 <input type="hidden" name="form-name" value="registration" />

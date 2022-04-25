@@ -45,6 +45,7 @@ class App extends React.Component {
     this.setSeeds = this.setSeeds.bind(this)
     this.setDeviceId = this.setDeviceId.bind(this)
     this.setPlayerInstance = this.setPlayerInstance.bind(this)
+    this.login = this.login.bind(this)
   }
   
   togglePop() {
@@ -60,6 +61,10 @@ class App extends React.Component {
     return Spotify.hasAccessToken()  
   }
 
+  login() {
+    this.getAccessToken()   
+  }
+
   getAccessToken() {
     const token = Spotify.getAccessToken()
     this.setState({ isLoggedIn : true })
@@ -67,12 +72,7 @@ class App extends React.Component {
   }
 
   getProfileInfo() {
-    Spotify.getProfileInfo().then(user => {
-      if (user.images.length) {
-        this.setState({ profilePic : user.images[0].url })
-      } 
-      this.setState({ userName : user.display_name })
-    })
+    Spotify.getProfileInfo()
   }
 
   playTrack(uri) {
@@ -144,13 +144,6 @@ class App extends React.Component {
     this.setState({ playerInstance : player })
   }
 
-  // componentDidUpdate(prevState) {
-    // if (this.state.isLoggedIn !== prevState.isLoggedIn) {
-      // console.log(prevState.isLoggedIn. this.state.isLoggedIn)
-      // this.getProfileInfo()
-    // }
-  // }
-
   render()  {
     const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : {defaultBackground}
     let disabled
@@ -171,9 +164,7 @@ class App extends React.Component {
       app = (
         <div>
           <Login 
-            onLogin={()=>{
-              this.getAccessToken()
-            }} 
+            onLogin={this.login} 
             toggle={this.togglePop}
           />
           {popUp}

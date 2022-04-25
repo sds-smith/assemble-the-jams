@@ -1,9 +1,9 @@
 
 
 let accessToken
-// const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
-const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
-const scope = process.env.REACT_APP_EXPANDED_SCOPE
+const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
+// const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
+// const scope = process.env.REACT_APP_EXPANDED_SCOPE
 
 
 
@@ -38,8 +38,8 @@ const Spotify = {
         if (this.parseAccessToken()) { 
             return this.parseAccessToken()                  
         } else {
-            // window.location = '/authorize'
-            window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`
+            window.location = '/authorize'
+            // window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`
             return this.parseAccessToken()    
         }             
     },
@@ -51,7 +51,6 @@ const Spotify = {
         return fetch('https://api.spotify.com/v1/me',{headers : headers}
         ).then(response => response.json()
             ).then(jsonResponse => {
-                console.log(jsonResponse)
                 return jsonResponse
             })
     },

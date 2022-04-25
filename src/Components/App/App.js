@@ -9,6 +9,7 @@ import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import Recommendations from '../Recommendations/Recommendations';
 import WebPlayer from '../WebPlayer/WebPlayer';
 import defaultBackground from './background_photo_desktop.jpg'
+import UserProfile from '../UserProfile/UserProfile';
 
 class App extends React.Component {
   constructor(props) {
@@ -72,7 +73,12 @@ class App extends React.Component {
   }
 
   getProfileInfo() {
-    Spotify.getProfileInfo()
+    Spotify.getProfileInfo().then(user => {
+      if (user.images.length) {
+        this.setState({ profilePic : user.images[0].url })
+      }
+      this.setState({ userName : user.display_name })
+    })
   }
 
   playTrack(uri) {
@@ -201,6 +207,7 @@ class App extends React.Component {
             onSave={this.savePlaylist}
             disabled={disabled}/>
         </div>  
+        <UserProfile getProfileInfo={this.getProfileInfo}/>
       </div>   
       )
         disabled = false

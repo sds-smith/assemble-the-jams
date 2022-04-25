@@ -9,11 +9,14 @@ const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 
 const Spotify = {
 
-    isTokenMatch() {
+    hasAccessToken() {
         if (accessToken) {
             return true
+        } else if (this.parseAccessToken()) {
+            return true
+        } else {
+            return false
         }
-        return this.parseAccessToken()
     },
 
     parseAccessToken() {

@@ -57,7 +57,7 @@ class App extends React.Component {
   }
 
   hasAccessToken() {
-    return Spotify.isTokenMatch()  
+    return Spotify.hasAccessToken()  
   }
 
   getAccessToken() {

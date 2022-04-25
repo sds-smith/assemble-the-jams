@@ -101,7 +101,7 @@ class WebPlayer extends React.Component {
                     }</div>
                 </div>
                 <div className='btn-container'>
-                    <button className ="play-pause" onClick={this.togglePlay}><span>||</span>&#9654;</button>
+                    <button className ="play-pause" onClick={this.togglePlay}><span className='pause'>||</span><span className='play'>&#9654;</span></button>
                 </div>
             </div>
         </div>    

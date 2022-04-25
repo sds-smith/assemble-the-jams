@@ -170,34 +170,37 @@ class App extends React.Component {
     } else {
       app = (
         <div className="App" style={{backgroundImage: backgroundImage}}>
-        <h2>{this.state.userName}</h2>
-        <SearchBar onSearch={this.search}/>
-        <WebPlayer 
-          getAccessToken={this.getAccessToken}
-          setDeviceId={this.setDeviceId}
-          playerInstance={this.state.playerInstance}
-          setPlayerInstance={this.setPlayerInstance}
-        />
-        <div className="App-playlist">
-          <SearchResults 
-            searchResults={this.state.searchResults}
-            deviceId={this.state.deviceId}
-            onPlay={this.playTrack}
-            onAdd={this.addTrack}/>
-          <Recommendations 
-            recommendations={this.state.recommendations}
-            deviceId={this.state.deviceId}
-            onPlay={this.playTrack}
-            onAdd={this.addTrack}/>
-          <Playlist 
-            playlistName={this.state.playlistName} 
-            playlistTracks={this.state.playlistTracks}
-            onRemove={this.removeTrack}
-            onNameChange={this.updatePlaylistName}
-            onSave={this.savePlaylist}
-          />
-        </div>  
-        <UserProfile getProfileInfo={this.getProfileInfo}/>
+          <h2>{this.state.userName}</h2>
+          <div className='App-hero' >
+            <SearchBar onSearch={this.search}/>
+            <WebPlayer 
+              getAccessToken={this.getAccessToken}
+              setDeviceId={this.setDeviceId}
+              playerInstance={this.state.playerInstance}
+              setPlayerInstance={this.setPlayerInstance}
+            />
+          </div>
+
+          <div className="App-playlist">
+            <SearchResults 
+              searchResults={this.state.searchResults}
+              deviceId={this.state.deviceId}
+              onPlay={this.playTrack}
+              onAdd={this.addTrack}/>
+            <Recommendations 
+              recommendations={this.state.recommendations}
+              deviceId={this.state.deviceId}
+              onPlay={this.playTrack}
+              onAdd={this.addTrack}/>
+            <Playlist 
+              playlistName={this.state.playlistName} 
+              playlistTracks={this.state.playlistTracks}
+              onRemove={this.removeTrack}
+              onNameChange={this.updatePlaylistName}
+              onSave={this.savePlaylist}
+            />
+          </div>  
+          <UserProfile getProfileInfo={this.getProfileInfo}/>
       </div>   
       )
     }

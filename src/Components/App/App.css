@@ -43,6 +43,11 @@ h2 {
   color: #fff;
 }
 
+.App-hero {
+  display: flex;
+  justify-content: space-around;
+}
+
 .App-playlist {
   display: flex;
   justify-content: space-between;

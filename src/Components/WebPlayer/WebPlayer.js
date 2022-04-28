@@ -111,6 +111,7 @@ class WebPlayer extends React.Component {
     }
 
    render() {
+  
     let currentPosition = this.state.position / 1000
     let positionMins = Math.floor(currentPosition / 60).toString()
     let positionSec = (currentPosition % 60).toFixed(0).toString()
@@ -122,6 +123,7 @@ class WebPlayer extends React.Component {
     durationSec = durationSec.length < 2 ? '0' + durationSec : durationSec
 
     const webPlayerDisplay = this.state.active ? 'flex' : 'none'
+    const progress = (this.state.position/this.state.duration)*100
     return (     
         <div className="WebPlayer">
             <div className="Player"
@@ -139,13 +141,17 @@ class WebPlayer extends React.Component {
                 </div>
                 <div className='btn-container'>
                     <button className ="play-pause" onClick={this.togglePlay}><span>||</span><img src={PlayBtn} alt='play or pause button'/></button>
-                </div>
-                <div className='progress-bar'>
+                </div>   
+
+                <div className='progress-container'>
                     <p>{`${positionMins}:${positionSec}`}</p>
-                    <span></span>
+                    <div className='progress-bar'>
+                        <div className='progress-fill' 
+                            style={{width: `${progress}%`}} >
+                        </div>
+                    </div>
                     <p>{`${durationMins}:${durationSec}`}</p>
                 </div>
-
 
             </div>
         </div>

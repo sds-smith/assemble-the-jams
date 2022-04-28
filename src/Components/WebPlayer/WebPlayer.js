@@ -51,7 +51,7 @@ class WebPlayer extends React.Component {
         window.onSpotifyWebPlaybackSDKReady = () => {
     
             const player = new window.Spotify.Player({
-                name: 'Web Playback SDK',
+                name: 'Assemble the Jams',
                 getOAuthToken: cb => { cb(token); },
                 volume: 0.5
             });

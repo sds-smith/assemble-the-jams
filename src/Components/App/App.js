@@ -187,11 +187,6 @@ class App extends React.Component {
               deviceId={this.state.deviceId}
               onPlay={this.playTrack}
               onAdd={this.addTrack}/>
-            <Recommendations 
-              recommendations={this.state.recommendations}
-              deviceId={this.state.deviceId}
-              onPlay={this.playTrack}
-              onAdd={this.addTrack}/>
             <Playlist 
               playlistName={this.state.playlistName} 
               playlistTracks={this.state.playlistTracks}
@@ -199,6 +194,11 @@ class App extends React.Component {
               onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
             />
+            <Recommendations 
+              recommendations={this.state.recommendations}
+              deviceId={this.state.deviceId}
+              onPlay={this.playTrack}
+              onAdd={this.addTrack}/>
           </div>  
           <UserProfile getProfileInfo={this.getProfileInfo}/>
       </div>   

@@ -8,7 +8,6 @@ import Spotify from '../../util/Spotify.js'
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import Recommendations from '../Recommendations/Recommendations';
 import WebPlayer from '../WebPlayer/WebPlayer';
-import defaultBackground from './background_photo_desktop.jpg'
 import UserProfile from '../UserProfile/UserProfile';
 
 class App extends React.Component {

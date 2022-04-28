@@ -39,7 +39,7 @@ class SearchBar extends React.Component {
             <div className="SearchBar" onKeyPress={(e) => e.key === 'Enter' && this.search()}>
               <input placeholder="Enter A Song, Album, or Artist"  className='searchbar_input' id='search_input'onChange={this.handleTermChange}/>
               <form className='rec-tuner'>
-                <h3>Recommendation Tuner</h3>
+                <h3>Customize Your Recommendations</h3>
                 <label >acousticness
                     <input type='range'className='slider' name='acousticness' id='acousticness' min={0} max={1} step={0.01} value={this.state.acousticness} onChange={this.handleSlide}></input>
                     <p>{this.state.acousticness}</p>
@@ -48,7 +48,7 @@ class SearchBar extends React.Component {
                     <input type='range'className='slider' name='danceability' id='danceability' min={0} max={1} step={0.01} value={this.state.danceability} onChange={this.handleSlide}></input>
                     <p>{this.state.danceability}</p>
                 </label>
-                <label >instrumentalness
+                <label >instrumental
                     <input type='range'className='slider' name='instrumentalness' id='instrumentalness' min={0} max={1} step={0.5} value={this.state.instrumentalness} onChange={this.handleSlide}></input>
                     <p>{this.state.instrumentalness}</p>
                 </label>
@@ -56,7 +56,7 @@ class SearchBar extends React.Component {
                     <input type='range'className='slider' name='energy' id='energy' min={0} max={1} step={0.01} value={this.state.energy} onChange={this.handleSlide}></input>
                     <p>{this.state.energy}</p>
                 </label>
-                <label >liveness
+                <label >live
                     <input type='range'className='slider' name='liveness' id='liveness' min={0} max={1} step={0.5} value={this.state.liveness} onChange={this.handleSlide}></input>
                     <p>{this.state.liveness}</p>
                 </label>

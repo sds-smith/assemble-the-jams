@@ -1,14 +1,20 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    margin-bottom: 1rem;
-}
 
 .WebPlayer {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  width: 30%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
 
-    display: none;
+.Player {
+
+    display: flex;
+    width: 80%;
+    height: 80%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -17,9 +23,10 @@
     box-shadow: 2px;
   }
   
-  .WebPlayer img{
+  .now-playing__cover {
     height: 150px;
     width: auto;
+    margin-bottom: 1rem;
   }
 
   .now-playing_label {
@@ -54,19 +61,17 @@
 
   .play-pause span {
     display: flex;
-    align-items: flex-start;
-  }
-
-  .pause {
+    align-items: flex-end;
     font-weight: bold;
-    font-size: .9rem;
-    vertical-align: top;
-    margin-bottom: .2rem;
+    margin: 0;
+    padding: 0;
+
   }
 
-  .play {
-    vertical-align: bottom;
-    font-size: 1rem;
+  .play-pause img {
+    margin-left: -7px;
+    padding: 0;
+
   }
 
   ::-webkit-scrollbar {

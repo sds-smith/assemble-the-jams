@@ -1,5 +1,6 @@
 import React from 'react';
 import './WebPlayer.css'
+import PlayBtn from '../../icons/play_black24.png'
 
 const track = {
     name: "",
@@ -86,10 +87,10 @@ class WebPlayer extends React.Component {
    render() {
     const webPlayerDisplay = this.state.active ? 'flex' : 'none'
     return (     
-        <div className="container">
-            <div className="WebPlayer main-wrapper"
+        <div className="WebPlayer">
+            <div className="Player"
                 style={{display : webPlayerDisplay}} >
-                <img src={this.state.current_track.album.images[0].url} 
+                <img  src={this.state.current_track.album.images[0].url} 
                      className="now-playing__cover" alt="" 
                 />
                 <div className="now-playing_label">
@@ -101,10 +102,12 @@ class WebPlayer extends React.Component {
                     }</div>
                 </div>
                 <div className='btn-container'>
-                    <button className ="play-pause" onClick={this.togglePlay}><span className='pause'>||</span><span className='play'>&#9654;</span></button>
+                    <button className ="play-pause" onClick={this.togglePlay}><span>||</span><img src={PlayBtn}/></button>
                 </div>
             </div>
-        </div>    
+        </div>
+
+
     );
   }
 }

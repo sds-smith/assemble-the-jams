@@ -1,5 +1,8 @@
 import React from 'react'
 import './Track.css'
+import PlayBtn from '../../icons/play_white24.png'
+import AddBtn from '../../icons/add_white24.png'
+
 
 class Track extends React.Component {
     constructor(props) {
@@ -28,8 +31,8 @@ class Track extends React.Component {
             return <button className ="Track-action" onClick={this.removeTrack}>-</button>
         } else {
             return  <div className='Track-action-container'>
-                        <button className ="Track-action play-btn" onClick={this.playTrack}>&#9654;</button>
-                        <button className ="Track-action" onClick={this.addTrack}>+</button>
+                        <button className ="Track-action play-btn" onClick={this.playTrack}><img src={PlayBtn}/></button>
+                        <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn}/></button>
                     </div>
         }                            
     }

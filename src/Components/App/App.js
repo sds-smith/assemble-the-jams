@@ -148,7 +148,7 @@ class App extends React.Component {
   }
 
   render()  {
-    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` : {defaultBackground}
+    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` :  {defaultBackground}
     let app 
 
     if (!this.hasAccessToken()) {
@@ -169,9 +169,13 @@ class App extends React.Component {
       )
     } else {
       app = (
-        <div className="App" style={{backgroundImage: backgroundImage}}>
-          <h2>{this.state.userName}</h2>
+        <div className="App" /*style={{backgroundImage: backgroundImage}}*/>
           <div className='App-hero' >
+            <UserProfile 
+              getProfileInfo={this.getProfileInfo}
+              profilePic={this.state.profilePic}
+              userName={this.state.userName}
+            />
             <SearchBar onSearch={this.search}/>
             <WebPlayer 
               getAccessToken={this.getAccessToken}
@@ -200,7 +204,6 @@ class App extends React.Component {
               onPlay={this.playTrack}
               onAdd={this.addTrack}/>
           </div>  
-          <UserProfile getProfileInfo={this.getProfileInfo}/>
       </div>   
       )
     }

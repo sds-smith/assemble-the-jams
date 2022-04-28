@@ -34,7 +34,7 @@ h2 {
 .App {
   min-height: 100vh;
   padding: 0 5% 10% 5%;
-  background-image: url('./background_photo_desktop.jpg');
+  background-image: linear-gradient(to bottom right, green, black);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -45,7 +45,8 @@ h2 {
 
 .App-hero {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .App-playlist {

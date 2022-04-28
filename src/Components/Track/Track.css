@@ -21,8 +21,9 @@
   color: #fff;
 }
 
-.Track-action:hover {
-  color: rgba(265, 265, 265, .5);
+.Track-action:hover,
+.Track-action img:hover {
+  opacity: 50%;
 }
 
 .play-btn {

@@ -20,12 +20,16 @@ class WebPlayer extends React.Component {
     
         this.state = {
             current_track : track,
+            position : 0,
+            duration : 0,
+            isPlaying : false,
             active : false
         }
         
         this.setDeviceId = this.setDeviceId.bind(this)
         this.setPlayerInstance = this.setPlayerInstance.bind(this)
         this.togglePlay = this.togglePlay.bind(this)
+        this.nowPlayingInterval = this.nowPlayingInterval.bind(this)
     }
 
     setDeviceId(id) {
@@ -38,6 +42,23 @@ class WebPlayer extends React.Component {
 
     togglePlay() {
         this.props.playerInstance.togglePlay()
+    }
+
+    nowPlayingInterval(player) {
+        this.setState({ isPlaying : true})
+        const interval = setInterval(() => {
+
+            player.getCurrentState().then( ({position}) => { 
+                this.setState({
+                    position : position
+                });
+                if (this.state.position === 0) {
+                    clearInterval(interval)
+                    this.setState({ isPlaying : false })
+                }
+                console.log(this.state.active, this.state.isPlaying)    
+            });
+        }, 1000);
     }
 
     componentDidMount() {
@@ -73,9 +94,14 @@ class WebPlayer extends React.Component {
                 if (!state) {
                     return;
                 }
-            
-                this.setState({current_track : state.track_window.current_track});
-            
+                this.setState({
+                    current_track : state.track_window.current_track,
+                    position : state.position,
+                    duration : state.duration,
+                });
+                
+                this.nowPlayingInterval(player)
+
                 player.getCurrentState().then( state => { 
                     (!state)? this.setState({ active : false }) : this.setState({ active : true})
                 });
@@ -83,8 +109,18 @@ class WebPlayer extends React.Component {
             player.connect();
         };
     }
-    
+
    render() {
+    let currentPosition = this.state.position / 1000
+    let positionMins = Math.floor(currentPosition / 60).toString()
+    let positionSec = (currentPosition % 60).toFixed(0).toString()
+    positionSec = positionSec.length < 2 ? '0' + positionSec : positionSec
+
+    let currentDuration = this.state.duration / 1000
+    let durationMins = Math.floor(currentDuration / 60).toString()
+    let durationSec = (currentDuration % 60).toFixed(0).toString()
+    durationSec = durationSec.length < 2 ? '0' + durationSec : durationSec
+
     const webPlayerDisplay = this.state.active ? 'flex' : 'none'
     return (     
         <div className="WebPlayer">
@@ -104,6 +140,9 @@ class WebPlayer extends React.Component {
                 <div className='btn-container'>
                     <button className ="play-pause" onClick={this.togglePlay}><span>||</span><img src={PlayBtn} alt='play or pause button'/></button>
                 </div>
+                <p>{`${positionMins}:${positionSec}`}</p>
+                <p>{`${durationMins}:${durationSec}`}</p>
+
             </div>
         </div>
 

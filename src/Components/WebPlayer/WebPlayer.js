@@ -22,7 +22,6 @@ class WebPlayer extends React.Component {
             current_track : track,
             position : 0,
             duration : 0,
-            isPlaying : false,
             active : false
         }
         
@@ -45,7 +44,6 @@ class WebPlayer extends React.Component {
     }
 
     nowPlayingInterval(player) {
-        this.setState({ isPlaying : true})
         const interval = setInterval(() => {
 
             player.getCurrentState().then( ({position}) => { 
@@ -54,9 +52,11 @@ class WebPlayer extends React.Component {
                 });
                 if (this.state.position === 0) {
                     clearInterval(interval)
-                    this.setState({ isPlaying : false })
+                    this.setState({ 
+                        active : false,
+                     })
                 }
-                console.log(this.state.active, this.state.isPlaying)    
+                console.log(this.state.active)    
             });
         }, 1000);
     }
@@ -140,8 +140,12 @@ class WebPlayer extends React.Component {
                 <div className='btn-container'>
                     <button className ="play-pause" onClick={this.togglePlay}><span>||</span><img src={PlayBtn} alt='play or pause button'/></button>
                 </div>
-                <p>{`${positionMins}:${positionSec}`}</p>
-                <p>{`${durationMins}:${durationSec}`}</p>
+                <div className='progress-bar'>
+                    <p>{`${positionMins}:${positionSec}`}</p>
+                    <span></span>
+                    <p>{`${durationMins}:${durationSec}`}</p>
+                </div>
+
 
             </div>
         </div>

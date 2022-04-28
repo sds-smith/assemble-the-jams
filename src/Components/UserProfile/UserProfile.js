@@ -1,8 +1,5 @@
 import React from 'react'
 import './UserProfile.css'
-import defaultBackground from '../App/background_photo_desktop.jpg'
-
-
 
 class UserProfile extends React.Component {
     constructor(props) {
@@ -21,9 +18,8 @@ class UserProfile extends React.Component {
     render() {
         return (
             <div className='Profile' >
-                <img src={this.props.profilePic}/>
+                <img src={this.props.profilePic} alt='users Spotify profile pic'/>
                 <h2>{this.props.userName}</h2>
-
             </div>
         )
     }

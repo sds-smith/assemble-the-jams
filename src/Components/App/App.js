@@ -148,7 +148,6 @@ class App extends React.Component {
   }
 
   render()  {
-    const backgroundImage = this.state.profilePic ? `url(${this.state.profilePic})` :  {defaultBackground}
     let app 
 
     if (!this.hasAccessToken()) {
@@ -169,7 +168,7 @@ class App extends React.Component {
       )
     } else {
       app = (
-        <div className="App" /*style={{backgroundImage: backgroundImage}}*/>
+        <div className="App" >
           <div className='App-hero' >
             <UserProfile 
               getProfileInfo={this.getProfileInfo}

@@ -56,7 +56,7 @@
   }
 
   .play-pause:hover {
-    color:rgba(0, 0, 0, .6);
+    opacity: 60%;
   }
 
   .play-pause span {

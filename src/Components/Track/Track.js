@@ -31,8 +31,8 @@ class Track extends React.Component {
             return <button className ="Track-action" onClick={this.removeTrack}>-</button>
         } else {
             return  <div className='Track-action-container'>
-                        <button className ="Track-action play-btn" onClick={this.playTrack}><img src={PlayBtn}/></button>
-                        <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn}/></button>
+                        <button className ="Track-action play-btn" onClick={this.playTrack}><img src={PlayBtn} alt='button to play track'/></button>
+                        <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn} alt='button to add track to playlist'/></button>
                     </div>
         }                            
     }

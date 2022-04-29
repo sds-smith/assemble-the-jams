@@ -7,8 +7,16 @@
     transition: transform 1s;
   }
   
+  .Registration .formContainer {
+    position: relative;
+  }
+
   .close {
-    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: auto;
     text-align: right;
     color: white;
   }

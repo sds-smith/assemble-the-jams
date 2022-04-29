@@ -12,6 +12,11 @@
     display: none;
   }
 
+  #loading img {
+    width: 24px;
+    height: auto;
+  }
+
   ::-webkit-scrollbar {
       width: 0px;
       background: transparent;

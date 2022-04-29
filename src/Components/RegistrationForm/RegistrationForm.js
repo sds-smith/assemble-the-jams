@@ -1,5 +1,6 @@
 import React from "react";
 import './RegistrationForm.css'
+import close from '../../icons/close_white.png'
 
 class RegistrationForm extends React.Component {
     constructor(props) {
@@ -71,9 +72,7 @@ class RegistrationForm extends React.Component {
       return (
           <div className="Registration" style={{ transform : transform}}>
             <div className='formContainer'>
-              <span className="close" onClick={this.handleClick}>
-                &times;
-              </span>
+              <img src={close} className="close" onClick={this.handleClick} alt='close button'/>
               <h2 style={{width : registrationMessageWidth}}>{registrationMessage}</h2>
               <form className='registration' style={{visibility : formVisibility}} onSubmit={this.handleSubmit}>
                 <input type="hidden" name="form-name" value="registration" />

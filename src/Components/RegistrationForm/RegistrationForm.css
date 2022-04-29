@@ -17,8 +17,7 @@
     right: 0;
     width: 24px;
     height: auto;
-    text-align: right;
-    color: white;
+    margin-right: 1rem;
   }
   
   .close:hover {

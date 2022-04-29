@@ -135,6 +135,10 @@
   .rec-tuner label {
     font-size: smaller;
   }
+
+  .level {
+    width: 30px;
+  }
 }
 
 @media screen and (max-width: 1020px) and (orientation: portrait) {
@@ -145,4 +149,6 @@
   .rec-tuner {
     width: 100%;
   }
+
+
 }

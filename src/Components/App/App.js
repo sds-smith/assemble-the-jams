@@ -9,6 +9,7 @@ import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import Recommendations from '../Recommendations/Recommendations';
 import WebPlayer from '../WebPlayer/WebPlayer';
 import UserProfile from '../UserProfile/UserProfile';
+import ProfilePic from '../../icons/default_profile96.png'
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends React.Component {
         isPopup : false,
         userEmail : "",
         userName : "",
-        profilePic : null,
+        profilePic : ProfilePic,
         searchResults : [],
         seedTracks : [],
         recommendations : [],
@@ -155,6 +156,7 @@ class App extends React.Component {
   render()  {
     let app 
     const gradientAngle = this.state.gradientAngle
+    
     if (!this.hasAccessToken()) {
       app = (
         <div className='App' style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>

@@ -12,7 +12,7 @@ class Recommendations extends React.Component {
                  tracks={this.props.recommendations} 
                  onPlay={this.props.onPlay}
                  onAdd={this.props.onAdd} 
-                 isRemoval={false}/> 
+                 trackType={'recommendations'}/> 
             </div>
         )
     }

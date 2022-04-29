@@ -27,22 +27,37 @@ class Track extends React.Component {
     }
 
     renderAction() {
-        if (this.props.isRemoval) {
+        if (this.props.trackType === 'playlist') {
             return <button className ="Track-action" onClick={this.removeTrack}>-</button>
-        } else {
+        } else if (this.props.trackType === 'search-results') {
             return  <div className='Track-action-container'>
                         <button className ="Track-action play-btn" onClick={this.playTrack}><img src={PlayBtn} alt='button to play track'/></button>
                         <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn} alt='button to add track to playlist'/></button>
                     </div>
-        }                            
+        } else {
+            return  <div className='Track-action-container'>
+                        <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn} alt='button to add track to playlist'/></button>
+                        <button className ="Track-action play-btn" onClick={this.playTrack}><img src={PlayBtn} alt='button to play track'/></button>
+                    </div>
+        }                          
     }
 
     render() {
+        let trackStyle
+        let trackInfoStyle
+
+        if (this.props.trackType === 'recommendations') {
+            trackStyle = {flexDirection : 'row-reverse'}
+            trackInfoStyle = {alignItems : 'flex-end', textAlign : 'right'}
+        } else {
+            trackStyle = {flexDirection : 'row'}
+            trackInfoStyle = {alignItems : 'unset'}
+        }
         return (
-            <div className="Track">
-              <div className="Track-information" isremoval={this.props.isRemoval}>
-                <h3>{this.props.track.name}</h3>
-                <p>{this.props.track.artist} | {this.props.track.album}</p>
+            <div className="Track" style={trackStyle}>
+              <div className="Track-information" style={trackInfoStyle}>
+                <h3 style={trackInfoStyle}>{this.props.track.name}</h3>
+                <p style={trackInfoStyle}>{this.props.track.artist} | {this.props.track.album}</p>
               </div>
               {this.renderAction()}
             </div>            

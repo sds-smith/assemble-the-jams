@@ -79,7 +79,7 @@ class RegistrationForm extends React.Component {
                 <input type="hidden" name="form-name" value="registration" />
                 <input type='text' name='name' id='name' value={name} placeholder='Your First and Last Name' onChange={this.handleChange}/>
                 <input type='email' name='email' id='email' value={email} placeholder='Your Spotify email' onChange={this.handleChange}/>
-                <button className='RegButton'type='submit' name='submit' id='emailSubmit' >SUBMIT</button>
+                <button className='RegButton'type='submit' name='submit' id='emailSubmit' >REGISTER</button>
               </form>
             </div>
           </div>

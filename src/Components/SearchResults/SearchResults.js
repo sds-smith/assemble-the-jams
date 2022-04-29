@@ -12,7 +12,7 @@ class SearchResults extends React.Component {
                   tracks={this.props.searchResults}
                   onPlay={this.props.onPlay}
                   onAdd={this.props.onAdd}
-                  isRemoval={false}/>
+                  trackType={'search-results'}/>
               </div>
 
             </div>

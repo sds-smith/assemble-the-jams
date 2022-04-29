@@ -32,7 +32,7 @@ class Login extends React.Component {
                     <h2 className='loginMessage'>In order to demo the app, you must be registered as a user.</h2>
                     <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>
                     <form 
-                        className='LoginForm' /*method='post'*/ 
+                        className='LoginForm' 
                         name='loginForm' 
                         onSubmit={this.handleSubmit}
                     >
@@ -47,7 +47,7 @@ class Login extends React.Component {
                         <button 
                             className='LoginButton' 
                             style={{display : btnDisplay}} 
-                            >SUBMIT 
+                            >ENTER
                         </button>
                     </form>
                 </div>

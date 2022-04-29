@@ -12,9 +12,15 @@
     display: none;
   }
 
-  #loading img {
+  #spinner {
     width: 24px;
     height: auto;
+    animation: rotate 1.5s linear infinite;
+    animation-play-state: paused;
+  }
+
+  @keyframes rotate{
+    to{ transform: rotate(360deg); }
   }
 
   ::-webkit-scrollbar {

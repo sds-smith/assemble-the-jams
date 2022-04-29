@@ -34,7 +34,6 @@ h2 {
 .App {
   min-height: 100vh;
   padding: 0 5% 10% 5%;
-  background-image: linear-gradient(to bottom right, green, black);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

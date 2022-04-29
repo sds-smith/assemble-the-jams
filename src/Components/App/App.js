@@ -27,7 +27,8 @@ class App extends React.Component {
         recommendations : [],
         searchPass : 0,
         playlistName : "Enter New Playlist Name",
-        playlistTracks : []
+        playlistTracks : [],
+        gradientAngle : 135
     }
 
     this.playTrack = this.playTrack.bind(this)
@@ -45,6 +46,7 @@ class App extends React.Component {
     this.setDeviceId = this.setDeviceId.bind(this)
     this.setPlayerInstance = this.setPlayerInstance.bind(this)
     this.login = this.login.bind(this)
+    this.setGradientAngle = this.setGradientAngle.bind(this)
   }
   
   togglePop() {
@@ -82,6 +84,10 @@ class App extends React.Component {
       playerInstance : this.state.playerInstance,
       spotify_uri : uri,
     })
+  }
+
+  setGradientAngle(angle) {
+    this.setState({ gradientAngle : angle })
   }
 
   addTrack(track) {
@@ -148,10 +154,10 @@ class App extends React.Component {
 
   render()  {
     let app 
-
+    const gradientAngle = this.state.gradientAngle
     if (!this.hasAccessToken()) {
       app = (
-        <div className='App'>
+        <div className='App' style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>
           <Login 
             onLogin={this.login} 
             toggle={this.togglePop}
@@ -167,7 +173,7 @@ class App extends React.Component {
       )
     } else {
       app = (
-        <div className="App" >
+        <div className="App" style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>
           <div className='App-hero' >
             <UserProfile 
               getProfileInfo={this.getProfileInfo}
@@ -180,6 +186,8 @@ class App extends React.Component {
               setDeviceId={this.setDeviceId}
               playerInstance={this.state.playerInstance}
               setPlayerInstance={this.setPlayerInstance}
+              gradientAngle={this.state.gradientAngle}
+              setGradientAngle={this.setGradientAngle}
             />
           </div>
 

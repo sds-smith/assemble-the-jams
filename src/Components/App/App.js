@@ -182,7 +182,9 @@ class App extends React.Component {
               profilePic={this.state.profilePic}
               userName={this.state.userName}
             />
-            <SearchBar onSearch={this.search}/>
+            <SearchBar 
+              onSearch={this.search}
+            />
             <WebPlayer 
               getAccessToken={this.getAccessToken}
               setDeviceId={this.setDeviceId}
@@ -198,7 +200,8 @@ class App extends React.Component {
               searchResults={this.state.searchResults}
               deviceId={this.state.deviceId}
               onPlay={this.playTrack}
-              onAdd={this.addTrack}/>
+              onAdd={this.addTrack}
+            />
             <Playlist 
               playlistName={this.state.playlistName} 
               playlistTracks={this.state.playlistTracks}
@@ -210,7 +213,8 @@ class App extends React.Component {
               recommendations={this.state.recommendations}
               deviceId={this.state.deviceId}
               onPlay={this.playTrack}
-              onAdd={this.addTrack}/>
+              onAdd={this.addTrack}
+            />
           </div>  
       </div>   
       )

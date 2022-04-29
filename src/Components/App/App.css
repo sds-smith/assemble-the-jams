@@ -60,3 +60,10 @@ h2 {
     flex-direction: column;
   }
 }
+
+@media only screen and (max-width: 1020px) and (orientation: portrait) {
+  .App-hero {
+    flex-direction: column;
+    align-items: center;
+  }
+}

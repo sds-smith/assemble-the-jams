@@ -63,7 +63,6 @@ class WebPlayer extends React.Component {
                      })
                      this.props.setNowPlaying('', null)
                 }
-                console.log(this.state.active)    
             });
         }, 1000);
     }

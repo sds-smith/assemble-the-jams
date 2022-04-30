@@ -10,7 +10,7 @@ import Recommendations from '../Recommendations/Recommendations';
 import WebPlayer from '../WebPlayer/WebPlayer';
 import UserProfile from '../UserProfile/UserProfile';
 import ProfilePic from '../../icons/default_profile96.png'
-import SpotifyLogo from '../../icons/Spotify_Lofo_RGB_White.png'
+import SpotifyLogo from '../../icons/Spotify_Logo_RGB_White.png'
 
 class App extends React.Component {
   constructor(props) {

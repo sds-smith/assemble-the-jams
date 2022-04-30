@@ -1,6 +1,7 @@
 import React from 'react';
 import './WebPlayer.css'
 import PlayBtn from '../../icons/play_black24.png'
+import SpotifyIcon from '../../icons/Spotify_Icon_RGB_Black.png'
 
 const track = {
     name: "",
@@ -128,6 +129,7 @@ class WebPlayer extends React.Component {
         <div className="WebPlayer">
             <div className="Player"
                 style={{display : webPlayerDisplay}} >
+                <img src={SpotifyIcon} id='spotify-icon' alt='spotify icon'/>
                 <img  src={this.state.current_track.album.images[0].url} 
                      className="now-playing__cover" alt="" 
                 />

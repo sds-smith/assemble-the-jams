@@ -157,7 +157,17 @@ const Spotify = {
             },
           });
         });
-      }   
+      },
+      
+      getLikeStatus(trackId) {
+        const accessToken = this.getAccessToken()
+        const headers = { Authorization : `Bearer ${accessToken}` }
+          fetch(`https://api.spotify.com/v1/me/tracks/contains?ids=${trackId}`, {headers : headers})
+            .then(response => response.json()
+            ).then(jsonResponse => {
+                console.log(jsonResponse)
+            })
+      }
 }
 
 export default Spotify

@@ -81,7 +81,10 @@ class App extends React.Component {
     })
   }
 
-  playTrack(uri) {
+  playTrack(track) {
+    const uri = `spotify:track:${track.id}`
+    Spotify.getLikeStatus(track.id)
+
     Spotify.play(this.state.deviceId, {
       playerInstance : this.state.playerInstance,
       spotify_uri : uri,

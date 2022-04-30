@@ -11,6 +11,7 @@
 }
 
 .Player {
+    position: relative;
     display: flex;
     width: 80%;
     height: 80%;
@@ -22,6 +23,14 @@
     box-shadow: 2px;
   }
   
+  #spotify-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 21px;
+    width: auto;
+  }
+
   .now-playing__cover {
     height: 150px;
     width: auto;

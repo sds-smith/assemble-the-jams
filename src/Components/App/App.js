@@ -30,6 +30,10 @@ class App extends React.Component {
         searchPass : 0,
         playlistName : "Enter New Playlist Name",
         playlistTracks : [],
+        nowPlaying : {
+          trackId : '',
+          isLike : null
+        },
         gradientAngle : 135
     }
 
@@ -49,6 +53,9 @@ class App extends React.Component {
     this.setPlayerInstance = this.setPlayerInstance.bind(this)
     this.login = this.login.bind(this)
     this.setGradientAngle = this.setGradientAngle.bind(this)
+    this.setNowPlaying = this.setNowPlaying.bind(this)
+    this.toggleLike = this.toggleLike.bind(this)
+
   }
   
   togglePop() {
@@ -82,13 +89,39 @@ class App extends React.Component {
   }
 
   playTrack(track) {
+    Spotify.getLikeStatus(track.id).then(likeStatus => {
+      this.setNowPlaying(track.id, likeStatus)
+    })
     const uri = `spotify:track:${track.id}`
-    Spotify.getLikeStatus(track.id)
-
     Spotify.play(this.state.deviceId, {
       playerInstance : this.state.playerInstance,
       spotify_uri : uri,
     })
+  }
+
+  setNowPlaying(id, like) {
+    console.log('setting setNowPlaying')
+    console.log('trackId', id)
+    console.log('isLike', like)
+    this.setState({nowPlaying : {
+                    trackId : id,
+                    isLike : like
+                  }
+    })
+  }
+
+  toggleLike() {
+    if (!this.state.nowPlaying.trackId.length) {
+      return
+    }
+    console.log(this.state.nowPlaying)
+    if (this.state.nowPlaying.isLike) {
+      Spotify.deleteLike(this.state.nowPlaying.trackId)
+      this.setNowPlaying(this.state.nowPlaying.trackId, false)
+    } else {
+      Spotify.addLike(this.state.nowPlaying.trackId)
+      this.setNowPlaying(this.state.nowPlaying.trackId, true)
+    }
   }
 
   setGradientAngle(angle) {
@@ -199,6 +232,9 @@ class App extends React.Component {
               setPlayerInstance={this.setPlayerInstance}
               gradientAngle={this.state.gradientAngle}
               setGradientAngle={this.setGradientAngle}
+              isLike={this.state.nowPlaying.isLike}
+              setLike={this.setLike}
+              toggleLike={this.toggleLike}
             />
           </div>
 

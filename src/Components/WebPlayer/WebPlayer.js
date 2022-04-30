@@ -67,8 +67,8 @@ class WebPlayer extends React.Component {
         }, 1000);
     }
 
-    toggleLike(LikeOrUnlike) {
-        LikeOrUnlike = LikeOrUnlike === Like ? Unlike : Like
+    toggleLike() {
+        this.props.toggleLike()
     }
 
     componentDidMount() {
@@ -121,7 +121,7 @@ class WebPlayer extends React.Component {
     }
 
    render() {
-    let LikeOrUnlike = Unlike
+    let LikeOrUnlike = this.props.isLike ? Like : Unlike
 
     let currentPosition = this.state.position / 1000
     let positionMins = Math.floor(currentPosition / 60).toString()
@@ -161,7 +161,7 @@ class WebPlayer extends React.Component {
                 <div className='btn-container'>
                     <button className ="play-pause" onClick={this.togglePlay}><span>|</span><img src={PlayBtn} alt='play or pause button'/></button>
                     <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn} alt='button to add track to playlist'/></button>
-                    <button className ="Track-action like-btn" onClick={LikeOrUnlike=>this.toggleLike(LikeOrUnlike)}><img src={LikeOrUnlike} alt='button to like or unlike track'/></button>
+                    <button className ="Track-action like-btn" onClick={LikeOrUnlike=>this.toggleLike()}><img src={LikeOrUnlike} alt='button to like or unlike track'/></button>
                 </div>   
 
                 <div className='progress-container'>

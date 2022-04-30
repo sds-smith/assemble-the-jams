@@ -162,12 +162,49 @@ const Spotify = {
       getLikeStatus(trackId) {
         const accessToken = this.getAccessToken()
         const headers = { Authorization : `Bearer ${accessToken}` }
-          fetch(`https://api.spotify.com/v1/me/tracks/contains?ids=${trackId}`, {headers : headers})
+          return fetch(`https://api.spotify.com/v1/me/tracks/contains?ids=${trackId}`, {headers : headers})
             .then(response => response.json()
             ).then(jsonResponse => {
-                console.log(jsonResponse)
+                const status = jsonResponse[0]
+                console.log(status)
+                return status
             })
-      }
+      },
+
+      addLike(trackId) {
+
+        const accessToken = Spotify.getAccessToken()
+        const headers = { 
+            'Content-Type' : 'application/json',
+            Authorization : `Bearer ${accessToken}`,
+            Host: 'api.spotify.com' 
+        }
+        return fetch(`https://api.spotify.com/v1/me/tracks?ids=${trackId}`,
+        {
+            headers : headers,
+            method : 'PUT',
+            // body : JSON.stringify({
+                // ids : [trackId]
+            // })
+        })
+      },
+
+      deleteLike(trackId) {
+        const accessToken = Spotify.getAccessToken()
+        const headers = { 
+            'Content-Type' : 'application/json',
+            Authorization : `Bearer ${accessToken}`,
+            Host: 'api.spotify.com'
+        }
+        return fetch(`https://api.spotify.com/v1/me/tracks?ids=${trackId}`,
+        {
+            headers : headers,
+            method : 'DELETE',
+            // body : JSON.stringify({
+                // ids : [trackId]
+            // })
+        })
+      } 
 }
 
 export default Spotify

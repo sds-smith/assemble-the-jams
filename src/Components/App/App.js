@@ -100,9 +100,6 @@ class App extends React.Component {
   }
 
   setNowPlaying(id, like) {
-    console.log('setting setNowPlaying')
-    console.log('trackId', id)
-    console.log('isLike', like)
     this.setState({nowPlaying : {
                     trackId : id,
                     isLike : like
@@ -114,7 +111,6 @@ class App extends React.Component {
     if (!this.state.nowPlaying.trackId.length) {
       return
     }
-    console.log(this.state.nowPlaying)
     if (this.state.nowPlaying.isLike) {
       Spotify.deleteLike(this.state.nowPlaying.trackId)
       this.setNowPlaying(this.state.nowPlaying.trackId, false)

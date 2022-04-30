@@ -2,7 +2,7 @@ import React from 'react';
 import './WebPlayer.css'
 import PlayBtn from '../../icons/play_black24.png'
 import SpotifyIcon from '../../icons/Spotify_Icon_RGB_Black.png'
-import AddBtn from '../../icons/add_black24.png'
+// import AddBtn from '../../icons/add_black24.png'
 import Like from '../../icons/like24.png'
 import Unlike from '../../icons/unlike24.png'
 
@@ -161,7 +161,7 @@ class WebPlayer extends React.Component {
                 <div className='btn-container'>
                     <button className ="play-pause" onClick={this.togglePlay}><span>|</span><img src={PlayBtn} alt='play or pause button'/></button>
                     {/* <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn} alt='button to add track to playlist'/></button> */}
-                    <button className ="Track-action like-btn" onClick={this.toggleLike()}><img src={LikeOrUnlike} alt='button to like or unlike track'/></button>
+                    <button className ="Track-action like-btn" onClick={this.toggleLike}><img src={LikeOrUnlike} alt='button to like or unlike track'/></button>
                 </div>   
 
                 <div className='progress-container'>

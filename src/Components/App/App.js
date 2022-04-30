@@ -226,7 +226,10 @@ class App extends React.Component {
 
     return (
       <div >
-        <img src={SpotifyLogo} id='spotify-logo' alt='Spotify Logo'/>
+        <div className='spotify-attributor'>
+          <img src={SpotifyLogo} id='spotify-logo' alt='Spotify Logo'/>
+          <a href='https://www.spotify.com/us/premium/' target='_blank' ><p>Works with Spotify Premium</p></a> 
+        </div>
         <h1>Assemble<span className="highlight">the</span>Jams</h1>
         {app}
       </div>

@@ -17,10 +17,10 @@ class UserProfile extends React.Component {
 
     render() {
         return (
-            <div className='Profile' >
+            <a className='Profile' href={`https://open.spotify.com/user/${this.props.userName}`} target='_blank' >
                 <img src={this.props.profilePic} alt='users Spotify profile pic'/>
                 <h2>{this.props.userName}</h2>
-            </div>
+            </a>
         )
     }
 }

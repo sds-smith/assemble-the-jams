@@ -23,12 +23,19 @@
     box-shadow: 2px;
   }
   
+  .spotify-link {
+    display:flex;
+    text-decoration: none;
+  }
+
   #spotify-icon {
-    position: absolute;
-    top: 5px;
-    left: 5px;
     height: 21px;
     width: auto;
+  }
+
+  #listen {
+    color: black;
+    padding-left: 5px;
   }
 
   .now-playing__cover {

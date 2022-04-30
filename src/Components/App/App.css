@@ -12,11 +12,22 @@ html {
   height: 100vh
 }
 
-#spotify-logo {
+.spotify-attributor {
   position: absolute;
   top: 5px;
   left: 5px;
+}
+
+#spotify-logo {
   width: 70px;
+  height: auto;
+}
+
+.spotify-attributor p {
+  font-size: 10px;
+  color: white;
+  padding-top: 2px;
+  padding-left: 21px;
 }
 
 h1 {

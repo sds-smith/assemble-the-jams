@@ -231,6 +231,7 @@ class App extends React.Component {
               isLike={this.state.nowPlaying.isLike}
               track={this.state.nowPlaying.trackId}
               toggleLike={this.toggleLike}
+              setNowPlaying={this.setNowPlaying}
             />
           </div>
 

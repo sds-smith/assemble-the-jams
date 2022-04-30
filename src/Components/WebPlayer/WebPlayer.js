@@ -61,6 +61,7 @@ class WebPlayer extends React.Component {
                     this.setState({ 
                         active : false,
                      })
+                     this.props.setNowPlaying('', null)
                 }
                 console.log(this.state.active)    
             });
@@ -110,12 +111,12 @@ class WebPlayer extends React.Component {
                     duration : state.duration,
                 });
                 
-                this.nowPlayingInterval(player)
 
                 player.getCurrentState().then( state => { 
                     (!state)? this.setState({ active : false }) : this.setState({ active : true})
                 });
             }));
+            this.nowPlayingInterval(player)
             player.connect();
         };
     }

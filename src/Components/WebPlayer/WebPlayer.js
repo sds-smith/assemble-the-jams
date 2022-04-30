@@ -51,7 +51,7 @@ class WebPlayer extends React.Component {
 
     nowPlayingInterval(player) {
         const interval = setInterval(() => {
-            this.props.setGradientAngle( this.props.gradientAngle - 0.5 )
+            this.props.setGradientAngle( this.props.gradientAngle - 2 )
             player.getCurrentState().then( ({position}) => { 
                 this.setState({
                     position : position

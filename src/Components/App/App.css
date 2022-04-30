@@ -12,6 +12,12 @@ html {
   height: 100vh
 }
 
+#spotify-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 h1 {
   padding: .77rem 0;
   background-color: black;

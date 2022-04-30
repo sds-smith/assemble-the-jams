@@ -10,6 +10,7 @@ import Recommendations from '../Recommendations/Recommendations';
 import WebPlayer from '../WebPlayer/WebPlayer';
 import UserProfile from '../UserProfile/UserProfile';
 import ProfilePic from '../../icons/default_profile96.png'
+import SpotifyLogo from '../../icons/Spotify_Lofo_RGB_White.png'
 
 class App extends React.Component {
   constructor(props) {
@@ -225,6 +226,7 @@ class App extends React.Component {
 
     return (
       <div >
+        <img src={SpotifyLogo} id='spotify-logo' alt='Spotify Logo'/>
         <h1>Assemble<span className="highlight">the</span>Jams</h1>
         {app}
       </div>

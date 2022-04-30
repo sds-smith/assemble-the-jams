@@ -17,7 +17,7 @@ class UserProfile extends React.Component {
 
     render() {
         return (
-            <a className='Profile' href={`https://open.spotify.com/user/${this.props.userName}`} target='_blank' >
+            <a className='Profile' href={`https://open.spotify.com/user/${this.props.userName}`} target='_blank' rel="noreferrer">
                 <img src={this.props.profilePic} alt='users Spotify profile pic'/>
                 <h2>{this.props.userName}</h2>
             </a>

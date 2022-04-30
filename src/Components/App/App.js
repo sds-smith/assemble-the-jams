@@ -233,7 +233,7 @@ class App extends React.Component {
               gradientAngle={this.state.gradientAngle}
               setGradientAngle={this.setGradientAngle}
               isLike={this.state.nowPlaying.isLike}
-              setLike={this.setLike}
+              track={this.state.nowPlaying.trackId}
               toggleLike={this.toggleLike}
             />
           </div>

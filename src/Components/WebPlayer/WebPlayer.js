@@ -160,8 +160,8 @@ class WebPlayer extends React.Component {
                 </div>
                 <div className='btn-container'>
                     <button className ="play-pause" onClick={this.togglePlay}><span>|</span><img src={PlayBtn} alt='play or pause button'/></button>
-                    <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn} alt='button to add track to playlist'/></button>
-                    <button className ="Track-action like-btn" onClick={LikeOrUnlike=>this.toggleLike()}><img src={LikeOrUnlike} alt='button to like or unlike track'/></button>
+                    {/* <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn} alt='button to add track to playlist'/></button> */}
+                    <button className ="Track-action like-btn" onClick={this.toggleLike()}><img src={LikeOrUnlike} alt='button to like or unlike track'/></button>
                 </div>   
 
                 <div className='progress-container'>

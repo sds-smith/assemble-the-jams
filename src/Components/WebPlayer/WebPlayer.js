@@ -129,10 +129,13 @@ class WebPlayer extends React.Component {
         <div className="WebPlayer">
             <div className="Player"
                 style={{display : webPlayerDisplay}} >
-                <a className='spotify-attributor spotify-link' href='https://open.spotify.com/' target='_blank' rel="noreferrer">
-                    <img src={SpotifyIcon} id='spotify-icon' alt='spotify icon'/>
-                    <p id='listen'>Listen on Spotify</p>
-                </a>
+                <div className='spotify-attributor listen-on'>
+                    <a className='spotify-link'href='https://open.spotify.com/' target='_blank' rel="noreferrer">
+                        <img src={SpotifyIcon} id='spotify-icon' alt='spotify icon'/>
+                        <p id='listen'>Listen on Spotify</p>
+                    </a>
+                </div>
+
                 <img  src={this.state.current_track.album.images[0].url} 
                      className="now-playing__cover" alt="" 
                 />

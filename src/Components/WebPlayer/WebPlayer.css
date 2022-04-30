@@ -23,6 +23,10 @@
     box-shadow: 2px;
   }
   
+  .listen-on {
+    width: 100%;
+  }
+
   .spotify-link {
     display:flex;
     text-decoration: none;

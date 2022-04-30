@@ -2,6 +2,10 @@ import React from 'react';
 import './WebPlayer.css'
 import PlayBtn from '../../icons/play_black24.png'
 import SpotifyIcon from '../../icons/Spotify_Icon_RGB_Black.png'
+import AddBtn from '../../icons/add_black24.png'
+import Like from '../../icons/like24.png'
+import Unlike from '../../icons/unlike24.png'
+
 
 const track = {
     name: "",
@@ -30,6 +34,7 @@ class WebPlayer extends React.Component {
         this.setPlayerInstance = this.setPlayerInstance.bind(this)
         this.togglePlay = this.togglePlay.bind(this)
         this.nowPlayingInterval = this.nowPlayingInterval.bind(this)
+        this.toggleLike = this.toggleLike.bind(this)
     }
 
     setDeviceId(id) {
@@ -60,6 +65,10 @@ class WebPlayer extends React.Component {
                 console.log(this.state.active)    
             });
         }, 1000);
+    }
+
+    toggleLike(LikeOrUnlike) {
+        LikeOrUnlike = LikeOrUnlike === Like ? Unlike : Like
     }
 
     componentDidMount() {
@@ -112,7 +121,8 @@ class WebPlayer extends React.Component {
     }
 
    render() {
-  
+    let LikeOrUnlike = Unlike
+
     let currentPosition = this.state.position / 1000
     let positionMins = Math.floor(currentPosition / 60).toString()
     let positionSec = (currentPosition % 60).toFixed(0).toString()
@@ -125,6 +135,7 @@ class WebPlayer extends React.Component {
 
     const webPlayerDisplay = this.state.active ? 'flex' : 'none'
     const progress = (this.state.position/this.state.duration)*100
+    
     return (     
         <div className="WebPlayer">
             <div className="Player"
@@ -149,6 +160,8 @@ class WebPlayer extends React.Component {
                 </div>
                 <div className='btn-container'>
                     <button className ="play-pause" onClick={this.togglePlay}><span>|</span><img src={PlayBtn} alt='play or pause button'/></button>
+                    <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn} alt='button to add track to playlist'/></button>
+                    <button className ="Track-action like-btn" onClick={LikeOrUnlike=>this.toggleLike(LikeOrUnlike)}><img src={LikeOrUnlike} alt='button to like or unlike track'/></button>
                 </div>   
 
                 <div className='progress-container'>
@@ -160,7 +173,9 @@ class WebPlayer extends React.Component {
                     </div>
                     <p>{`${durationMins}:${durationSec}`}</p>
                 </div>
+                <div className='track-action-container'>
 
+                </div>
             </div>
         </div>
 

@@ -12,6 +12,9 @@
 }
 
 .Track-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   padding: .5rem;
   font-size: 1.05rem;

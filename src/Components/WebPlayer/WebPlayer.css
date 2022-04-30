@@ -57,6 +57,7 @@
 
   .btn-container {
     background-color: rgba(255, 255, 255, 0);
+    display: flex;
   }
 
   .play-pause {
@@ -64,11 +65,16 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    padding: .5rem;
+    /* padding: .5rem; */
     transition: color .25s;
     border: 0px;
     color: black;
     background-color: rgba(255, 255, 255, 0);
+  }
+
+  .Track-action {
+
+    
   }
 
   .play-pause:hover {

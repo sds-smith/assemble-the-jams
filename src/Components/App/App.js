@@ -114,9 +114,13 @@ class App extends React.Component {
     if (this.state.nowPlaying.isLike) {
       Spotify.deleteLike(this.state.nowPlaying.trackId)
       this.setNowPlaying(this.state.nowPlaying.trackId, false)
+      document.getElementById('likesMessage').innerHTML = 'Removed from Liked Songs'
+      setTimeout(() => document.getElementById('likesMessage').innerHTML = '', 3000);
     } else {
       Spotify.addLike(this.state.nowPlaying.trackId)
       this.setNowPlaying(this.state.nowPlaying.trackId, true)
+      document.getElementById('likesMessage').innerHTML = 'Added to Liked Songs'
+      setTimeout(() => document.getElementById('likesMessage').innerHTML = '', 3000);
     }
   }
 

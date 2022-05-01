@@ -163,7 +163,7 @@ class WebPlayer extends React.Component {
                     {/* <button className ="Track-action" onClick={this.addTrack}><img src={AddBtn} alt='button to add track to playlist'/></button> */}
                     <button className ="Track-action like-btn" onClick={this.toggleLike}><img src={LikeOrUnlike} alt='button to like or unlike track'/></button>
                 </div>   
-
+                <p id='likesMessage'></p>
                 <div className='progress-container'>
                     <p>{`${positionMins}:${positionSec}`}</p>
                     <div className='progress-bar'>

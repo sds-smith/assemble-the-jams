@@ -51,7 +51,7 @@ class Login extends React.Component {
                             className='LoginButton' 
                             style={{display : btnDisplay}} 
                             >
-                            <a href='#registration_form' >ENTER</a>
+                            ENTER
                         </button>
                     </form>
                     <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>

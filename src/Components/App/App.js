@@ -261,7 +261,7 @@ class App extends React.Component {
             />
           </div> 
           <a href='https://icons8.com/icons/material-sharp' id='icons8_link'>icons provided by icons8</a> 
-      </div>   
+        </div>   
       )
     }
 

@@ -259,7 +259,8 @@ class App extends React.Component {
               onPlay={this.playTrack}
               onAdd={this.addTrack}
             />
-          </div>  
+          </div> 
+          <a href='https://icons8.com/icons/material-sharp' id='icons8_link'>icons provided by icons8</a> 
       </div>   
       )
     }
@@ -272,7 +273,6 @@ class App extends React.Component {
         </div>
         <h1>Assemble<span className="highlight">the</span>Jams</h1>
         {app}
-        <a href='https://icons8.com/icons/material-sharp' id='icons8_link'>icons provided by icons8</a>
       </div>
     )
   }

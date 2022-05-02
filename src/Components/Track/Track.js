@@ -2,6 +2,7 @@ import React from 'react'
 import './Track.css'
 import PlayBtn from '../../icons/play_white24.png'
 import AddBtn from '../../icons/add_white24.png'
+import ClearBtn from '../../icons/clear_white24.png'
 
 
 class Track extends React.Component {
@@ -27,7 +28,7 @@ class Track extends React.Component {
 
     renderAction() {
         if (this.props.trackType === 'playlist') {
-            return <button className ="Track-action" onClick={this.removeTrack}>-</button>
+            return <button className ="Track-action" onClick={this.removeTrack}><img src={ClearBtn} alt='button to remove track from playlist'/></button>
         } else if (this.props.trackType === 'search-results') {
             return  <div className='Track-action-container'>
                         <button className ="Track-action play-btn" onClick={this.playTrack}><img src={PlayBtn} alt='button to play track'/></button>

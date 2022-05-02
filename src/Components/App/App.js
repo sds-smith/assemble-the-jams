@@ -260,7 +260,7 @@ class App extends React.Component {
               onAdd={this.addTrack}
             />
           </div> 
-          <a href='https://icons8.com/icons/material-sharp' target='_blank' id='icons8_link'>icons provided by icons8</a> 
+          <a href='https://icons8.com/icons/material-sharp' target='_blank' rel="noreferrer" id='icons8_link'>icons provided by icons8</a> 
         </div>   
       )
     }

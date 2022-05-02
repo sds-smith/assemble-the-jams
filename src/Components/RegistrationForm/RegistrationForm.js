@@ -70,7 +70,7 @@ class RegistrationForm extends React.Component {
       }
 
       return (
-          <div className="Registration" style={{ transform : transform}}>
+          <div className="Registration" id='registration_form' style={{ transform : transform}}>
             <div className='formContainer'>
               <img src={close} className="close" onClick={this.handleClick} alt='close button'/>
               <h2 style={{width : registrationMessageWidth}}>{registrationMessage}</h2>

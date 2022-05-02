@@ -34,8 +34,6 @@ class Login extends React.Component {
                     <h3 className='loginMessage'>Clicking on your profile picture or username in the app takes you to your Spotify profile page.</h3>
                     <h3 className='loginMessage'>This companion app is registered in Development mode with Spotify.</h3>
                     <h3 className='loginMessage'>In order to use the app, Spotify requires you to be added to the list of users.</h3>
-                    <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>
-                    <h3 className='loginMessage'>Please Enjoy!</h3>
                     <form 
                         className='LoginForm' 
                         name='loginForm' 
@@ -43,18 +41,21 @@ class Login extends React.Component {
                     >
                         <div className='regBtn'>
                             <input type='radio' name='registrationStatus' id='not_reg' value='not_reg' />
-                            <label for='not_reg' id='notRegLabel'>Please check this box if you are a first-time user.</label>
+                            <label for='not_reg' id='notRegLabel'>First time users, please check here and select 'ENTER" to register</label>
                         </div>
                         <div className='regBtn'>
                             <input type='radio' name='registrationStatus' id='reg' value='reg' />
-                            <label for='reg' id='regLabel'>Registered users check this box.</label>     
+                            <label for='reg' id='regLabel'>Registered users please check this box and select 'ENTER'.</label>     
                         </div>
                         <button 
                             className='LoginButton' 
                             style={{display : btnDisplay}} 
-                            >ENTER
+                            >
+                            <a href='#registration_form' >ENTER</a>
                         </button>
                     </form>
+                    <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>
+                    <h3 className='loginMessage'>Please Enjoy!</h3>
                 </div>
             </div>
         )

@@ -72,6 +72,14 @@ h2 {
   width: 100%;
 }
 
+.icons8_link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: white;
+  font-size: 8px;
+}
+
 @media only screen and (max-width: 1020px) {
   .App-playlist {
     align-items: center;

@@ -1,12 +1,7 @@
 [build] 
     command = "sed -i s/REACT_APP_CLIENT_ID_PLACEHOLDER/$REACT_APP_CLIENT_ID/g netlify.toml && npm run build"
 
-
 [[redirects]]
     from = '/authorize'
-    to = 'https://accounts.spotify.com/authorize?client_id=REACT_APP_CLIENT_ID_PLACEHOLDER&response_type=token&scope=playlist-modify-public%20streaming%20user-read-email%20%20user-read-private%20user-library-read%20user-library-modify&redirect_uri=https://assemblethejams.netlify.app/'
-    status = 200
-
-    from = '/authorize_localhost'
-    to = 'https://accounts.spotify.com/authorize?client_id=REACT_APP_CLIENT_ID_PLACEHOLDER&response_type=token&scope=playlist-modify-public%20streaming%20user-read-email%20%20user-read-private%20user-library-read%20user-library-modify&redirect_uri=http://localhost:3000/'
+    to = 'https://accounts.spotify.com/authorize?client_id=REACT_APP_CLIENT_ID_PLACEHOLDER&response_type=token&scope=playlist-modify-public%20streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify&redirect_uri=http://localhost:3000/'
     status = 200

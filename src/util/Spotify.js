@@ -31,8 +31,6 @@ const Spotify = {
             })
             .then(response => response.json())                
             .then(jsonResponse => {
-                console.log(authCode)
-                console.log(jsonResponse)
                 this.resetAuthCode()
                 if (!jsonResponse.error) {
                     accessToken = jsonResponse.access_token

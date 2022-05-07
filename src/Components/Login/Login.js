@@ -38,7 +38,7 @@ class Login extends React.Component {
                             <h3 className='loginMessage'>Select the play button inside any track to hear it in the custom WebPlayer. Inside the WebPlayer, you can like/unlike the song (instantly saves to your Spotify profile) or select a link to listen on Spotify.</h3>
                             <h3 className='loginMessage'>Clicking on your profile picture or username in the app takes you to your Spotify profile page.</h3>
                             <h3 className='loginMessage'>This companion app is registered in Development mode with Spotify.</h3>
-                            <h3 className='loginMessage'>In order to use the app, Spotify requires you to be added to the list of users.</h3>
+                            <h3 className='loginMessage'>In order to use the app, Spotify requires you to be added to the list of registered users.</h3>
                             <form 
                                 className='LoginForm' 
                                 name='loginForm' 

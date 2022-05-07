@@ -1,6 +1,6 @@
 [build] 
     command = "sed -i s/REACT_APP_CLIENT_ID_PLACEHOLDER/$REACT_APP_CLIENT_ID/g netlify.toml && npm run build"
-    command = "sed -i s/REACT_APP_EXPANDED_SCOPE/$REACT_APP_EXPANDED_SCOPE_PLACEHOLDER/g netlify.toml && npm run build"
+    command = "sed -i s/REACT_APP_EXPANDED_SCOPE_PLACEHOLDER/$REACT_APP_EXPANDED_SCOPE_PLACEHOLDER/g netlify.toml && npm run build"
     command = "sed -i s/REACT_APP_AUTH_STATE_PLACEHOLDER/$REACT_APP_AUTH_STATE/g netlify.toml && npm run build"
     command = "sed -i s/REACT_APP_AUTH_CHALLENGE_PLACEHOLDER/$REACT_APP_AUTH_CHALLENGE/g netlify.toml && npm run build"
     command = "sed -i s/REACT_APP_REDIRECT_URI_NETLIFY_PLACEHOLDER/$REACT_APP_REDIRECT_URI_NETLIFY/g netlify.toml && npm run build"

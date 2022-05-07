@@ -3,14 +3,14 @@ import { base64urlencode } from './random'
 let authCode
 let accessToken
 const codeVerifier = process.env.REACT_APP_AUTH_VERIFIER
-const codeChallenge = process.env.REACT_APP_AUTH_CHALLENGE
+// const codeChallenge = process.env.REACT_APP_AUTH_CHALLENGE
 const clientId = process.env.REACT_APP_CLIENT_ID
 const clientSecret = process.env.REACT_APP_CLIENT_SECRET
 const state = process.env.REACT_APP_AUTH_STATE
-const scope = process.env.REACT_APP_EXPANDED_SCOPE
+// const scope = process.env.REACT_APP_EXPANDED_SCOPE
 
-const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
-// const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
+// const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
+const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 
 const Spotify = {
 
@@ -55,8 +55,8 @@ const Spotify = {
             authCode = this.parseWindow()
             return authCode                  
         } else {
-            // window.location = '/authorize'
-            window.location = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scope}&state=${state}&code_challenge=${codeChallenge}&code_challenge_method=S256&show_dialog=false&redirect_uri=${redirectURI}`
+            window.location = '/authorize'
+            // window.location = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scope}&state=${state}&code_challenge=${codeChallenge}&code_challenge_method=S256&show_dialog=false&redirect_uri=${redirectURI}`
             authCode = this.parseWindow()
             return authCode
         }  

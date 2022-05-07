@@ -2,11 +2,11 @@
 
 This project is a single-page web app created with [Create React App](https://create-react-app.dev/), employing React class components.  It is a Front-end app deployed using [Netlify](https://www.netlify.com/).
 
-The app allows a registered user with their Spotify Premium subscription to access the Spotify database to search for tracks, create a custom playlist, and add the playlist to their Spotify profile.
+The app allows a registered user with their Spotify Premium subscription to enter a search term and receive search term matches from the Spotify database, create a custom playlist, and add the playlist to their Spotify profile. Additionally, the app delivers recommendations based on the Spotify algorithm, and gives the user to customize how the recommendations are delivered using a slider input toolbar. The user is also able to play any track using a custom built-in player and add/remove the currently playing song to their Spotify liked songs list.
 
 ## Project overview
 
-This project is based on the Codecademy "Jammming" project in the Front-end Developer career path.  Beyond the basic project, I have added several features and enhancements, detailed below under the heading **Added Features/ Enhancements**.
+This project is based on the Codecademy "Jammming" instructional project in the Front-end Developer career path.  Since completion of the Codecademy project, I have taken my version through several iterations, adding a number of features and enhancements, detailed below under the heading **Added Features/ Enhancements**. My added Components are also highlighted when mentioned in the below Component descriptions.
 
 ### The Base App
 

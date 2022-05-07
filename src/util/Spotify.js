@@ -1,62 +1,99 @@
+import { generateRandomString, base64urlencode } from './random'
 
-
+let authCode
 let accessToken
-// const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
+const codeVerifier = process.env.REACT_APP_AUTH_VERIFIER
+const codeChallenge = process.env.REACT_APP_AUTH_CHALLENGE
+const clientId = process.env.REACT_APP_CLIENT_ID
+const clientSecret = process.env.REACT_APP_CLIENT_SECRET
+const state = process.env.REACT_APP_AUTH_STATE
+const scope = process.env.REACT_APP_EXPANDED_SCOPE
+
 const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
-// const scope = process.env.REACT_APP_EXPANDED_SCOPE
-
-
+// const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 
 const Spotify = {
 
+    getAccessToken() {
+        const authCode = this.getAuthCode()
+        const authorization = base64urlencode(`${clientId}:${clientSecret}`)
+        const headers = {
+            'Authorization' : authorization,
+            'Content-Type' : 'application/x-www-form-urlencoded'
+        }
+        try {
+            return fetch(`https://accounts.spotify.com/api/token`,
+            {
+                headers : headers,
+                method : 'POST',
+                body : `grant_type=authorization_code&code=${authCode}&redirect_uri=${redirectURI}&client_id=${clientId}&code_verifier=${codeVerifier}`
+            })
+            .then(response => response.json())                
+            .then(jsonResponse => {
+                this.resetAuthCode()
+                if (!jsonResponse.error) {
+                    accessToken = jsonResponse.access_token
+                    authCode = jsonResponse.refresh_token
+                    const expiresIn = jsonResponse.expires_in
+                    window.setTimeout(() => {
+                        accessToken = ''
+                        this.getAccessToken()
+                    }, expiresIn * 1000)
+                    return accessToken
+                }
+            })   
+        } catch(error) {
+            console.log(error)
+        }         
+    },
+
+    getAuthCode() {
+        if (authCode) {
+            return authCode
+        } else if (this.parseWindow()) { 
+            authCode = this.parseWindow()
+            return authCode                  
+        } else {
+            window.location = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scope}&state=${state}&code_challenge=${codeChallenge}&code_challenge_method=S256&show_dialog=false&redirect_uri=${redirectURI}`
+            authCode = this.parseWindow()
+            return authCode
+        }  
+    },
+
+    resetAuthCode() {
+        authCode = ''
+    },
+
+    getProfileInfo() {            
+            const headers = { Authorization : `Bearer ${accessToken}` }
+            return fetch('https://api.spotify.com/v1/me',{headers : headers}
+            ).then(response => response.json()
+                ).then(jsonResponse => {
+                    return jsonResponse
+                })        
+    },
+
+    parseWindow() {
+        const authCodeMatch = window.location.href.match(/code=([^&]*)/)
+        const authStateMatch = window.location.href.match(/state=([^&]*)/)
+
+        if (authCodeMatch && authStateMatch) {
+            if (authStateMatch[1] === state) {
+                const authCode = authCodeMatch[1]
+                return authCode
+            }
+        } 
+    },
+
     hasAccessToken() {
         if (accessToken) {
-            return true
-        } else if (this.parseAccessToken()) {
             return true
         } else {
             return false
         }
     },
 
-    parseAccessToken() {
-        const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/)
-        const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/)
-        if (accessTokenMatch && expiresInMatch) { 
-            accessToken = accessTokenMatch[1]
-            const expiresIn = Number(expiresInMatch[1])
-            window.setTimeout(() => accessToken = '', expiresIn * 1000)
-            window.history.pushState("Access Token", null, "/")
-            return accessToken  
-        }     
-    },
-
-    getAccessToken() {
-        if (accessToken) {
-            return accessToken
-        }
-        if (this.parseAccessToken()) { 
-            return this.parseAccessToken()                  
-        } else {
-            window.location = '/authorize'
-            // window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`
-            return this.parseAccessToken()    
-        }             
-    },
-
-    getProfileInfo() {
-        const accessToken = this.getAccessToken()
-        const headers = { Authorization : `Bearer ${accessToken}` }
-
-        return fetch('https://api.spotify.com/v1/me',{headers : headers}
-        ).then(response => response.json()
-            ).then(jsonResponse => {
-                return jsonResponse
-            })
-    },
-
     search(term, type='track') {
-        const accessToken = this.getAccessToken()
         const headers = { Authorization : `Bearer ${accessToken}` }
         return fetch(`https://api.spotify.com/v1/search?type=${type}&q=${term}`, {headers: headers}
         ).then(response => {
@@ -79,7 +116,6 @@ const Spotify = {
     },
 
     getRecommendations(seeds, tunerAttributes) {
-        const accessToken = this.getAccessToken()
         const headers = { Authorization : `Bearer ${accessToken}` }
         const baseUrl = 'https://api.spotify.com/v1/recommendations?'
         const seedTracks = `seed_tracks=${seeds}`
@@ -109,7 +145,6 @@ const Spotify = {
         if ((!name) || (!trackURIs.length)) {
             return
         }
-        const accessToken = Spotify.getAccessToken()
         const headers = { Authorization : `Bearer ${accessToken}` }
         let userId
         return fetch('https://api.spotify.com/v1/me', {headers : headers}
@@ -160,7 +195,6 @@ const Spotify = {
       },
       
       getLikeStatus(trackId) {
-        const accessToken = this.getAccessToken()
         const headers = { Authorization : `Bearer ${accessToken}` }
           return fetch(`https://api.spotify.com/v1/me/tracks/contains?ids=${trackId}`, {headers : headers})
             .then(response => response.json()
@@ -171,7 +205,6 @@ const Spotify = {
       },
 
       addLike(trackId) {
-        const accessToken = Spotify.getAccessToken()
         const headers = { 
             'Content-Type' : 'application/json',
             Authorization : `Bearer ${accessToken}`,
@@ -184,7 +217,6 @@ const Spotify = {
       },
 
       deleteLike(trackId) {
-        const accessToken = Spotify.getAccessToken()
         const headers = { 
             'Content-Type' : 'application/json',
             Authorization : `Bearer ${accessToken}`,

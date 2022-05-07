@@ -14,6 +14,8 @@ const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
 
 const Spotify = {
 
+
+
     getAccessToken() {
         const authCode = this.getAuthCode()
         const authorization = base64urlencode(`${clientId}:${clientSecret}`)
@@ -62,6 +64,10 @@ const Spotify = {
 
     resetAuthCode() {
         authCode = ''
+    },
+
+    returnAccessToken() {
+        return accessToken
     },
 
     getProfileInfo() {            

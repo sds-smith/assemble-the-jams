@@ -73,7 +73,7 @@ class WebPlayer extends React.Component {
 
     componentDidMount() {
 
-        const token = this.props.getAccessToken()
+        const token = this.props.returnAccessToken()
         const script = document.createElement("script");
         script.src = "https://sdk.scdn.co/spotify-player.js";
         script.async = true;

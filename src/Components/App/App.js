@@ -17,7 +17,8 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-        accessToken : '',
+        hasAuthCode : false,
+        hasAccessToken : false,
         deviceId : '',
         playerInstance : undefined,
         isPopup : false,
@@ -55,6 +56,7 @@ class App extends React.Component {
     this.setGradientAngle = this.setGradientAngle.bind(this)
     this.setNowPlaying = this.setNowPlaying.bind(this)
     this.toggleLike = this.toggleLike.bind(this)
+    this.returnAccessToken = this.returnAccessToken.bind(this)
 
   }
   
@@ -72,11 +74,18 @@ class App extends React.Component {
   }
 
   login() {
-    this.getAccessToken()   
+    this.getAccessToken()
   }
 
   getAccessToken() {
     return Spotify.getAccessToken()
+    .then(() => {
+      this.setState({ hasAccessToken : true })
+    })
+  }
+
+  returnAccessToken() {
+    return Spotify.returnAccessToken()
   }
 
   getProfileInfo() {
@@ -193,11 +202,15 @@ class App extends React.Component {
     this.setState({ playerInstance : player })
   }
 
+  componentDidMount() {
+    Spotify.getAuthCode()
+  }
+
   render()  {
     let app 
     const gradientAngle = this.state.gradientAngle
     
-    if (!this.hasAccessToken()) {
+    if (!this.state.hasAccessToken) {
       app = (
         <div className='App' style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>
           <Login 
@@ -226,7 +239,7 @@ class App extends React.Component {
               onSearch={this.search}
             />
             <WebPlayer 
-              getAccessToken={this.getAccessToken}
+              returnAccessToken={this.returnAccessToken}
               setDeviceId={this.setDeviceId}
               playerInstance={this.state.playerInstance}
               setPlayerInstance={this.setPlayerInstance}

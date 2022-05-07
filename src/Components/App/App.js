@@ -44,7 +44,6 @@ class App extends React.Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this)
     this.savePlaylist = this.savePlaylist.bind(this)
     this.search = this.search.bind(this)
-    this.hasAccessToken = this.hasAccessToken.bind(this)
     this.getAccessToken = this.getAccessToken.bind(this)
     this.getProfileInfo = this.getProfileInfo.bind(this)
     this.togglePop = this.togglePop.bind(this)
@@ -57,7 +56,7 @@ class App extends React.Component {
     this.setNowPlaying = this.setNowPlaying.bind(this)
     this.toggleLike = this.toggleLike.bind(this)
     this.returnAccessToken = this.returnAccessToken.bind(this)
-
+    this.getAuthCode = this.getAuthCode.bind(this)
   }
   
   togglePop() {
@@ -69,8 +68,9 @@ class App extends React.Component {
     this.setState({ userEmail : userEmail })
   }
 
-  hasAccessToken() {
-    return Spotify.hasAccessToken()  
+  getAuthCode() {
+    Spotify.getAuthCode()
+    this.setState({ hasAuthCode : true })
   }
 
   login() {
@@ -202,10 +202,6 @@ class App extends React.Component {
     this.setState({ playerInstance : player })
   }
 
-  componentDidMount() {
-    Spotify.getAuthCode()
-  }
-
   render()  {
     let app 
     const gradientAngle = this.state.gradientAngle
@@ -214,8 +210,10 @@ class App extends React.Component {
       app = (
         <div className='App' style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>
           <Login 
+            getAuthCode={this.getAuthCode}
             onLogin={this.login} 
             toggle={this.togglePop}
+            hasAuthCode={this.state.hasAuthCode}
             isPopup={this.state.isPopup}
           />
           <RegistrationForm 

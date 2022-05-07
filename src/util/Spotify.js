@@ -17,7 +17,6 @@ const Spotify = {
 
 
     getAccessToken() {
-        const authCode = this.getAuthCode()
         const authorization = base64urlencode(`${clientId}:${clientSecret}`)
         const headers = {
             'Authorization' : authorization,

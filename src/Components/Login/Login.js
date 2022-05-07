@@ -11,25 +11,29 @@ class Login extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
         if (e.target.registrationStatus.value === 'reg') {
-            this.props.onLogin()
+            this.props.getAuthCode()
+
         } else {
             this.props.toggle()        
         }
     }
 
     render() {
-        let btnDisplay = 'flex'
+        let welcomeDisplay = 'flex'
+        let loginBtnDisplay = 'none'
         if (this.props.isPopup) {
-            btnDisplay = 'none'
-        } else {
-            btnDisplay = 'flex'
+            welcomeDisplay = 'none'
+        }
+        if (this.props.hasAuthCode) {
+            welcomeDisplay = 'none'
+            loginBtnDisplay = 'flex'
         }
 
         return (
             <div className='Login'>
                 <div className='formContainer'>
                     <h2 className='loginMessage' >Assemble<span className='highlight'>the</span>Jams works with your Spotify Premium account.</h2>
-                    <div className = 'rollup' style={{display : btnDisplay}}>
+                    <div className = 'rollup' style={{display : welcomeDisplay}}>
                             <h3 className='loginMessage'>Once you authorize the app, it can be used to search for songs, artists, or albums, receiving search term matches as well as recommendations based on the Spotify algorithm.  You can even customize how your recommendations are delivered to you using a slider toolbar.</h3>
                             <h3 className='loginMessage'>Select the play button inside any track to hear it in the custom WebPlayer. Inside the WebPlayer, you can like/unlike the song (instantly saves to your Spotify profile) or select a link to listen on Spotify.</h3>
                             <h3 className='loginMessage'>Clicking on your profile picture or username in the app takes you to your Spotify profile page.</h3>
@@ -55,7 +59,9 @@ class Login extends React.Component {
                             <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>
                             <h3 className='loginMessage'>Please Enjoy!</h3>
                     </div>
-
+                    <button className='LoginButton'style={{display : loginBtnDisplay}} onClick={()=>this.props.onLogin()}>
+                        LOGIN
+                    </button>  
                 </div>
             </div>
         )

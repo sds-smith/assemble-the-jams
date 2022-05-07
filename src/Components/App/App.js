@@ -70,7 +70,9 @@ class App extends React.Component {
 
   getAuthCode() {
     Spotify.getAuthCode()
-    this.setState({ hasAuthCode : true })
+    if (Spotify.hasAuthCode()) {
+      this.setState({ hasAuthCode : true })
+    }
   }
 
   login() {
@@ -80,7 +82,9 @@ class App extends React.Component {
   getAccessToken() {
     return Spotify.getAccessToken()
     .then(() => {
-      this.setState({ hasAccessToken : true })
+      if (Spotify.hasAccessToken()) {
+        this.setState({ hasAccessToken : true })
+      }
     })
   }
 
@@ -200,6 +204,12 @@ class App extends React.Component {
 
   setPlayerInstance(player) {
     this.setState({ playerInstance : player })
+  }
+
+  componentDidMount() {
+    if (Spotify.hasAuthCode()) {
+      this.getAuthCode()
+    }
   }
 
   render()  {

@@ -1,4 +1,4 @@
-import { generateRandomString, base64urlencode } from './random'
+import { base64urlencode } from './random'
 
 let authCode
 let accessToken
@@ -31,6 +31,8 @@ const Spotify = {
             })
             .then(response => response.json())                
             .then(jsonResponse => {
+                console.log(authCode)
+                console.log(jsonResponse)
                 this.resetAuthCode()
                 if (!jsonResponse.error) {
                     accessToken = jsonResponse.access_token
@@ -55,10 +57,21 @@ const Spotify = {
             authCode = this.parseWindow()
             return authCode                  
         } else {
+            // window.location = '/authorize'
             window.location = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scope}&state=${state}&code_challenge=${codeChallenge}&code_challenge_method=S256&show_dialog=false&redirect_uri=${redirectURI}`
             authCode = this.parseWindow()
             return authCode
         }  
+    },
+
+    hasAuthCode() {
+        if (authCode) {
+            return true
+        } else if (this.parseWindow()) { 
+            return true                
+        } else {
+            return false
+        }
     },
 
     resetAuthCode() {

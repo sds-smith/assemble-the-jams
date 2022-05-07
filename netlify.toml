@@ -1,7 +1,12 @@
 [build] 
     command = "sed -i s/REACT_APP_CLIENT_ID_PLACEHOLDER/$REACT_APP_CLIENT_ID/g netlify.toml && npm run build"
-
+    command = "sed -i s/REACT_APP_EXPANDED_SCOPE/$REACT_APP_EXPANDED_SCOPE_PLACEHOLDER/g netlify.toml && npm run build"
+    command = "sed -i s/REACT_APP_AUTH_STATE_PLACEHOLDER/$REACT_APP_AUTH_STATE/g netlify.toml && npm run build"
+    command = "sed -i s/REACT_APP_AUTH_CHALLENGE_PLACEHOLDER/$REACT_APP_AUTH_CHALLENGE/g netlify.toml && npm run build"
+    command = "sed -i s/REACT_APP_REDIRECT_URI_NETLIFY_PLACEHOLDER/$REACT_APP_REDIRECT_URI_NETLIFY/g netlify.toml && npm run build"
+    
 [[redirects]]
     from = '/authorize'
-    to = 'https://accounts.spotify.com/authorize?client_id=REACT_APP_CLIENT_ID_PLACEHOLDER&response_type=token&scope=playlist-modify-public%20streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify&redirect_uri=http://localhost:3000/'
+    to = 'https://accounts.spotify.com/authorize?response_type=code&client_id=REACT_APP_CLIENT_ID_PLACEHOLDER&scope=REACT_APP_EXPANDED_SCOPE_PLACEHOLDER&state=REACT_APP_AUTH_STATE_PLACEHOLDER&code_challenge=REACT_APP_AUTH_CHALLENGE_PLACEHOLDER&code_challenge_method=S256&show_dialog=false&redirect_uri=REACT_APP_REDIRECT_URI_NETLIFY_PLACEHOLDER'
     status = 200
+

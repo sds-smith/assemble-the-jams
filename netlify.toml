@@ -1,7 +1,7 @@
 [build] 
-    command = "sed -i s|REACT_APP_AUTHORIZE_REDIRECT_PLACEHOLDER/$REACT_APP_AUTHORIZE_REDIRECT|g netlify.toml && npm run build"
+    command = "sed -i s/REACT_APP_AUTHORIZE_REDIRECT_PLACEHOLDER/$REACT_APP_AUTHORIZE_REDIRECT/g netlify.toml && npm run build"
 
 [[redirects]]
     from = "/authorize"
-    to = 'REACT_APP_AUTHORIZE_REDIRECT_PLACEHOLDER'
+    to = 'https://accounts.spotify.com/authorize?REACT_APP_AUTHORIZE_REDIRECT_PLACEHOLDER/'
     status = 200

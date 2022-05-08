@@ -246,3 +246,6 @@ const Spotify = {
 }
 
 export default Spotify
+
+//[build] 
+//command = "sed -i s/REACT_APP_AUTHORIZE_REDIRECT_PLACEHOLDER/$REACT_APP_AUTHORIZE_REDIRECT/g netlify.toml && npm run build"

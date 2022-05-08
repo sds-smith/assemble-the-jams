@@ -96,7 +96,6 @@ const Spotify = {
         if (authCodeMatch && authStateMatch) {
             if (authStateMatch[1] === state) {
                 const authCode = authCodeMatch[1]
-                window.history.pushState("?code", null, "/")
                 return authCode
             }
         } 

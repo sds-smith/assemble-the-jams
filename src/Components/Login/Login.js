@@ -39,7 +39,7 @@ class Login extends React.Component {
                             <h3 className='loginMessage'>Clicking on your profile picture or username in the app takes you to your Spotify profile page.</h3>
                             <h3 className='loginMessage'>This companion app is registered in Development mode with Spotify.</h3>
                             <h3 className='loginMessage'>To use the app, Spotify requires you to be added to the list of registered users.</h3>
-                            <h3 className='loginMessage'>Please select the appropriate option below.</h3>
+                            {/* <h3 className='loginMessage'>Please select the appropriate option below.</h3> */}
 
                             <form 
                                 className='LoginForm' 

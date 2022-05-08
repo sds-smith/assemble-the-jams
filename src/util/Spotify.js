@@ -56,7 +56,7 @@ const Spotify = {
             return authCode                  
         } else {
             // window.location = '/authorize'
-            window.location = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scope}&state=${state}&code_challenge=${codeChallenge}&code_challenge_method=S256&show_dialog=false&redirect_uri=${redirectURI}`
+            window.location = `https://accounts.spotify.com/authorize?response_type=code&show_dialog=false&redirect_uri=${redirectURI}&scope=${scope}&state=${state}&code_challenge_method=S256&client_id=${clientId}&code_challenge=${codeChallenge}`
             authCode = this.parseWindow()
             return authCode
         }  

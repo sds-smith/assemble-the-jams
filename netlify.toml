@@ -3,6 +3,6 @@
 
 [[redirects]]
     from = "/authorize"
-    to = "REACT_APP_AUTHORIZE_REDIRECT_PLACEHOLDER"
+    to = REACT_APP_AUTHORIZE_REDIRECT_PLACEHOLDER
     status = 200
 

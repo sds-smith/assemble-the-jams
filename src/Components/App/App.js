@@ -1,16 +1,17 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import './App.css';
+import Header from '../Header/Header';
 import Login from '../Login/Login.js'
 import SearchBar from '../SearchBar/SearchBar.js'
 import SearchResults from '../SearchResults/SearchResults.js'
 import Playlist from '../Playlist/Playlist.js'
-import React from 'react';
 import Spotify from '../../util/Spotify.js'
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import Recommendations from '../Recommendations/Recommendations';
 import WebPlayer from '../WebPlayer/WebPlayer';
 import UserProfile from '../UserProfile/UserProfile';
 import ProfilePic from '../../icons/default_profile96.png'
-import SpotifyLogo from '../../icons/Spotify_Logo_RGB_White.png'
 
 class App extends React.Component {
   constructor(props) {
@@ -287,14 +288,10 @@ class App extends React.Component {
     }
 
     return (
-      <div >
-        <div className='spotify-attributor'>
-          <img src={SpotifyLogo} id='spotify-logo' alt='Spotify Logo'/>
-          <a href='https://www.spotify.com/us/premium/' target='_blank' rel="noreferrer"><p>Works with Spotify Premium</p></a> 
-        </div>
-        <h1>Assemble<span className="highlight">the</span>Jams</h1>
+      <Router >
+        <Header />
         {app}
-      </div>
+      </Router>
     )
   }
 }

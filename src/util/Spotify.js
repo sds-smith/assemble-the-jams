@@ -9,12 +9,10 @@ const clientSecret = process.env.REACT_APP_CLIENT_SECRET
 const state = process.env.REACT_APP_AUTH_STATE
 const scope = process.env.REACT_APP_EXPANDED_SCOPE
 
-const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
-// const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
+// const redirectURI = process.env.REACT_APP_REDIRECT_URI_LOCALHOST
+const redirectURI = process.env.REACT_APP_REDIRECT_URI_NETLIFY
 
 const Spotify = {
-
-
 
     getAccessToken() {
         const authorization = base64urlencode(`${clientId}:${clientSecret}`)

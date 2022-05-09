@@ -21,13 +21,9 @@ class Login extends React.Component {
 
     render() {
         let welcomeDisplay = 'flex'
-        let loginBtnDisplay = 'none'
+
         if (this.props.isPopup) {
             welcomeDisplay = 'none'
-        }
-        if (this.props.hasAuthCode) {
-            welcomeDisplay = 'none'
-            loginBtnDisplay = 'flex'
         }
 
         if (this.props.hasAccessToken) {
@@ -66,9 +62,6 @@ class Login extends React.Component {
                             <h3 className='loginMessage'>For more information on this app, please see the <a id='readme' href='https://github.com/sds-smith/assemble-the-jams#readme' >README</a></h3>
                             <h3 className='loginMessage'>Please Enjoy!</h3>
                     </div>
-                    <button className='LoginButton'style={{display : loginBtnDisplay}} onClick={()=>this.props.onLogin()}>
-                        LOGIN
-                    </button>  
                 </div>
             </div>
         )

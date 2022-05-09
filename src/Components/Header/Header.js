@@ -12,9 +12,7 @@ class Header extends React.Component {
                   <a href='https://www.spotify.com/us/premium/' target='_blank' rel="noreferrer"><p>Works with Spotify Premium</p></a> 
                 </div>        
                 <h1>Assemble<span className="highlight">the</span>Jams</h1>
-            </div>
-
-  
+            </div>  
         )
     }
 }

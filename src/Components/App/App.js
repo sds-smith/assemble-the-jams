@@ -289,8 +289,83 @@ class App extends React.Component {
 
     return (
       <Router >
-        <Header />
-        {app}
+
+        <Route >
+          <Header />
+        </Route>
+
+        <Route exact path='/'>
+          <div className='App' style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>
+            <Login 
+              getAuthCode={this.getAuthCode}
+              onLogin={this.login} 
+              toggle={this.togglePop}
+              hasAuthCode={this.state.hasAuthCode}
+              isPopup={this.state.isPopup}
+            />
+            <RegistrationForm 
+              toggle={this.togglePop}
+              isPopup={this.state.isPopup}
+              setUserEmail = {this.setUserEmail}
+              userEmail={this.state.userEmail}
+            />
+          </div>
+        </Route>
+
+        <Route 
+          path='/authorize/*' 
+          component={authorize}
+        />
+
+        <Route path='/app' >
+          <div className="App" style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>
+            <div className='App-hero' >
+              <UserProfile 
+                getProfileInfo={this.getProfileInfo}
+                profilePic={this.state.profilePic}
+                userName={this.state.userName}
+              />
+              <SearchBar 
+                onSearch={this.search}
+              />
+              <WebPlayer 
+                returnAccessToken={this.returnAccessToken}
+                setDeviceId={this.setDeviceId}
+                playerInstance={this.state.playerInstance}
+                setPlayerInstance={this.setPlayerInstance}
+                gradientAngle={this.state.gradientAngle}
+                setGradientAngle={this.setGradientAngle}
+                isLike={this.state.nowPlaying.isLike}
+                track={this.state.nowPlaying.trackId}
+                toggleLike={this.toggleLike}
+                setNowPlaying={this.setNowPlaying}
+              />
+            </div>
+      
+            <div className="App-playlist">
+              <SearchResults 
+                searchResults={this.state.searchResults}
+                deviceId={this.state.deviceId}
+                onPlay={this.playTrack}
+                onAdd={this.addTrack}
+              />
+              <Playlist 
+                playlistName={this.state.playlistName} 
+                playlistTracks={this.state.playlistTracks}
+                onRemove={this.removeTrack}
+                onNameChange={this.updatePlaylistName}
+                onSave={this.savePlaylist}
+              />
+              <Recommendations 
+                recommendations={this.state.recommendations}
+                deviceId={this.state.deviceId}
+                onPlay={this.playTrack}
+                onAdd={this.addTrack}
+              />
+            </div> 
+            <a href='https://icons8.com/icons/material-sharp' target='_blank' rel="noreferrer" id='icons8_link'>icons provided by icons8</a> 
+          </div>
+        </Route>
       </Router>
     )
   }

@@ -58,6 +58,7 @@ class App extends React.Component {
     this.toggleLike = this.toggleLike.bind(this)
     this.returnAccessToken = this.returnAccessToken.bind(this)
     this.getAuthCode = this.getAuthCode.bind(this)
+    this.authorize = this.authorize.bind(this)
   }
   
   togglePop() {
@@ -69,6 +70,16 @@ class App extends React.Component {
     this.setState({ userEmail : userEmail })
   }
 
+  authorize() {
+    if (this.state.hasAccessToken) {
+      return <Redirect to='/profile' />
+    }
+    Spotify.getAuthCode()
+    if (Spotify.hasAuthCode()) {
+      this.login()
+    }
+  }
+
   getAuthCode() {
     Spotify.getAuthCode()
     if (Spotify.hasAuthCode()) {
@@ -78,6 +89,11 @@ class App extends React.Component {
 
   login() {
     this.getAccessToken()
+    .then(() => {
+      if (Spotify.hasAccessToken()) {
+      this.setState({ hasAccessToken : true })
+      }
+    })
   }
 
   getAccessToken() {
@@ -214,78 +230,8 @@ class App extends React.Component {
   }
 
   render()  {
-    let app 
-    const gradientAngle = this.state.gradientAngle
-    
-    if (!this.state.hasAccessToken) {
-      app = (
-        <div className='App' style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>
-          <Login 
-            getAuthCode={this.getAuthCode}
-            onLogin={this.login} 
-            toggle={this.togglePop}
-            hasAuthCode={this.state.hasAuthCode}
-            isPopup={this.state.isPopup}
-          />
-          <RegistrationForm 
-            toggle={this.togglePop}
-            isPopup={this.state.isPopup}
-            setUserEmail = {this.setUserEmail}
-            userEmail={this.state.userEmail}
-          />
-        </div>
-      )
-    } else {
-      app = (
-        <div className="App" style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>
-          <div className='App-hero' >
-            <UserProfile 
-              getProfileInfo={this.getProfileInfo}
-              profilePic={this.state.profilePic}
-              userName={this.state.userName}
-            />
-            <SearchBar 
-              onSearch={this.search}
-            />
-            <WebPlayer 
-              returnAccessToken={this.returnAccessToken}
-              setDeviceId={this.setDeviceId}
-              playerInstance={this.state.playerInstance}
-              setPlayerInstance={this.setPlayerInstance}
-              gradientAngle={this.state.gradientAngle}
-              setGradientAngle={this.setGradientAngle}
-              isLike={this.state.nowPlaying.isLike}
-              track={this.state.nowPlaying.trackId}
-              toggleLike={this.toggleLike}
-              setNowPlaying={this.setNowPlaying}
-            />
-          </div>
 
-          <div className="App-playlist">
-            <SearchResults 
-              searchResults={this.state.searchResults}
-              deviceId={this.state.deviceId}
-              onPlay={this.playTrack}
-              onAdd={this.addTrack}
-            />
-            <Playlist 
-              playlistName={this.state.playlistName} 
-              playlistTracks={this.state.playlistTracks}
-              onRemove={this.removeTrack}
-              onNameChange={this.updatePlaylistName}
-              onSave={this.savePlaylist}
-            />
-            <Recommendations 
-              recommendations={this.state.recommendations}
-              deviceId={this.state.deviceId}
-              onPlay={this.playTrack}
-              onAdd={this.addTrack}
-            />
-          </div> 
-          <a href='https://icons8.com/icons/material-sharp' target='_blank' rel="noreferrer" id='icons8_link'>icons provided by icons8</a> 
-        </div>   
-      )
-    }
+    const gradientAngle = this.state.gradientAngle
 
     return (
       <Router >
@@ -301,6 +247,7 @@ class App extends React.Component {
               onLogin={this.login} 
               toggle={this.togglePop}
               hasAuthCode={this.state.hasAuthCode}
+              hasAccessToken={this.state.hasAccessToken}
               isPopup={this.state.isPopup}
             />
             <RegistrationForm 
@@ -313,8 +260,8 @@ class App extends React.Component {
         </Route>
 
         <Route 
-          path='/authorize/*' 
-          component={authorize}
+          path='/callback' 
+          component={this.authorize}
         />
 
         <Route path='/app' >
@@ -341,7 +288,7 @@ class App extends React.Component {
                 setNowPlaying={this.setNowPlaying}
               />
             </div>
-      
+
             <div className="App-playlist">
               <SearchResults 
                 searchResults={this.state.searchResults}

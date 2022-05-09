@@ -71,27 +71,24 @@ class App extends React.Component {
   }
 
   authorize() {
-    if (this.state.hasAccessToken) {
-      return <Redirect to='/profile' />
+    if (Spotify.hasAccessToken()) {
+      return <Redirect to='/app' />
     }
     Spotify.getAuthCode()
     if (Spotify.hasAuthCode()) {
       this.login()
     }
+    return null
   }
 
   getAuthCode() {
     Spotify.getAuthCode()
-    if (Spotify.hasAuthCode()) {
-      this.setState({ hasAuthCode : true })
-    }
   }
 
   login() {
     this.getAccessToken()
     .then(() => {
       if (Spotify.hasAccessToken()) {
-      this.setState({ hasAccessToken : true })
       }
     })
   }

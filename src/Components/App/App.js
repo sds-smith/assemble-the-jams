@@ -87,10 +87,6 @@ class App extends React.Component {
 
   login() {
     this.getAccessToken()
-    .then(() => {
-      if (Spotify.hasAccessToken()) {
-      }
-    })
   }
 
   getAccessToken() {

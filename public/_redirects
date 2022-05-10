@@ -1,2 +1,5 @@
 
 /* /index.html 200
+
+
+/authorize https://accounts.spotify.com/authorize?REACT_APP_PAR&redirect_uri=https://assemblethejams.netlify.app/callback 200

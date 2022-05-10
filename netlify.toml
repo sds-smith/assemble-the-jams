@@ -3,7 +3,7 @@
 
 [[redirects]]
     from = "/authorize"
-    to = 'https://accounts.spotify.com/authorize?REACT_APP_PAR_PLACEHOLDER&redirect_uri=https://assemblethejams.netlify.app/callback'
+    to = 'https://accounts.spotify.com/authorize?response_type=code&scope=playlist-modify-public%20streaming%20user-read-email%20%20user-read-private%20user-library-read%20user-library-modify&code_challenge_method=S256REACT_APP_PAR_PLACEHOLDER&redirect_uri=https://assemblethejams.netlify.app/callback&show_dialog=false'
     status = 200
 
 [[redirects]]

@@ -18,7 +18,7 @@ function generateRandomString() {
   }
 
   function base64urlencode(a) {
-    // Convert the ArrayBuffer to string using Uint8 array.
+    // Convert the ArrayBuffer to string using Uint8 array
     // btoa takes chars from 0-255 and base64 encodes.
     // Then convert the base64 encoded to base64url encoded.
     // (replace + with -, replace / with _, trim trailing =)

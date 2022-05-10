@@ -245,5 +245,3 @@ const Spotify = {
 
 export default Spotify
 
-// [build] 
-    // command = "sed -i s/REACT_APP_PAR_PLACEHOLDER/$REACT_APP_PAR/g netlify.toml && npm run build"

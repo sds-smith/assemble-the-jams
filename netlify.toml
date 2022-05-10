@@ -1,6 +1,7 @@
-
+[build] 
+    command = "sed -i s/REACT_APP_PAR_PLACEHOLDER/$REACT_APP_PAR/g netlify.toml && npm run build"
 
 [[redirects]]
     from = "/authorize"
-    to = 'https://accounts.spotify.com/authorize?REACT_APP_PAR_PLACEHOLDER&redirect_uri=https://assemblethejams.netlify.app/'
+    to = 'https://accounts.spotify.com/authorize?REACT_APP_PAR_PLACEHOLDER&redirect_uri=https://assemblethejams.netlify.app/callback'
     status = 200

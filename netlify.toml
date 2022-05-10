@@ -1,5 +1,5 @@
 [build] 
-    command = "sed -i s/REACT_APP_PAR_PLACEHOLDER/$REACT_APP_PAR/g netlify.toml && npm run build"
+    command = "sed -i s/REACT_APP_PAR_PLACEHOLDER/$REACT_APP_PAR/ netlify.toml && npm run build"
 
 [[redirects]]
     from = "/authorize"

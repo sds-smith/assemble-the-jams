@@ -3,7 +3,7 @@
 
 [[redirects]]
     from = "/authorize"
-    to = 'https://accounts.spotify.com/authorize?response_type=code&scope=playlist-modify-public%20streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify&code_challenge_method=S256&redirect_uri=https://assemblethejams.netlify.app/callback&show_dialog=falseREACT_APP_PAR_PLACEHOLDER'
+    to = 'https://accounts.spotify.com/authorize?response_type=code&scope=playlist-modify-public%20streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify&code_challenge_method=S256&redirect_uri=https://assemblethejams.netlify.app/callback&show_dialog=false&client_id=dccde5aeea0141f0b576602fc6595e43&state=c78a6c6b91bb278afc8d61730df9ea597af01e612fb5c1907f33afaa&code_challenge=RONPei6F4S5iH3rBVr0FizyUk8o6EwF0DhFaOjxJNVo'
     status = 200
 
 [[redirects]]

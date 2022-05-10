@@ -232,8 +232,12 @@ class App extends React.Component {
         <Route >
           <Header />
         </Route>
-
+       
         <Route exact path='/'>
+            <Redirect to='/login' />
+        </Route>
+       
+        <Route path='/login'>
           <div className='App' style={{backgroundImage: `linear-gradient(${gradientAngle}deg, green, black)`}}>
             <Login 
               getAuthCode={this.getAuthCode}

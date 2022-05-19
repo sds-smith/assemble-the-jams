@@ -29,7 +29,7 @@ The app consists of :
         + (All paths) - renders the Header component
         + (exact path = '/') - renders a Redirect to '/login'
         + (path = '/login') - renders the Login and RegistrationForm components.  This is the default view prior to authentication and authorization
-        + (path = '/callback') - renders nothing to the DOM.  The rendered component is a Class method on the App component which checks if an access token has been obtained, redirecting to '/app' if it has, otherwise calling getAccessToken() and login(). Will ultimately land on '/app' if the user has authorized or 'login' if they have declined.
+        + (path = '/callback') - renders nothing to the DOM.  Hitting this endpoint triggers a Class method on the App component which checks if an access token has been obtained, redirecting to '/app' if it has, otherwise calling getAccessToken() and login(). Will ultimately land on '/app' if the user has authorized or 'login' if they have declined.
         + (path = '/app') - this route renders the post-login view of the App, rendering UserProfile, Searchbar, WebPlayer, SearchResults, Playlist, and Recommendations.
     - Login - conditionally renders when oAuth credentials have not been attained from Spotify or have expired
     - RegistrationForm - conditionally renders when the user indicates in the Login screen they are a new user. The onSubmit sends a POST request to the hidden html form, which is then parsed by netlify, triggering a notification email to me so that I can add the new user on the Spotify Developer portal - necessary before they can authenticate with their Spotify account. I am looking into automating this process with Zapier or similar service on a future iteration.

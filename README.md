@@ -12,7 +12,7 @@ This project is based on the Codecademy "Jammming" instructional project in the 
 
 An example of the original completed Codecademy project can be viewed in this video.
 
-My app in its current iteration can be viewed here.
+My app in its current iteration can be viewed [here](https://youtu.be/fMgUQI0HRTk).
 
 A more detailed description of each iteration can be found in about.md.
 

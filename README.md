@@ -16,7 +16,7 @@ My app in its current iteration can be viewed here.
 
 A more detailed description of each iteration can be found in about.md.
 
-The original Codecademy version of this app includes six total components.  My added components and other elements are <mark>highlighted</mark> in the below descriptions.
+The original Codecademy version of this app includes six total components.  My added components and other elements are `highlighted` in the below descriptions.
 
 ### The App
 
@@ -24,23 +24,23 @@ The app consists of :
 
   * Two HTML files
     - index.html containing a single div element with id of 'root' where the App is rendered
-    - ==Form.html== containing a hidden html form, populated with user data by a POST request from a stateful form component, and parsed by netlify when submitted.
+    - `Form.html` containing a hidden html form, populated with user data by a POST request from a stateful form component, and parsed by netlify when submitted.
   * An index.js file which renders the App component to the DOM
   * Twelve React components 
-    - App - the root component which renders a ==router==, with five total routes : 
+    - App - the root component which renders a `router`, with five total routes : 
         + (All paths) - renders the Header component
         + (exact path = '/') - renders a Redirect to '/login'
-        + (path = '/login') - renders the ==Login== and ==RegistrationForm== components.  This is the default view prior to authentication and authorization
+        + (path = '/login') - renders the `Login` and `RegistrationForm` components.  This is the default view prior to authentication and authorization
         + (path = '/callback') - renders nothing to the DOM.  Hitting this endpoint triggers a Class method on the App component which checks if an access token has been obtained, redirecting to '/app' if it has, otherwise calling getAccessToken() and login(). Will ultimately land on '/app' if the user has authorized or 'login' if they have declined.
-        + (path = '/app') - this route renders the post-login view of the App, rendering ==UserProfile==, Searchbar, ==WebPlayer==, SearchResults, Playlist, and ==Recommendations==.
-    - ==Login== - conditionally renders when oAuth credentials have not been attained from Spotify or have expired
-    - ==RegistrationForm== - conditionally renders when the user indicates in the Login screen they are a new user. The onSubmit sends a POST request to the hidden html form, which is then parsed by netlify, triggering a notification email to me so that I can add the new user on the Spotify Developer portal - necessary before they can authenticate with their Spotify account. I am looking into automating this process with Zapier or similar service on a future iteration.
-    - ==UserProfile== - on first render, this Component sends a GET request to the /me endpoint at the Spotify api, extracts and displays the user's display name and profile picture (if one exists).  Also renders a link to their Spotify profile page.
+        + (path = '/app') - this route renders the post-login view of the App, rendering `UserProfile`, Searchbar, `WebPlayer`, SearchResults, Playlist, and `Recommendations`.
+    - `Login` - conditionally renders when oAuth credentials have not been attained from Spotify or have expired
+    - `RegistrationForm` - conditionally renders when the user indicates in the Login screen they are a new user. The onSubmit sends a POST request to the hidden html form, which is then parsed by netlify, triggering a notification email to me so that I can add the new user on the Spotify Developer portal - necessary before they can authenticate with their Spotify account. I am looking into automating this process with Zapier or similar service on a future iteration.
+    - `UserProfile` - on first render, this Component sends a GET request to the /me endpoint at the Spotify api, extracts and displays the user's display name and profile picture (if one exists).  Also renders a link to their Spotify profile page.
     - SearchBar - takes the place of Login.js when a non-expired access token exists.  Displays an input field and search button that initiates a GET request to the appropriate Spotify API endpoint. Also contains the recommendations customization tool where the user can adjust how much importance is placed on select attributes.
-    - ==WebPlayer== - initiates the Spotify web playback SDK on initial render, but only displays conditionally when a song is actively playing.  Displays album art, track name, and artist returned in the track object from Spotify.  Displays a play/pause button as well as a like/unlike button.  The like/unlike button indicates whether the song is currently included in the user's Spotify liked songs list.  Clicking the button instantly updates the user's liked songs list on Spotify which also changes the button's appearance. Also displays a custom made progress bar, including total track length, and current position in minutes and seconds (updates every second).
+    - `WebPlayer` - initiates the Spotify web playback SDK on initial render, but only displays conditionally when a song is actively playing.  Displays album art, track name, and artist returned in the track object from Spotify.  Displays a play/pause button as well as a like/unlike button.  The like/unlike button indicates whether the song is currently included in the user's Spotify liked songs list.  Clicking the button instantly updates the user's liked songs list on Spotify which also changes the button's appearance. Also displays a custom made progress bar, including total track length, and current position in minutes and seconds (updates every second).
     - SearchResults - displays track titles parsed from the Spotify response to the search.  Each track includes a button for adding to the working playlist and a play button which sends track info to the WebPlayer and initiates playback.
     - Playlist - the working playlist.  Displays tracks the user has added from SearchResults or Recommendations.  Each track includes a button for removing from the working playlist.
-    - ==Recommendations== - displays a list of songs returned from a call to the /recommendations endpoint based on seed tracks (from the returned search term matches displayed in SearchBar) and attribute values from user input in the recommendations tuner.
+    - `Recommendations` - displays a list of songs returned from a call to the /recommendations endpoint based on seed tracks (from the returned search term matches displayed in SearchBar) and attribute values from user input in the recommendations tuner.
     - Tracklist - displays a list of tracks.  Is rendered by both SearchResults and Playlist.
     - Track - an individual track, with conditionally rendered '+' or '-' button.  Rendered by TrackList
   * A Spotify object containing all of the logic for communicating with Spotify API endpoints.  All Spotify methods are called from the App component

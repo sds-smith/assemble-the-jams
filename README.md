@@ -1,14 +1,20 @@
 # Assemble the Jams
 
-This project is a single-page web app created with [Create React App](https://create-react-app.dev/), employing React class components.  It is a Front-end app deployed using [Netlify](https://www.netlify.com/).
+This project is a single-page web app created with [Create React App](https://create-react-app.dev/), employing React Class components.  It is a Front-end app deployed using [Netlify](https://www.netlify.com/).
 
-The app allows a registered user with their Spotify Premium subscription to enter a search term and receive search term matches from the Spotify database, create a custom playlist, and add the playlist to their Spotify profile. Additionally, the app delivers recommendations based on the Spotify algorithm, and gives the user to customize how the recommendations are delivered using a slider input toolbar. The user is also able to play any track using a custom built-in player and add/remove the currently playing song to their Spotify liked songs list.
+The app allows a registered user with their Spotify Premium subscription to enter a search term and receive search term matches from the Spotify database, create a custom playlist, and add the playlist to their Spotify profile. Additionally, the app delivers recommendations based on the Spotify algorithm, and allows the user to customize how the recommendations are delivered using a slider input toolbar. The user is also able to play any track using a custom built-in player and like/unlike the song (instantly updating their Spotify liked songs list).
 
 ## Project overview
 
-This project is based on the Codecademy "Jammming" instructional project in the Front-end Developer career path.  Since completion of the Codecademy project, I have taken my version through several iterations, adding a number of features and enhancements, detailed below under the heading **Added Features/ Enhancements**. My added Components are also highlighted when mentioned in the below Component descriptions.
+This project is based on the Codecademy "Jammming" instructional project in the Front-end Developer career path.  The project was a valuable exercise in managing state in React components, manipulating the DOM based on state, passing down props through a series of components, handling oAuth2.0 authentication, and working with web APIs.  However, there were several limitations that I wished to address, so since completion of the Codecademy project, I have taken my version through several iterations, adding additional functionality and enhancing useability.
 
-### The Base App
+An example of the original completed Codecademy project can be viewed in this video.
+
+My app in its current iteration can be viewed here.
+
+A more detailed description of each iteration can be found in about.md.
+
+### The App
 
 The app consists of :
 
@@ -16,42 +22,39 @@ The app consists of :
     - index.html containing a single div element with id of 'root' where the App is rendered
     - Form.html containing a hidden html form, populated with user data by a POST request from a stateful form component, and parsed by netlify when submitted.
   * An index.js file which renders the App component to the DOM
-  * Eight React components - three stateful and five stateless
-    - App - renders the Login, RegistrationForm, SearchBar, SearchResults, and Playlist components and manages the entire state of the app (with two exceptions)
+  * Twelve React components 
+    - App - the root component which renders a router, with five total routes : 
+        + (All paths) - renders the Header component
+        + (exact path = '/') - renders a Redirect to '/login'
+        + (path = '/login') - renders the Login and RegistrationForm components.  This is the default view prior to authentication and authorization
+        + (path = '/callback') - renders nothing to the DOM.  The rendered component is a Class method on the App component which checks if an access token has been obtained, redirecting to '/app' if it has, otherwise calling getAccessToken() and login(). Will ultimately land on '/app' if the user has authorized or 'login' if they have declined.
+        + (path = '/app') - this route renders the post-login view of the App, rendering UserProfile, Searchbar, WebPlayer, SearchResults, Playlist, and Recommendations.
     - Login - conditionally renders when oAuth credentials have not been attained from Spotify or have expired
-    - RegistrationForm - a 'pop-up' component which conditionally renders when the user indicates in the Login screen they are a new user. The onSubmit sends a POST request to the hidden html form, which is then parsed by netlify, triggering a notification email to me so that I can add the new user on the Spotify Developer portal - necessary before they can authenticate with their Spotify account.
-    - SearchBar - takes the place of Login.js when a non-expired access token exists.  Displays an input field and search button that initiates a GET request to the appropriate Spotify API endpoint. Aside from App and RegistrationForm, this is the only other component with state.  SearchBar's state consists of a single property, 'term' (the search term), which continuously updates as the user types in the search input field, until a submit event occurs.
-    - SearchResults - displays track titles parsed from the Spotify response to the search.  Each track includes a '+' button for adding to the working playlist
-    - Playlist - the working playlist.  Displays tracks the user has added from SearchResults.  Each track includes a '-' button for removing from the working playlist
+    - RegistrationForm - conditionally renders when the user indicates in the Login screen they are a new user. The onSubmit sends a POST request to the hidden html form, which is then parsed by netlify, triggering a notification email to me so that I can add the new user on the Spotify Developer portal - necessary before they can authenticate with their Spotify account. I am looking into automating this process with Zapier or similar service on a future iteration.
+    - UserProfile - on first render, this Component sends a GET request to the /me endpoint at the Spotify api, extracts and displays the user's display name and profile picture (if one exists).  Also renders a link to their Spotify profile page.
+    - SearchBar - takes the place of Login.js when a non-expired access token exists.  Displays an input field and search button that initiates a GET request to the appropriate Spotify API endpoint. Also contains the recommendations customization tool where the user can adjust how much importance is placed on select attributes.
+    - WebPlayer - initiates the Spotify web playback SDK on initial render, but only displays conditionally when a song is actively playing.  Displays album art, track name, and artist returned in the track object from Spotify.  Displays a play/pause button as well as a like/unlike button.  The like/unlike button indicates whether the song is currently included in the user's Spotify liked songs list.  Clicking the button instantly updates the user's liked songs list on Spotify which also changes the button's appearance. Also displays a custom made progress bar, including total track length, and current position in minutes and seconds (updates every second).
+    - SearchResults - displays track titles parsed from the Spotify response to the search.  Each track includes a button for adding to the working playlist and a play button which sends track info to the WebPlayer and initiates playback.
+    - Playlist - the working playlist.  Displays tracks the user has added from SearchResults or Recommendations.  Each track includes a button for removing from the working playlist.
+    - Recommendations - displays a list of songs returned from a call to the /recommendations endpoint based on seed tracks (from the returned search term matches displayed in SearchBar) and attribute values from user input in the recommendations tuner.
     - Tracklist - displays a list of tracks.  Is rendered by both SearchResults and Playlist.
     - Track - an individual track, with conditionally rendered '+' or '-' button.  Rendered by TrackList
   * A Spotify object containing all of the logic for communicating with Spotify API endpoints.  All Spotify methods are called from the App component
 
-### Added Features/ Enhancements
+### Styling / Design Considerations
 
-The project was a valuable exercise in managing state in React components, manipulating the DOM based on state, passing down props through a series of components, handling oAuth2.0 authentication, and working with web APIs.
+I have done my best not only to create a sharp and attractive visual experience and intuitive flow, but also to comply with the Spotify Design Guidelines.  A few notes on this :
 
-However, there were a few limitations to the user experience that I was not satisfied with, so I made the following enhancements:
-
-  * **`Added the Login component`**.  This gatekeeper component was not part of the base build, but it was added to solve two problems:
-    - Because the app is in Development mode, Spotify requires the user to be explicitly granted access.  Without access, they cannot successfully authenticate and will not receive search results.
-    - Additionally, once the user is registered, because of the type of authentication used (Implicit Grant Flow), if the user executes a search without an access token present, the app does not return any results in the SearchResults.  From the user perspective, it appears that nothing happened.  They will see results on the second and subsequent attempts, but this is not good user experience.
-    - In Login, if the user indicates they are a new user, the onSubmit renders a pop-up registration form.  Otherwise, an access token GET request is sent to Spotify, then with an access token present, Login is replaced by SearchBar.
-    - The Login component prevents these UX glitches by ensuring the user is registered before authenticating, then ensuring a fresh access token is present whenever the 'Search' button is clicked
-  * **`Added the RegistrationForm popup component`**, as described above.
-  * **`Added event listeners for an 'enter' keypress`** in both the SearchBar and Playlist components, bound to their respective buttons
-  * **`Added input field clean-ups`** to button clicks in both SearchBar and Playlist
-    - In addition to the SearchBar input, the Title in the Playlist component is also an input.  On the original build, each input's value is attached to a state property.  While the onClick callback function did reset those state properties, it did not reset the values on the inputs, leaving the UX a bit unpolished.
-  * **`Clear Playlist Title input field on click`**.  In the original build, the Playlist Title is an input field so that the user can give a customized name to their newly created playlist.  It is assigned to the 'playlistName' state property, which is initialized to 'New Playlist.'
-    - The initial value of the displayed Playlist name is not very intuitive - there is nothing to call it out as customizable to the user.  Additionally, when the user does click on it, the text remains.  Again, easily worked around by the user, but just not very polished.
-    - I added an onClick listener to the input field that sets its value to an empty string (although the initial value of state.playlistName remains untouched momentarily), as well as placeholder text.  The placeholder text and default value are both set to the initial value of state.playlistName, which is "Enter New Playlist Name"
+  * Color palate - uses the Spotify primary colors: green(#1DB954), white(#FFFFFF), and black(#191414).
+  * App background - a linear gradient starting at green in the upper left and ending black in the lower right.  The gradient angle is fixed at 45 degrees pre-login.  Post-login, the angle remains fixed as long as there is no song actively playing, but when playback is active, the angle rotates counter-clockwise one degree per second, stopping at its current position until playback resumes (this includes when playback is paused and when there is no current song).  This is an effect created inside a setInterval within a method on the WebPlayer component.  Each interval, the method calls getCurrentState() on the web player instance and updates the progress bar, also an App method (passed down in props) which updates the gradient angle of the App badkground.
+  * Material Design - Add / Delete buttons have been updated to more noticable and intuitive icons from Google's Material Design Standard (material sharp).  The added play and play / pause button are also material sharp style.
+  * Spotify attribution - I believe I have added all the necessary attributions per the Design Guidelines.  The Spotify logo appears in the header with the text 'works with Spotify Premium' linking to the Spotify Premium page, and the WebPlayer includes a 'listen on Spotify' link as specified in the Guidelines.  Additionally, Spotify has speific guidance for playback controls, as they understandably want their web player to be the player of choice. Per that guidance, my playback controls are limited to play/pause, and the progress bar does not allow for moving forward or back in the song. Last, when the like button is selected, a temporary message is displayed indicating the action taken on the user's Spotify profile (song has been either added or removed from their liked songs).
 
 ### Future Enhancements
 
-There are two additional enhancements that I would like to make to this app:
+Currently this is a front-end app deployed on Netlify, using oAuth authorization code flow with PKCE, and employing redirects, environment variables, and Netlify functions to keep sensitive data out of the browser.  I am currently working in another branch to add an Express back-end for improved security and integrity of the app.
 
-  * Display Spotify username and profile picture (if any) when user is logged in.  This will involve an additional scope beyond the current "playlist-modify-public".  The username would appear in an h2 element above the SearchBar input, and the profile picture (if any) would replace the swim goggles and earbuds as the background-image.
-  * Change the oAuth flow from Implicit Grant to Authorization Code Flow with PKCE.  I believe this would eliminate some of the issues detailed above associated with Implicit Grant, and also provide enhanced security.
+One other feature that I may add at a later date is the ability for the user to view all of their existing Spotify playlists and choose one to add a song/songs to (maybe via dropdown menu), in addition to simply creating a new playlist.
 
 ### DEMO
 

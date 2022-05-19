@@ -11,11 +11,11 @@
   }
 
   h2 .highlight {
-    color: green;
+    color: #1db954;
   }
 
   #readme {
-    color: rgb(0, 128, 0);
+    color: #1db954;
     font-weight: bold;
   }
 
@@ -95,7 +95,7 @@
     left: 8px;
     content: " ";
     display: block;
-    background: green;
+    background: #1db954;
   }
 
   .LoginButton {

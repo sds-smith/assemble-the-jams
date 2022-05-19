@@ -2,7 +2,9 @@
 
 This project is a single-page web app created with [Create React App](https://create-react-app.dev/), employing React Class components.  It is a Front-end app deployed using [Netlify](https://www.netlify.com/).
 
-The app allows a registered user with their Spotify Premium subscription to enter a search term and receive search term matches from the Spotify database, create a custom playlist, and add the playlist to their Spotify profile. Additionally, the app delivers recommendations based on the Spotify algorithm, and allows the user to customize how the recommendations are delivered using a slider input toolbar. The user is also able to play any track using a custom built-in player and like/unlike the song (instantly updating their Spotify liked songs list).
+The app allows a registered user with their Spotify Premium subscription to enter a search term and receive search term matches from the Spotify database, create a custom playlist, and add the playlist to their Spotify profile. 
+
+Additionally, the app delivers recommendations based on the Spotify algorithm, and allows the user to customize how the recommendations are delivered using a slider input toolbar. The user is also able to play any track using a custom built-in player and like/unlike the song (instantly updating their Spotify liked songs list).
 
 ## Project overview
 

@@ -14,7 +14,7 @@ An example of the original completed Codecademy project can be viewed in this vi
 
 My app in its current iteration can be viewed [here](https://youtu.be/fMgUQI0HRTk).
 
-A more detailed description of each iteration can be found in [about.md]().
+A more detailed description of each iteration can be found in [about.md](https://github.com/sds-smith/assemble-the-jams/blob/main/about.md).
 
 The original Codecademy version of this app includes six total components.  My added components and other elements are `highlighted` in the below descriptions.
 

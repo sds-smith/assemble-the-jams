@@ -16,7 +16,7 @@ My app in its current iteration can be viewed here.
 
 A more detailed description of each iteration can be found in about.md.
 
-The original Codecademy version of this app includes six total components.  My added components and other elements are ==highlighted== in the below descriptions.
+The original Codecademy version of this app includes six total components.  My added components and other elements are <mark>highlighted</mark> in the below descriptions.
 
 ### The App
 

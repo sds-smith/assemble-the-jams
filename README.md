@@ -58,9 +58,7 @@ I have done my best not only to create a sharp and attractive visual experience 
 
 In addition to automating the registration process, there are a few other enhancements I have in mind : 
 
-Currently this is a front-end app deployed on Netlify, using oAuth authorization code flow with PKCE, and employing redirects, environment variables, and Netlify functions to keep sensitive data out of the browser.  I am currently working in another branch to add an Express back-end for improved security and integrity of the app.
-
-I would also like to make my initial login screen more secure with user id token / login with Google or other oAuth provider.
+Currently this is a front-end app deployed on Netlify, using oAuth authorization code flow with PKCE, and employing redirects, environment variables, and Netlify functions to keep sensitive data out of the browser, or at least obfuscate it.  I am currently working in another branch to add an Express back-end for improved security and integrity of the app.
 
 One other feature that I may add at a later date is the ability for the user to view all of their existing Spotify playlists and choose one to add a song/songs to (maybe via dropdown menu), in addition to simply creating a new playlist.
 

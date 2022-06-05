@@ -12,6 +12,7 @@ import Recommendations from '../Recommendations/Recommendations';
 import WebPlayer from '../WebPlayer/WebPlayer';
 import UserProfile from '../UserProfile/UserProfile';
 import ProfilePic from '../../icons/default_profile96.png'
+import MaintenanceMessage from '../MaintenanceMessage/MaintenanceMessage';
 
 class App extends React.Component {
   constructor(props) {
@@ -216,11 +217,11 @@ class App extends React.Component {
     this.setState({ playerInstance : player })
   }
 
-  componentDidMount() {
-    if (Spotify.hasAuthCode()) {
-      this.getAuthCode()
-    }
-  }
+  // componentDidMount() {
+    // if (Spotify.hasAuthCode()) {
+      // this.getAuthCode()
+    // }
+  // }
 
   render()  {
 
@@ -234,7 +235,8 @@ class App extends React.Component {
         </Route>
        
         <Route exact path='/'>
-            <Redirect to='/login' />
+          <MaintenanceMessage />
+            {/* <Redirect to='/login' /> */}
         </Route>
        
         <Route path='/login'>

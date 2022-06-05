@@ -1,0 +1,167 @@
+.MaintenanceMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5rem;
+    background-color: black;
+  }
+  
+  .loginMessage {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  h2 .highlight {
+    color: #1db954;
+  }
+
+  #readme {
+    color: #1db954;
+    font-weight: bold;
+  }
+
+  #readme:hover {
+    color:rgba(0, 128, 0, 0.7)
+  }
+
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    padding: 40px;
+    color:#fff;
+    background-color: hsla(0, 0%, 0%, 40%);
+  }
+
+  .rollup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .LoginForm {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, .5);
+    color: black;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .regBtn {
+    display: flex;
+    margin-bottom: .5rem;
+  }
+
+  /* *** Change radio buttons (2) className to 'radio-item' to color them green when selected *** */
+  .radio-item {
+    display: flex;
+    position: relative;
+    padding: 0 6px;
+    margin: 10px 0 0;
+  }
+  
+  .radio-item input[type='radio'] {
+    display: none;
+  }
+  
+  .radio-item label {
+    color: white;
+    font-weight: normal;
+  }
+  
+  .radio-item label:before {
+    content: " ";
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin: 0 5px 0 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 11px;
+    border: 2px solid white;
+    background-color: transparent;
+  }
+  
+  .radio-item input[type=radio]:checked + label:after {
+    border-radius: 11px;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    top: 3.5px;
+    left: 8px;
+    content: " ";
+    display: block;
+    background: #1db954;
+  }
+
+  .LoginButton {
+    cursor: pointer;
+    width: 8.11rem;
+    padding: .77rem 0;
+    border-radius: 54px;
+    background-color: green;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: .833rem;
+    transition: background-color .25s;
+    border: 0px;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 20px;
+  }
+  
+  .LoginButton:hover {
+    background-color: rgba(0, 128, 0, .6);
+  }
+
+  .email_input {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 3rem;
+    width: 22rem;
+    text-align: center;
+    text-overflow: wrap;
+    
+  }
+
+  .email_input::placeholder {
+    text-size-adjust: auto;
+  }
+
+  @media only screen and (max-width: 1020px) {
+    .Login {
+      padding-top: 1rem;
+    }
+    
+    .formContainer {
+      width: 80%;
+    }
+
+    .email_input {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+  }
+  
+  .video-responsive {
+    overflow: hidden;
+    padding-bottom: 50%;
+    position: relative;
+    height: 0;
+
+  }
+  
+  /* .video-responsive iframe { */
+    /* left: 0; */
+    /* top: 0; */
+    /* height: 100%; */
+    /* width: 100%; */
+    /* position: absolute; */
+  /* } */

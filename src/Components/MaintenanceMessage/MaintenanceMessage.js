@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import './MaintenanceMessage.css';
 
 class MaintenanceMessage extends React.Component {

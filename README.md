@@ -6,7 +6,7 @@ The app allows a registered user with their Spotify Premium subscription to ente
 
 Additionally, the app delivers recommendations based on the Spotify algorithm, and allows the user to customize how the recommendations are delivered using a slider input toolbar. The user is also able to play any track using a custom built-in player and like/unlike the song (instantly updating their Spotify liked songs list).
 
-As one of my earliest React projects, there is plenty of opportunity here for optimization of the code. I may come back to it at some point, but for now it stands as-is as a snapshot of a step in my own growth process as a developer.
+As one of my earliest React projects, there is plenty of opportunity here for optimization of the code. I may come back to it at some point, but for now it stands as-is as a snapshot of a past step in my own growth process as a developer.
 
 ## Project overview
 
